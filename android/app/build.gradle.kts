@@ -33,6 +33,7 @@ android {
         targetSdk = 36  // Match compileSdk for full feature support
         versionCode = flutter.versionCode
         versionName = flutter.versionName
+        vectorDrawables.useSupportLibrary = true
     }
 
     buildTypes {
@@ -41,6 +42,10 @@ android {
             // Signing with the debug keys for now, so `flutter run --release` works.
             signingConfig = signingConfigs.getByName("debug")
         }
+    }
+
+    packagingOptions {
+        exclude("META-INF/proguard/androidx-*.pro")
     }
 }
 
