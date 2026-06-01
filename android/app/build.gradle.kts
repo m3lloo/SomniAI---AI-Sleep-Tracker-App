@@ -7,7 +7,7 @@ plugins {
 
 android {
     namespace = "com.example.flutterdev"
-    compileSdk = 34
+    compileSdk = 36
     ndkVersion = flutter.ndkVersion
 
     compileOptions {
@@ -30,7 +30,7 @@ android {
         // You can update the following values to match your application needs.
         // For more information, see: https://flutter.dev/to/review-gradle-config.
         minSdk = 31  // Required for Material Design 3
-        targetSdk = 34  // Match compileSdk for full feature support
+        targetSdk = 36  // Match compileSdk for full feature support
         versionCode = flutter.versionCode
         versionName = flutter.versionName
     }
