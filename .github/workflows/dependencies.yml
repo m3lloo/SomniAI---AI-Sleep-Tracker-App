@@ -1,0 +1,33 @@
+name: Dependency Check
+
+on:
+  schedule:
+    # Check dependencies weekly on Monday at 9 AM UTC
+    - cron: '0 9 * * 1'
+  workflow_dispatch:
+
+jobs:
+  check-dependencies:
+    name: Check Outdated Dependencies
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: 'latest'
+      
+      - name: Check for outdated dependencies
+        run: |
+          flutter pub outdated
+          echo "---"
+          echo "Run 'flutter pub upgrade' locally to update dependencies"
+      
+      - name: Get pubspec.yaml
+        run: cat pubspec.yaml
+
+      - name: Check pub.dev scores
+        run: flutter pub global activate pana && flutter pub global run pana --no-warning --score-min 0
