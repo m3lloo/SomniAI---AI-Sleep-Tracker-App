@@ -15,6 +15,7 @@ subprojects {
     val newSubprojectBuildDir: Directory = newBuildDir.dir(project.name)
     project.layout.buildDirectory.value(newSubprojectBuildDir)
 }
+
 subprojects {
     project.evaluationDependsOn(":app")
 }
@@ -32,6 +33,7 @@ subprojects {
             compileSdkVersion(36)
             defaultConfig {
                 minSdk = 31
+                targetSdkVersion(36)
             }
             compileOptions {
                 sourceCompatibility = JavaVersion.VERSION_17
