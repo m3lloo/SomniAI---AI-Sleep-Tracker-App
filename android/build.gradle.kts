@@ -30,12 +30,16 @@ subprojects {
                 namespace = project.group.toString()
             }
             compileSdkVersion(36)
-            defaultConfig.minSdk = 31
-            defaultConfig.targetSdk = 36
             compileOptions {
                 sourceCompatibility = JavaVersion.VERSION_17
                 targetCompatibility = JavaVersion.VERSION_17
             }
         }
+    }
+}
+
+subprojects {
+    plugins.withId("com.android.application") {
+        // Application specific config handled in app/build.gradle.kts
     }
 }
