@@ -29,10 +29,16 @@ subprojects {
             if (namespace == null) {
                 namespace = project.group.toString()
             }
+            compileSdk = 34
             compileOptions {
                 sourceCompatibility = JavaVersion.VERSION_17
                 targetCompatibility = JavaVersion.VERSION_17
             }
+        }
+    }
+    plugins.withId("com.android.application") {
+        extensions.configure<com.android.build.gradle.BaseExtension>("android") {
+            compileSdk = 34
         }
     }
 }
