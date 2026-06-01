@@ -4,8 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:somni_ai/main.dart';
 
 void main() {
-  testWidgets('App loads and shows the main navigation',
-      (WidgetTester tester) async {
+  testWidgets('App loads and shows the main navigation', (WidgetTester tester) async {
     await tester.pumpWidget(
       const ProviderScope(
         child: SomniAIApp(),

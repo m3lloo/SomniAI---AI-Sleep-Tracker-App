@@ -9,8 +9,7 @@ import 'package:timezone/timezone.dart' as tz;
 import 'alarm_audio_service.dart';
 
 class NotificationService {
-  static final FlutterLocalNotificationsPlugin _plugin =
-      FlutterLocalNotificationsPlugin();
+  static final FlutterLocalNotificationsPlugin _plugin = FlutterLocalNotificationsPlugin();
   static bool _initialized = false;
 
   static Future<void> _initialize() async {
@@ -20,14 +19,12 @@ class NotificationService {
 
     // 2. GET THE LOCAL TIMEZONE STRING
     // Fix: getLocalTimezone() returns a String, not an object.
-    final TimezoneInfo localTimeZoneInfo =
-        await FlutterTimezone.getLocalTimezone();
+    final TimezoneInfo localTimeZoneInfo = await FlutterTimezone.getLocalTimezone();
 
     final String localTimeZone = localTimeZoneInfo.identifier;
     tz.setLocalLocation(tz.getLocation(localTimeZone));
 
-    const androidSettings =
-        AndroidInitializationSettings('@mipmap/ic_launcher');
+    const androidSettings = AndroidInitializationSettings('@mipmap/ic_launcher');
     const iosSettings = DarwinInitializationSettings();
     const initSettings = InitializationSettings(
       android: androidSettings,
@@ -41,16 +38,14 @@ class NotificationService {
       ),
     );
 
-    final androidPlugin = _plugin.resolvePlatformSpecificImplementation<
-        AndroidFlutterLocalNotificationsPlugin>();
-    final notificationsGranted =
-        await androidPlugin?.requestNotificationsPermission();
+    final androidPlugin =
+        _plugin.resolvePlatformSpecificImplementation<AndroidFlutterLocalNotificationsPlugin>();
+    final notificationsGranted = await androidPlugin?.requestNotificationsPermission();
     if (notificationsGranted == false) {
       throw Exception('Notification permission was denied.');
     }
 
-    final canScheduleExact =
-        await androidPlugin?.canScheduleExactNotifications();
+    final canScheduleExact = await androidPlugin?.canScheduleExactNotifications();
     if (canScheduleExact == false) {
       final exactGranted = await androidPlugin?.requestExactAlarmsPermission();
       if (exactGranted == false) {
@@ -59,15 +54,13 @@ class NotificationService {
     }
 
     await _plugin
-        .resolvePlatformSpecificImplementation<
-            IOSFlutterLocalNotificationsPlugin>()
+        .resolvePlatformSpecificImplementation<IOSFlutterLocalNotificationsPlugin>()
         ?.requestPermissions(alert: true, badge: true, sound: true);
 
     _initialized = true;
   }
 
-  static Future<void> scheduleWakeAlarm(
-      TimeOfDay alarmTime, int smartWindowMinutes,
+  static Future<void> scheduleWakeAlarm(TimeOfDay alarmTime, int smartWindowMinutes,
       [AlarmSound sound = AlarmSound.gentle]) async {
     await _initialize();
 

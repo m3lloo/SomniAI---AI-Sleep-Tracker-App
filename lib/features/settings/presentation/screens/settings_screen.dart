@@ -62,8 +62,7 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
         children: [
           _HeaderCard(
             title: 'Personalize your sleep setup',
-            subtitle:
-                'Tune reminders, preferences, and AI features from one place.',
+            subtitle: 'Tune reminders, preferences, and AI features from one place.',
             icon: Icons.settings_rounded,
           ),
           const SizedBox(height: AppConstants.spacing20),
@@ -94,10 +93,7 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
                           ),
                           Text(
                             '${_sleepGoal.toStringAsFixed(1)} hours',
-                            style: Theme.of(context)
-                                .textTheme
-                                .titleMedium
-                                ?.copyWith(
+                            style: Theme.of(context).textTheme.titleMedium?.copyWith(
                                   fontWeight: FontWeight.w700,
                                 ),
                           ),
@@ -135,8 +131,7 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
                   label: 'Bedtime Reminder',
                   time: _bedtimeReminder,
                   icon: Icons.nightlight_round,
-                  onChanged: (value) =>
-                      setState(() => _bedtimeReminder = value),
+                  onChanged: (value) => setState(() => _bedtimeReminder = value),
                 ),
               ],
             ),
@@ -163,8 +158,7 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text('Gemini API Key',
-                    style: Theme.of(context).textTheme.labelLarge),
+                Text('Gemini API Key', style: Theme.of(context).textTheme.labelLarge),
                 const SizedBox(height: AppConstants.spacing12),
                 TextField(
                   obscureText: true,
@@ -403,8 +397,7 @@ class _HeaderCard extends StatelessWidget {
   final String title;
   final String subtitle;
   final IconData icon;
-  const _HeaderCard(
-      {required this.title, required this.subtitle, required this.icon});
+  const _HeaderCard({required this.title, required this.subtitle, required this.icon});
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -482,8 +475,7 @@ class _SectionHeader extends StatelessWidget {
   final String title;
   const _SectionHeader({required this.title});
   @override
-  Widget build(BuildContext context) =>
-      Text(title, style: Theme.of(context).textTheme.labelMedium);
+  Widget build(BuildContext context) => Text(title, style: Theme.of(context).textTheme.labelMedium);
 }
 
 class _TimeSettingTile extends StatelessWidget {
@@ -492,10 +484,7 @@ class _TimeSettingTile extends StatelessWidget {
   final IconData icon;
   final ValueChanged<String> onChanged;
   const _TimeSettingTile(
-      {required this.label,
-      required this.time,
-      required this.icon,
-      required this.onChanged});
+      {required this.label, required this.time, required this.icon, required this.onChanged});
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -504,10 +493,7 @@ class _TimeSettingTile extends StatelessWidget {
         const SizedBox(width: 12),
         Expanded(child: Text(label)),
         Text(time,
-            style: Theme.of(context)
-                .textTheme
-                .titleMedium
-                ?.copyWith(fontWeight: FontWeight.w700)),
+            style: Theme.of(context).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.w700)),
       ],
     );
   }
@@ -519,10 +505,7 @@ class _SettingsTile extends StatelessWidget {
   final bool destructive;
   final VoidCallback onTap;
   const _SettingsTile(
-      {required this.icon,
-      required this.label,
-      required this.onTap,
-      this.destructive = false});
+      {required this.icon, required this.label, required this.onTap, this.destructive = false});
   @override
   Widget build(BuildContext context) {
     final color = destructive ? AppColors.error : AppColors.primary;
@@ -530,8 +513,7 @@ class _SettingsTile extends StatelessWidget {
       contentPadding: EdgeInsets.zero,
       leading: Icon(icon, color: color),
       title: Text(label),
-      trailing:
-          Icon(Icons.arrow_forward_ios, size: 16, color: AppColors.textMuted),
+      trailing: Icon(Icons.arrow_forward_ios, size: 16, color: AppColors.textMuted),
       onTap: onTap,
     );
   }
@@ -547,10 +529,7 @@ class _SettingsRow extends StatelessWidget {
         children: [
           Text(label),
           Text(value,
-              style: Theme.of(context)
-                  .textTheme
-                  .bodyMedium
-                  ?.copyWith(color: AppColors.textMuted)),
+              style: Theme.of(context).textTheme.bodyMedium?.copyWith(color: AppColors.textMuted)),
         ],
       );
 }

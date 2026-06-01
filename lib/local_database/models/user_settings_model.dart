@@ -24,6 +24,5 @@ class UserSettingsModel {
   String preferredAiProvider = 'claude'; // 'claude' | 'openai'
 }
 
-
 // lib/local_database/models/alarm_model.dart
 // (kept in same file for simplicity — split as needed)

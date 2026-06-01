@@ -31,8 +31,7 @@ class UserProfile {
       darkModeEnabled: json['darkModeEnabled'] ?? true,
       geminiApiKey: json['geminiApiKey'],
       createdAt: DateTime.parse(json['createdAt']),
-      lastUpdated:
-          json['lastUpdated'] != null ? DateTime.parse(json['lastUpdated']) : null,
+      lastUpdated: json['lastUpdated'] != null ? DateTime.parse(json['lastUpdated']) : null,
     );
   }
 

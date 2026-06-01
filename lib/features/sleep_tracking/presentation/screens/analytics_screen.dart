@@ -10,8 +10,7 @@ import '../../../../core/themes/app_theme.dart';
 import '../../../../local_database/models/sleep_session_model.dart';
 import '../../../sleep_tracking/data/repositories/sleep_session_repository.dart';
 
-final analyticsSessionsProvider =
-    FutureProvider<List<SleepSessionModel>>((ref) async {
+final analyticsSessionsProvider = FutureProvider<List<SleepSessionModel>>((ref) async {
   return SleepSessionRepository().getRecentSessions(14);
 });
 
@@ -299,11 +298,9 @@ class _AnalyticsScreenState extends ConsumerState<AnalyticsScreen>
                   toY: session.durationHours,
                   gradient: session.durationHours >= 7
                       ? AppColors.cyanGradient
-                      : LinearGradient(
-                          colors: [AppColors.amber, AppColors.rose]),
+                      : LinearGradient(colors: [AppColors.amber, AppColors.rose]),
                   width: 20,
-                  borderRadius:
-                      const BorderRadius.vertical(top: Radius.circular(6)),
+                  borderRadius: const BorderRadius.vertical(top: Radius.circular(6)),
                   backDrawRodData: BackgroundBarChartRodData(
                     show: true,
                     toY: 12,
@@ -347,10 +344,8 @@ class _AnalyticsScreenState extends ConsumerState<AnalyticsScreen>
                 reservedSize: 30,
               ),
             ),
-            topTitles:
-                const AxisTitles(sideTitles: SideTitles(showTitles: false)),
-            rightTitles:
-                const AxisTitles(sideTitles: SideTitles(showTitles: false)),
+            topTitles: const AxisTitles(sideTitles: SideTitles(showTitles: false)),
+            rightTitles: const AxisTitles(sideTitles: SideTitles(showTitles: false)),
           ),
           gridData: FlGridData(
             show: true,
@@ -460,10 +455,8 @@ class _AnalyticsScreenState extends ConsumerState<AnalyticsScreen>
                 reservedSize: 28,
               ),
             ),
-            topTitles:
-                const AxisTitles(sideTitles: SideTitles(showTitles: false)),
-            rightTitles:
-                const AxisTitles(sideTitles: SideTitles(showTitles: false)),
+            topTitles: const AxisTitles(sideTitles: SideTitles(showTitles: false)),
+            rightTitles: const AxisTitles(sideTitles: SideTitles(showTitles: false)),
           ),
           gridData: FlGridData(
             show: true,
@@ -524,8 +517,7 @@ class _AnalyticsScreenState extends ConsumerState<AnalyticsScreen>
             ),
           ],
           titlesData: FlTitlesData(
-            bottomTitles:
-                const AxisTitles(sideTitles: SideTitles(showTitles: false)),
+            bottomTitles: const AxisTitles(sideTitles: SideTitles(showTitles: false)),
             leftTitles: AxisTitles(
               sideTitles: SideTitles(
                 showTitles: true,
@@ -540,10 +532,8 @@ class _AnalyticsScreenState extends ConsumerState<AnalyticsScreen>
                 reservedSize: 28,
               ),
             ),
-            topTitles:
-                const AxisTitles(sideTitles: SideTitles(showTitles: false)),
-            rightTitles:
-                const AxisTitles(sideTitles: SideTitles(showTitles: false)),
+            topTitles: const AxisTitles(sideTitles: SideTitles(showTitles: false)),
+            rightTitles: const AxisTitles(sideTitles: SideTitles(showTitles: false)),
           ),
           gridData: FlGridData(
             show: true,
@@ -602,8 +592,7 @@ class _AnalyticsScreenState extends ConsumerState<AnalyticsScreen>
                       ),
                     ),
                     const SizedBox(width: 8),
-                    Text('→',
-                        style: GoogleFonts.outfit(color: AppColors.textMuted)),
+                    Text('→', style: GoogleFonts.outfit(color: AppColors.textMuted)),
                     const SizedBox(width: 8),
                     Text(
                       DateFormat('h:mm a').format(s.wakeTime),
@@ -644,9 +633,7 @@ class _AnalyticsScreenState extends ConsumerState<AnalyticsScreen>
               color: AppColors.cyanDim,
               title: 'Light\n${(totalLight / total * 100).round()}%',
               titleStyle: GoogleFonts.outfit(
-                  color: Colors.white,
-                  fontSize: 11,
-                  fontWeight: FontWeight.w600),
+                  color: Colors.white, fontSize: 11, fontWeight: FontWeight.w600),
               radius: 80,
             ),
             PieChartSectionData(
@@ -654,9 +641,7 @@ class _AnalyticsScreenState extends ConsumerState<AnalyticsScreen>
               color: AppColors.indigo,
               title: 'Deep\n${(totalDeep / total * 100).round()}%',
               titleStyle: GoogleFonts.outfit(
-                  color: Colors.white,
-                  fontSize: 11,
-                  fontWeight: FontWeight.w600),
+                  color: Colors.white, fontSize: 11, fontWeight: FontWeight.w600),
               radius: 80,
             ),
             PieChartSectionData(
@@ -664,9 +649,7 @@ class _AnalyticsScreenState extends ConsumerState<AnalyticsScreen>
               color: AppColors.purple,
               title: 'REM\n${(totalRem / total * 100).round()}%',
               titleStyle: GoogleFonts.outfit(
-                  color: Colors.white,
-                  fontSize: 11,
-                  fontWeight: FontWeight.w600),
+                  color: Colors.white, fontSize: 11, fontWeight: FontWeight.w600),
               radius: 80,
             ),
             PieChartSectionData(
@@ -674,9 +657,7 @@ class _AnalyticsScreenState extends ConsumerState<AnalyticsScreen>
               color: AppColors.amber,
               title: 'Awake\n${(totalAwake / total * 100).round()}%',
               titleStyle: GoogleFonts.outfit(
-                  color: Colors.white,
-                  fontSize: 11,
-                  fontWeight: FontWeight.w600),
+                  color: Colors.white, fontSize: 11, fontWeight: FontWeight.w600),
               radius: 80,
             ),
           ],
@@ -691,26 +672,21 @@ class _AnalyticsScreenState extends ConsumerState<AnalyticsScreen>
   Widget _buildSummaryCards(List<SleepSessionModel> sessions) {
     if (sessions.isEmpty) return const SizedBox.shrink();
 
-    final avgScore =
-        sessions.fold(0, (s, e) => s + e.sleepScore) / sessions.length;
-    final avgDuration =
-        sessions.fold(0.0, (s, e) => s + e.durationHours) / sessions.length;
-    final avgInterruptions =
-        sessions.fold(0, (s, e) => s + e.interruptions) / sessions.length;
+    final avgScore = sessions.fold(0, (s, e) => s + e.sleepScore) / sessions.length;
+    final avgDuration = sessions.fold(0.0, (s, e) => s + e.durationHours) / sessions.length;
+    final avgInterruptions = sessions.fold(0, (s, e) => s + e.interruptions) / sessions.length;
 
     return Row(
       children: [
+        Expanded(child: _buildSummaryCard('Avg Score', '${avgScore.round()}', AppColors.indigo)),
+        const SizedBox(width: 12),
         Expanded(
             child: _buildSummaryCard(
-                'Avg Score', '${avgScore.round()}', AppColors.indigo)),
+                'Avg Duration', '${avgDuration.toStringAsFixed(1)}h', AppColors.cyan)),
         const SizedBox(width: 12),
         Expanded(
-            child: _buildSummaryCard('Avg Duration',
-                '${avgDuration.toStringAsFixed(1)}h', AppColors.cyan)),
-        const SizedBox(width: 12),
-        Expanded(
-            child: _buildSummaryCard('Avg Wakes',
-                avgInterruptions.toStringAsFixed(1), AppColors.amber)),
+            child: _buildSummaryCard(
+                'Avg Wakes', avgInterruptions.toStringAsFixed(1), AppColors.amber)),
       ],
     );
   }
@@ -746,8 +722,7 @@ class _AnalyticsScreenState extends ConsumerState<AnalyticsScreen>
     );
   }
 
-  Widget _buildChartCard(String title, String subtitle, Widget chart,
-      {double height = 200}) {
+  Widget _buildChartCard(String title, String subtitle, Widget chart, {double height = 200}) {
     return Container(
       padding: const EdgeInsets.all(20),
       decoration: BoxDecoration(

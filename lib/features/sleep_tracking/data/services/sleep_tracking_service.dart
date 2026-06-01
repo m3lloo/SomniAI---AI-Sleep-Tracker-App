@@ -115,9 +115,7 @@ class SleepTrackingService extends StateNotifier<SleepTrackingData> {
     }
 
     final delta = sqrt(
-      pow(event.x - _lastX, 2) +
-          pow(event.y - _lastY, 2) +
-          pow(event.z - _lastZ, 2),
+      pow(event.x - _lastX, 2) + pow(event.y - _lastY, 2) + pow(event.z - _lastZ, 2),
     );
 
     _lastX = event.x;
@@ -138,8 +136,7 @@ class SleepTrackingService extends StateNotifier<SleepTrackingData> {
         currentMovement: min(delta / 5.0, 1.0),
       );
     } else {
-      state = state.copyWith(
-          currentMovement: max(state.currentMovement - 0.1, 0.0));
+      state = state.copyWith(currentMovement: max(state.currentMovement - 0.1, 0.0));
     }
   }
 
@@ -155,8 +152,7 @@ class SleepTrackingService extends StateNotifier<SleepTrackingData> {
     final startTime = state.startTime!;
     final durationHours = endTime.difference(startTime).inMinutes / 60.0;
     final movementScore = _calculateMovementScore();
-    final score =
-        _calculateSleepScore(durationHours, movementScore, state.interruptions);
+    final score = _calculateSleepScore(durationHours, movementScore, state.interruptions);
     final stages = _estimateSleepStages(durationHours, movementScore);
 
     return SleepSessionModel()
@@ -183,8 +179,7 @@ class SleepTrackingService extends StateNotifier<SleepTrackingData> {
     return (eventsPerHour / 100).clamp(0.0, 1.0);
   }
 
-  int _calculateSleepScore(
-      double durationHours, double movementScore, int interruptions) {
+  int _calculateSleepScore(double durationHours, double movementScore, int interruptions) {
     // Duration score (0-40 pts)
     double durationScore = 0;
     if (durationHours >= 7 && durationHours <= 9) {
@@ -206,13 +201,10 @@ class SleepTrackingService extends StateNotifier<SleepTrackingData> {
       interruptionScore = max(0, 30 - (interruptions * 5));
     }
 
-    return (durationScore + movementPoints + interruptionScore)
-        .round()
-        .clamp(0, 100);
+    return (durationScore + movementPoints + interruptionScore).round().clamp(0, 100);
   }
 
-  Map<String, int> _estimateSleepStages(
-      double durationHours, double movementScore) {
+  Map<String, int> _estimateSleepStages(double durationHours, double movementScore) {
     final totalMinutes = (durationHours * 60).round();
 
     // Rough heuristic-based stage estimation

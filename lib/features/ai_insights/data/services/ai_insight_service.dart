@@ -18,21 +18,18 @@ class AiInsightService {
 
     final insights = <String>[];
     final latest = sessions.first;
-    final avgScore =
-        sessions.fold(0, (s, e) => s + e.sleepScore) / sessions.length;
-    final avgDuration =
-        sessions.fold(0.0, (s, e) => s + e.durationHours) / sessions.length;
+    final avgScore = sessions.fold(0, (s, e) => s + e.sleepScore) / sessions.length;
+    final avgDuration = sessions.fold(0.0, (s, e) => s + e.durationHours) / sessions.length;
 
     // Duration insights
     if (avgDuration < 6) {
-      insights.add(
-          '⚠️ You\'re averaging under 6 hours. Aim for 7–9 hours for optimal health.');
+      insights.add('⚠️ You\'re averaging under 6 hours. Aim for 7–9 hours for optimal health.');
     } else if (avgDuration >= 7 && avgDuration <= 9) {
       insights.add(
           '✅ Great job! Your average sleep duration of ${avgDuration.toStringAsFixed(1)}h is in the ideal range.');
     } else if (avgDuration > 9) {
-      insights.add(
-          '💡 You\'re sleeping over 9 hours. Oversleeping can sometimes cause fatigue too.');
+      insights
+          .add('💡 You\'re sleeping over 9 hours. Oversleeping can sometimes cause fatigue too.');
     }
 
     // Score insights
@@ -52,8 +49,7 @@ class AiInsightService {
       insights.add(
           '🌀 High movement detected. Avoid caffeine after 2pm and try relaxation before bed.');
     } else if (latest.movementScore < 0.2) {
-      insights
-          .add('🧘 Very still sleep detected — a sign of deep, restful sleep.');
+      insights.add('🧘 Very still sleep detected — a sign of deep, restful sleep.');
     }
 
     // Interruption insights
@@ -65,8 +61,7 @@ class AiInsightService {
     // Consistency
     if (sessions.length >= 3) {
       final consistency =
-          sessions.map((s) => s.consistencyScore).fold(0, (a, b) => a + b) /
-              sessions.length;
+          sessions.map((s) => s.consistencyScore).fold(0, (a, b) => a + b) / sessions.length;
       if (consistency < 50) {
         insights.add(
             '📅 Your bedtime varies a lot. A consistent schedule can significantly boost sleep quality.');
@@ -77,8 +72,8 @@ class AiInsightService {
 
     // Snoring
     if (latest.snoreDetected) {
-      insights.add(
-          '😴 Snoring detected. Try sleeping on your side. If persistent, consult a doctor.');
+      insights
+          .add('😴 Snoring detected. Try sleeping on your side. If persistent, consult a doctor.');
     }
 
     return insights.take(4).toList();
@@ -100,13 +95,11 @@ class AiInsightService {
     final apiKey = prefs.getString(AppConstants.keyClaudeApiKey) ?? '';
 
     if (apiKey.isEmpty) {
-      throw Exception(
-          'Claude API key not configured. Please add it in Settings.');
+      throw Exception('Claude API key not configured. Please add it in Settings.');
     }
 
     final sessionSummary = _buildSessionSummary(sessions);
-    final systemPrompt =
-        '''You are SomniAI, an expert AI sleep coach and health assistant.
+    final systemPrompt = '''You are SomniAI, an expert AI sleep coach and health assistant.
 You help users understand their sleep data, improve sleep quality, and build healthy sleep habits.
 
 The user's recent sleep data:

@@ -32,10 +32,7 @@ class SleepSessionRepository {
 
   Future<SleepSessionModel?> getLastSession() async {
     final db = await _db;
-    return await db.sleepSessionModels
-        .where()
-        .sortBySleepTimeDesc()
-        .findFirst();
+    return await db.sleepSessionModels.where().sortBySleepTimeDesc().findFirst();
   }
 
   Future<SleepSessionModel?> getSessionById(int id) async {
@@ -79,10 +76,7 @@ class SleepSessionRepository {
 
   Stream<List<SleepSessionModel>> watchAllSessions() async* {
     final db = await _db;
-    yield* db.sleepSessionModels
-        .where()
-        .sortBySleepTimeDesc()
-        .watch(fireImmediately: true);
+    yield* db.sleepSessionModels.where().sortBySleepTimeDesc().watch(fireImmediately: true);
   }
 
   /// Calculate consecutive days streak of sleep logging
@@ -104,14 +98,12 @@ class SleepSessionRepository {
       if (datesWithLogs.isEmpty) return 0;
 
       // Sort dates in descending order (most recent first)
-      final sortedDates = datesWithLogs.toList()
-        ..sort((a, b) => b.compareTo(a));
+      final sortedDates = datesWithLogs.toList()..sort((a, b) => b.compareTo(a));
 
       // Calculate streak from today backwards
       int streak = 0;
       DateTime currentCheck = DateTime.now();
-      currentCheck =
-          DateTime(currentCheck.year, currentCheck.month, currentCheck.day);
+      currentCheck = DateTime(currentCheck.year, currentCheck.month, currentCheck.day);
 
       for (final date in sortedDates) {
         if (date == currentCheck) {

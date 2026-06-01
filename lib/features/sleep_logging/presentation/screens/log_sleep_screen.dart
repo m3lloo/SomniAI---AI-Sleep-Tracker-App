@@ -20,8 +20,7 @@ class LogSleepScreen extends ConsumerStatefulWidget {
 
 class _LogSleepScreenState extends ConsumerState<LogSleepScreen> {
   late TimeOfDay _bedTime = TimeOfDay.now();
-  late TimeOfDay _wakeTime =
-      TimeOfDay.fromDateTime(DateTime.now().add(const Duration(hours: 8)));
+  late TimeOfDay _wakeTime = TimeOfDay.fromDateTime(DateTime.now().add(const Duration(hours: 8)));
   late int _qualityRating = 3;
   final List<String> _selectedMoodTags = [];
   final TextEditingController _dreamNotesController = TextEditingController();
@@ -94,9 +93,7 @@ class _LogSleepScreenState extends ConsumerState<LogSleepScreen> {
       ..avgNoiseLevel = 0.0
       ..metSleepGoal = durationHours >= 7.0
       ..consistencyScore = _calculateConsistencyScore(sleepTime, wakeTime)
-      ..notes = _dreamNotesController.text.isNotEmpty
-          ? _dreamNotesController.text
-          : null;
+      ..notes = _dreamNotesController.text.isNotEmpty ? _dreamNotesController.text : null;
 
     // Save to database
     await SleepSessionRepository().saveSession(session);
@@ -149,8 +146,7 @@ class _LogSleepScreenState extends ConsumerState<LogSleepScreen> {
     return (6 - qualityRating * 1.2).round().clamp(0, 6);
   }
 
-  Map<String, int> _estimateSleepStages(
-      double durationHours, double movementScore) {
+  Map<String, int> _estimateSleepStages(double durationHours, double movementScore) {
     final totalMinutes = (durationHours * 60).round();
 
     // Rough heuristic-based stage estimation
@@ -289,10 +285,7 @@ class _LogSleepScreenState extends ConsumerState<LogSleepScreen> {
                 ),
               ),
             ],
-          )
-              .animate()
-              .fadeIn(delay: 100.ms, duration: 400.ms)
-              .slideY(begin: -0.05, end: 0),
+          ).animate().fadeIn(delay: 100.ms, duration: 400.ms).slideY(begin: -0.05, end: 0),
           const SizedBox(height: AppConstants.spacing20),
           _buildQualitySection()
               .animate()
@@ -363,8 +356,7 @@ class _LogSleepScreenState extends ConsumerState<LogSleepScreen> {
                       child: Text(
                         '$rating',
                         style: TextStyle(
-                          color:
-                              isSelected ? Colors.white : AppColors.textMuted,
+                          color: isSelected ? Colors.white : AppColors.textMuted,
                           fontWeight: FontWeight.w700,
                         ),
                       ),

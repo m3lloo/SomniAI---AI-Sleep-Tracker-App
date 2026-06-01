@@ -8,8 +8,7 @@ import '../../../../local_database/models/sleep_session_model.dart';
 import '../../../sleep_tracking/data/repositories/sleep_session_repository.dart';
 import '../../data/services/ai_insight_service.dart';
 
-final recentSessionsForAiProvider =
-    FutureProvider<List<SleepSessionModel>>((ref) async {
+final recentSessionsForAiProvider = FutureProvider<List<SleepSessionModel>>((ref) async {
   return SleepSessionRepository().getRecentSessions(14);
 });
 
@@ -67,8 +66,7 @@ class _AiInsightsScreenState extends ConsumerState<AiInsightsScreen> {
                 ),
                 error: (e, _) => Center(
                   child: Text('Error loading insights',
-                      style:
-                          GoogleFonts.outfit(color: AppColors.textSecondary)),
+                      style: GoogleFonts.outfit(color: AppColors.textSecondary)),
                 ),
               ),
             ),
@@ -121,8 +119,7 @@ class _AiInsightsScreenState extends ConsumerState<AiInsightsScreen> {
             GestureDetector(
               onTap: () => setState(() => _chatOpen = !_chatOpen),
               child: Container(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
+                padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
                 decoration: BoxDecoration(
                   gradient: _chatOpen ? null : AppColors.primaryGradient,
                   color: _chatOpen ? AppColors.surfaceLight : null,
@@ -154,8 +151,7 @@ class _AiInsightsScreenState extends ConsumerState<AiInsightsScreen> {
     );
   }
 
-  Widget _buildInsightsView(
-      List<SleepSessionModel> sessions, AiInsightService aiService) {
+  Widget _buildInsightsView(List<SleepSessionModel> sessions, AiInsightService aiService) {
     final insights = aiService.getOfflineInsights(sessions);
 
     return SingleChildScrollView(
@@ -212,8 +208,7 @@ class _AiInsightsScreenState extends ConsumerState<AiInsightsScreen> {
               gradient: AppColors.primaryGradient,
               borderRadius: BorderRadius.circular(12),
             ),
-            child:
-                const Icon(Icons.auto_awesome, color: Colors.white, size: 20),
+            child: const Icon(Icons.auto_awesome, color: Colors.white, size: 20),
           ),
           const SizedBox(width: 14),
           Expanded(
@@ -271,22 +266,10 @@ class _AiInsightsScreenState extends ConsumerState<AiInsightsScreen> {
 
   Widget _buildSleepHygieneSection() {
     final tips = [
-      (
-        '🌡️',
-        'Keep room 65–68°F',
-        'Cool temps signal your brain it\'s time to sleep.'
-      ),
-      (
-        '📱',
-        'No screens 1h before bed',
-        'Blue light suppresses melatonin production.'
-      ),
+      ('🌡️', 'Keep room 65–68°F', 'Cool temps signal your brain it\'s time to sleep.'),
+      ('📱', 'No screens 1h before bed', 'Blue light suppresses melatonin production.'),
       ('☕', 'Cut caffeine after 2pm', 'Caffeine has a 6-hour half-life.'),
-      (
-        '🧘',
-        'Wind-down routine',
-        '20–30 min of calm activity before bed is powerful.'
-      ),
+      ('🧘', 'Wind-down routine', '20–30 min of calm activity before bed is powerful.'),
     ];
 
     return Column(
@@ -362,8 +345,7 @@ class _AiInsightsScreenState extends ConsumerState<AiInsightsScreen> {
         ),
         child: Row(
           children: [
-            const Icon(Icons.chat_bubble_outline,
-                color: Colors.white, size: 28),
+            const Icon(Icons.chat_bubble_outline, color: Colors.white, size: 28),
             const SizedBox(width: 16),
             Expanded(
               child: Column(
@@ -394,8 +376,7 @@ class _AiInsightsScreenState extends ConsumerState<AiInsightsScreen> {
     ).animate().fadeIn(delay: 300.ms, duration: 400.ms);
   }
 
-  Widget _buildChatView(
-      List<SleepSessionModel> sessions, AiInsightService aiService) {
+  Widget _buildChatView(List<SleepSessionModel> sessions, AiInsightService aiService) {
     return Column(
       children: [
         Expanded(
@@ -403,8 +384,7 @@ class _AiInsightsScreenState extends ConsumerState<AiInsightsScreen> {
               ? _buildChatWelcome()
               : ListView.builder(
                   controller: _scrollController,
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
+                  padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
                   physics: const BouncingScrollPhysics(),
                   itemCount: _chatHistory.length,
                   itemBuilder: (_, i) => _buildChatBubble(_chatHistory[i]),
@@ -481,8 +461,7 @@ class _AiInsightsScreenState extends ConsumerState<AiInsightsScreen> {
               },
               child: Container(
                 margin: const EdgeInsets.only(bottom: 10),
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+                padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
                 decoration: BoxDecoration(
                   color: AppColors.cardBg,
                   borderRadius: BorderRadius.circular(14),
@@ -498,8 +477,7 @@ class _AiInsightsScreenState extends ConsumerState<AiInsightsScreen> {
                       ),
                     ),
                     const Spacer(),
-                    Icon(Icons.arrow_forward_ios,
-                        size: 12, color: AppColors.textMuted),
+                    Icon(Icons.arrow_forward_ios, size: 12, color: AppColors.textMuted),
                   ],
                 ),
               ),
@@ -517,18 +495,15 @@ class _AiInsightsScreenState extends ConsumerState<AiInsightsScreen> {
       child: Container(
         margin: const EdgeInsets.symmetric(vertical: 6),
         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-        constraints:
-            BoxConstraints(maxWidth: MediaQuery.of(context).size.width * 0.78),
+        constraints: BoxConstraints(maxWidth: MediaQuery.of(context).size.width * 0.78),
         decoration: BoxDecoration(
           gradient: isUser ? AppColors.primaryGradient : null,
           color: isUser ? null : AppColors.cardBg,
           borderRadius: BorderRadius.only(
             topLeft: const Radius.circular(18),
             topRight: const Radius.circular(18),
-            bottomLeft:
-                isUser ? const Radius.circular(18) : const Radius.circular(4),
-            bottomRight:
-                isUser ? const Radius.circular(4) : const Radius.circular(18),
+            bottomLeft: isUser ? const Radius.circular(18) : const Radius.circular(4),
+            bottomRight: isUser ? const Radius.circular(4) : const Radius.circular(18),
           ),
           border: isUser ? null : Border.all(color: AppColors.surfaceLight),
         ),
@@ -581,17 +556,12 @@ class _AiInsightsScreenState extends ConsumerState<AiInsightsScreen> {
       ),
     )
         .animate(onPlay: (c) => c.repeat())
-        .moveY(
-            begin: 0,
-            end: -4,
-            delay: Duration(milliseconds: index * 150),
-            duration: 300.ms)
+        .moveY(begin: 0, end: -4, delay: Duration(milliseconds: index * 150), duration: 300.ms)
         .then()
         .moveY(begin: -4, end: 0, duration: 300.ms);
   }
 
-  Widget _buildChatInput(
-      List<SleepSessionModel> sessions, AiInsightService aiService) {
+  Widget _buildChatInput(List<SleepSessionModel> sessions, AiInsightService aiService) {
     return Container(
       padding: const EdgeInsets.fromLTRB(16, 8, 16, 16),
       decoration: BoxDecoration(
@@ -603,30 +573,26 @@ class _AiInsightsScreenState extends ConsumerState<AiInsightsScreen> {
           Expanded(
             child: TextField(
               controller: _chatController,
-              style: GoogleFonts.outfit(
-                  color: AppColors.textPrimary, fontSize: 14),
+              style: GoogleFonts.outfit(color: AppColors.textPrimary, fontSize: 14),
               maxLines: null,
               textInputAction: TextInputAction.send,
               onSubmitted: (_) => _sendMessage(sessions, aiService),
               decoration: InputDecoration(
                 hintText: 'Ask about your sleep...',
-                hintStyle: GoogleFonts.outfit(
-                    color: AppColors.textMuted, fontSize: 14),
+                hintStyle: GoogleFonts.outfit(color: AppColors.textMuted, fontSize: 14),
                 filled: true,
                 fillColor: AppColors.surfaceLight,
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(24),
                   borderSide: BorderSide.none,
                 ),
-                contentPadding:
-                    const EdgeInsets.symmetric(horizontal: 18, vertical: 10),
+                contentPadding: const EdgeInsets.symmetric(horizontal: 18, vertical: 10),
               ),
             ),
           ),
           const SizedBox(width: 10),
           GestureDetector(
-            onTap:
-                _isLoadingChat ? null : () => _sendMessage(sessions, aiService),
+            onTap: _isLoadingChat ? null : () => _sendMessage(sessions, aiService),
             child: Container(
               padding: const EdgeInsets.all(12),
               decoration: BoxDecoration(
@@ -646,8 +612,7 @@ class _AiInsightsScreenState extends ConsumerState<AiInsightsScreen> {
     );
   }
 
-  Future<void> _sendMessage(
-      List<SleepSessionModel> sessions, AiInsightService aiService) async {
+  Future<void> _sendMessage(List<SleepSessionModel> sessions, AiInsightService aiService) async {
     final text = _chatController.text.trim();
     if (text.isEmpty || _isLoadingChat) return;
 

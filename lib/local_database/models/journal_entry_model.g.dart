@@ -166,13 +166,11 @@ Id _journalEntryModelGetId(JournalEntryModel object) {
   return object.id;
 }
 
-List<IsarLinkBase<dynamic>> _journalEntryModelGetLinks(
-    JournalEntryModel object) {
+List<IsarLinkBase<dynamic>> _journalEntryModelGetLinks(JournalEntryModel object) {
   return [];
 }
 
-void _journalEntryModelAttach(
-    IsarCollection<dynamic> col, Id id, JournalEntryModel object) {
+void _journalEntryModelAttach(IsarCollection<dynamic> col, Id id, JournalEntryModel object) {
   object.id = id;
 }
 
@@ -184,8 +182,7 @@ extension JournalEntryModelQueryWhereSort
     });
   }
 
-  QueryBuilder<JournalEntryModel, JournalEntryModel, QAfterWhere>
-      anyCreatedAt() {
+  QueryBuilder<JournalEntryModel, JournalEntryModel, QAfterWhere> anyCreatedAt() {
     return QueryBuilder.apply(this, (query) {
       return query.addWhereClause(
         const IndexWhereClause.any(indexName: r'createdAt'),
@@ -196,8 +193,7 @@ extension JournalEntryModelQueryWhereSort
 
 extension JournalEntryModelQueryWhere
     on QueryBuilder<JournalEntryModel, JournalEntryModel, QWhereClause> {
-  QueryBuilder<JournalEntryModel, JournalEntryModel, QAfterWhereClause>
-      idEqualTo(Id id) {
+  QueryBuilder<JournalEntryModel, JournalEntryModel, QAfterWhereClause> idEqualTo(Id id) {
     return QueryBuilder.apply(this, (query) {
       return query.addWhereClause(IdWhereClause.between(
         lower: id,
@@ -206,8 +202,7 @@ extension JournalEntryModelQueryWhere
     });
   }
 
-  QueryBuilder<JournalEntryModel, JournalEntryModel, QAfterWhereClause>
-      idNotEqualTo(Id id) {
+  QueryBuilder<JournalEntryModel, JournalEntryModel, QAfterWhereClause> idNotEqualTo(Id id) {
     return QueryBuilder.apply(this, (query) {
       if (query.whereSort == Sort.asc) {
         return query
@@ -229,8 +224,8 @@ extension JournalEntryModelQueryWhere
     });
   }
 
-  QueryBuilder<JournalEntryModel, JournalEntryModel, QAfterWhereClause>
-      idGreaterThan(Id id, {bool include = false}) {
+  QueryBuilder<JournalEntryModel, JournalEntryModel, QAfterWhereClause> idGreaterThan(Id id,
+      {bool include = false}) {
     return QueryBuilder.apply(this, (query) {
       return query.addWhereClause(
         IdWhereClause.greaterThan(lower: id, includeLower: include),
@@ -238,8 +233,8 @@ extension JournalEntryModelQueryWhere
     });
   }
 
-  QueryBuilder<JournalEntryModel, JournalEntryModel, QAfterWhereClause>
-      idLessThan(Id id, {bool include = false}) {
+  QueryBuilder<JournalEntryModel, JournalEntryModel, QAfterWhereClause> idLessThan(Id id,
+      {bool include = false}) {
     return QueryBuilder.apply(this, (query) {
       return query.addWhereClause(
         IdWhereClause.lessThan(upper: id, includeUpper: include),
@@ -247,8 +242,7 @@ extension JournalEntryModelQueryWhere
     });
   }
 
-  QueryBuilder<JournalEntryModel, JournalEntryModel, QAfterWhereClause>
-      idBetween(
+  QueryBuilder<JournalEntryModel, JournalEntryModel, QAfterWhereClause> idBetween(
     Id lowerId,
     Id upperId, {
     bool includeLower = true,
@@ -264,8 +258,8 @@ extension JournalEntryModelQueryWhere
     });
   }
 
-  QueryBuilder<JournalEntryModel, JournalEntryModel, QAfterWhereClause>
-      createdAtEqualTo(DateTime createdAt) {
+  QueryBuilder<JournalEntryModel, JournalEntryModel, QAfterWhereClause> createdAtEqualTo(
+      DateTime createdAt) {
     return QueryBuilder.apply(this, (query) {
       return query.addWhereClause(IndexWhereClause.equalTo(
         indexName: r'createdAt',
@@ -274,8 +268,8 @@ extension JournalEntryModelQueryWhere
     });
   }
 
-  QueryBuilder<JournalEntryModel, JournalEntryModel, QAfterWhereClause>
-      createdAtNotEqualTo(DateTime createdAt) {
+  QueryBuilder<JournalEntryModel, JournalEntryModel, QAfterWhereClause> createdAtNotEqualTo(
+      DateTime createdAt) {
     return QueryBuilder.apply(this, (query) {
       if (query.whereSort == Sort.asc) {
         return query
@@ -309,8 +303,7 @@ extension JournalEntryModelQueryWhere
     });
   }
 
-  QueryBuilder<JournalEntryModel, JournalEntryModel, QAfterWhereClause>
-      createdAtGreaterThan(
+  QueryBuilder<JournalEntryModel, JournalEntryModel, QAfterWhereClause> createdAtGreaterThan(
     DateTime createdAt, {
     bool include = false,
   }) {
@@ -324,8 +317,7 @@ extension JournalEntryModelQueryWhere
     });
   }
 
-  QueryBuilder<JournalEntryModel, JournalEntryModel, QAfterWhereClause>
-      createdAtLessThan(
+  QueryBuilder<JournalEntryModel, JournalEntryModel, QAfterWhereClause> createdAtLessThan(
     DateTime createdAt, {
     bool include = false,
   }) {
@@ -339,8 +331,7 @@ extension JournalEntryModelQueryWhere
     });
   }
 
-  QueryBuilder<JournalEntryModel, JournalEntryModel, QAfterWhereClause>
-      createdAtBetween(
+  QueryBuilder<JournalEntryModel, JournalEntryModel, QAfterWhereClause> createdAtBetween(
     DateTime lowerCreatedAt,
     DateTime upperCreatedAt, {
     bool includeLower = true,
@@ -360,8 +351,8 @@ extension JournalEntryModelQueryWhere
 
 extension JournalEntryModelQueryFilter
     on QueryBuilder<JournalEntryModel, JournalEntryModel, QFilterCondition> {
-  QueryBuilder<JournalEntryModel, JournalEntryModel, QAfterFilterCondition>
-      createdAtEqualTo(DateTime value) {
+  QueryBuilder<JournalEntryModel, JournalEntryModel, QAfterFilterCondition> createdAtEqualTo(
+      DateTime value) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.equalTo(
         property: r'createdAt',
@@ -370,8 +361,7 @@ extension JournalEntryModelQueryFilter
     });
   }
 
-  QueryBuilder<JournalEntryModel, JournalEntryModel, QAfterFilterCondition>
-      createdAtGreaterThan(
+  QueryBuilder<JournalEntryModel, JournalEntryModel, QAfterFilterCondition> createdAtGreaterThan(
     DateTime value, {
     bool include = false,
   }) {
@@ -384,8 +374,7 @@ extension JournalEntryModelQueryFilter
     });
   }
 
-  QueryBuilder<JournalEntryModel, JournalEntryModel, QAfterFilterCondition>
-      createdAtLessThan(
+  QueryBuilder<JournalEntryModel, JournalEntryModel, QAfterFilterCondition> createdAtLessThan(
     DateTime value, {
     bool include = false,
   }) {
@@ -398,8 +387,7 @@ extension JournalEntryModelQueryFilter
     });
   }
 
-  QueryBuilder<JournalEntryModel, JournalEntryModel, QAfterFilterCondition>
-      createdAtBetween(
+  QueryBuilder<JournalEntryModel, JournalEntryModel, QAfterFilterCondition> createdAtBetween(
     DateTime lower,
     DateTime upper, {
     bool includeLower = true,
@@ -416,8 +404,7 @@ extension JournalEntryModelQueryFilter
     });
   }
 
-  QueryBuilder<JournalEntryModel, JournalEntryModel, QAfterFilterCondition>
-      dreamNotesIsNull() {
+  QueryBuilder<JournalEntryModel, JournalEntryModel, QAfterFilterCondition> dreamNotesIsNull() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(const FilterCondition.isNull(
         property: r'dreamNotes',
@@ -425,8 +412,7 @@ extension JournalEntryModelQueryFilter
     });
   }
 
-  QueryBuilder<JournalEntryModel, JournalEntryModel, QAfterFilterCondition>
-      dreamNotesIsNotNull() {
+  QueryBuilder<JournalEntryModel, JournalEntryModel, QAfterFilterCondition> dreamNotesIsNotNull() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(const FilterCondition.isNotNull(
         property: r'dreamNotes',
@@ -434,8 +420,7 @@ extension JournalEntryModelQueryFilter
     });
   }
 
-  QueryBuilder<JournalEntryModel, JournalEntryModel, QAfterFilterCondition>
-      dreamNotesEqualTo(
+  QueryBuilder<JournalEntryModel, JournalEntryModel, QAfterFilterCondition> dreamNotesEqualTo(
     String? value, {
     bool caseSensitive = true,
   }) {
@@ -448,8 +433,7 @@ extension JournalEntryModelQueryFilter
     });
   }
 
-  QueryBuilder<JournalEntryModel, JournalEntryModel, QAfterFilterCondition>
-      dreamNotesGreaterThan(
+  QueryBuilder<JournalEntryModel, JournalEntryModel, QAfterFilterCondition> dreamNotesGreaterThan(
     String? value, {
     bool include = false,
     bool caseSensitive = true,
@@ -464,8 +448,7 @@ extension JournalEntryModelQueryFilter
     });
   }
 
-  QueryBuilder<JournalEntryModel, JournalEntryModel, QAfterFilterCondition>
-      dreamNotesLessThan(
+  QueryBuilder<JournalEntryModel, JournalEntryModel, QAfterFilterCondition> dreamNotesLessThan(
     String? value, {
     bool include = false,
     bool caseSensitive = true,
@@ -480,8 +463,7 @@ extension JournalEntryModelQueryFilter
     });
   }
 
-  QueryBuilder<JournalEntryModel, JournalEntryModel, QAfterFilterCondition>
-      dreamNotesBetween(
+  QueryBuilder<JournalEntryModel, JournalEntryModel, QAfterFilterCondition> dreamNotesBetween(
     String? lower,
     String? upper, {
     bool includeLower = true,
@@ -500,8 +482,7 @@ extension JournalEntryModelQueryFilter
     });
   }
 
-  QueryBuilder<JournalEntryModel, JournalEntryModel, QAfterFilterCondition>
-      dreamNotesStartsWith(
+  QueryBuilder<JournalEntryModel, JournalEntryModel, QAfterFilterCondition> dreamNotesStartsWith(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -514,8 +495,7 @@ extension JournalEntryModelQueryFilter
     });
   }
 
-  QueryBuilder<JournalEntryModel, JournalEntryModel, QAfterFilterCondition>
-      dreamNotesEndsWith(
+  QueryBuilder<JournalEntryModel, JournalEntryModel, QAfterFilterCondition> dreamNotesEndsWith(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -528,8 +508,9 @@ extension JournalEntryModelQueryFilter
     });
   }
 
-  QueryBuilder<JournalEntryModel, JournalEntryModel, QAfterFilterCondition>
-      dreamNotesContains(String value, {bool caseSensitive = true}) {
+  QueryBuilder<JournalEntryModel, JournalEntryModel, QAfterFilterCondition> dreamNotesContains(
+      String value,
+      {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.contains(
         property: r'dreamNotes',
@@ -539,8 +520,9 @@ extension JournalEntryModelQueryFilter
     });
   }
 
-  QueryBuilder<JournalEntryModel, JournalEntryModel, QAfterFilterCondition>
-      dreamNotesMatches(String pattern, {bool caseSensitive = true}) {
+  QueryBuilder<JournalEntryModel, JournalEntryModel, QAfterFilterCondition> dreamNotesMatches(
+      String pattern,
+      {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.matches(
         property: r'dreamNotes',
@@ -550,8 +532,7 @@ extension JournalEntryModelQueryFilter
     });
   }
 
-  QueryBuilder<JournalEntryModel, JournalEntryModel, QAfterFilterCondition>
-      dreamNotesIsEmpty() {
+  QueryBuilder<JournalEntryModel, JournalEntryModel, QAfterFilterCondition> dreamNotesIsEmpty() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.equalTo(
         property: r'dreamNotes',
@@ -560,8 +541,7 @@ extension JournalEntryModelQueryFilter
     });
   }
 
-  QueryBuilder<JournalEntryModel, JournalEntryModel, QAfterFilterCondition>
-      dreamNotesIsNotEmpty() {
+  QueryBuilder<JournalEntryModel, JournalEntryModel, QAfterFilterCondition> dreamNotesIsNotEmpty() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.greaterThan(
         property: r'dreamNotes',
@@ -570,8 +550,8 @@ extension JournalEntryModelQueryFilter
     });
   }
 
-  QueryBuilder<JournalEntryModel, JournalEntryModel, QAfterFilterCondition>
-      energyLevelEqualTo(int value) {
+  QueryBuilder<JournalEntryModel, JournalEntryModel, QAfterFilterCondition> energyLevelEqualTo(
+      int value) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.equalTo(
         property: r'energyLevel',
@@ -580,8 +560,7 @@ extension JournalEntryModelQueryFilter
     });
   }
 
-  QueryBuilder<JournalEntryModel, JournalEntryModel, QAfterFilterCondition>
-      energyLevelGreaterThan(
+  QueryBuilder<JournalEntryModel, JournalEntryModel, QAfterFilterCondition> energyLevelGreaterThan(
     int value, {
     bool include = false,
   }) {
@@ -594,8 +573,7 @@ extension JournalEntryModelQueryFilter
     });
   }
 
-  QueryBuilder<JournalEntryModel, JournalEntryModel, QAfterFilterCondition>
-      energyLevelLessThan(
+  QueryBuilder<JournalEntryModel, JournalEntryModel, QAfterFilterCondition> energyLevelLessThan(
     int value, {
     bool include = false,
   }) {
@@ -608,8 +586,7 @@ extension JournalEntryModelQueryFilter
     });
   }
 
-  QueryBuilder<JournalEntryModel, JournalEntryModel, QAfterFilterCondition>
-      energyLevelBetween(
+  QueryBuilder<JournalEntryModel, JournalEntryModel, QAfterFilterCondition> energyLevelBetween(
     int lower,
     int upper, {
     bool includeLower = true,
@@ -626,8 +603,7 @@ extension JournalEntryModelQueryFilter
     });
   }
 
-  QueryBuilder<JournalEntryModel, JournalEntryModel, QAfterFilterCondition>
-      generalNotesIsNull() {
+  QueryBuilder<JournalEntryModel, JournalEntryModel, QAfterFilterCondition> generalNotesIsNull() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(const FilterCondition.isNull(
         property: r'generalNotes',
@@ -644,8 +620,7 @@ extension JournalEntryModelQueryFilter
     });
   }
 
-  QueryBuilder<JournalEntryModel, JournalEntryModel, QAfterFilterCondition>
-      generalNotesEqualTo(
+  QueryBuilder<JournalEntryModel, JournalEntryModel, QAfterFilterCondition> generalNotesEqualTo(
     String? value, {
     bool caseSensitive = true,
   }) {
@@ -658,8 +633,7 @@ extension JournalEntryModelQueryFilter
     });
   }
 
-  QueryBuilder<JournalEntryModel, JournalEntryModel, QAfterFilterCondition>
-      generalNotesGreaterThan(
+  QueryBuilder<JournalEntryModel, JournalEntryModel, QAfterFilterCondition> generalNotesGreaterThan(
     String? value, {
     bool include = false,
     bool caseSensitive = true,
@@ -674,8 +648,7 @@ extension JournalEntryModelQueryFilter
     });
   }
 
-  QueryBuilder<JournalEntryModel, JournalEntryModel, QAfterFilterCondition>
-      generalNotesLessThan(
+  QueryBuilder<JournalEntryModel, JournalEntryModel, QAfterFilterCondition> generalNotesLessThan(
     String? value, {
     bool include = false,
     bool caseSensitive = true,
@@ -690,8 +663,7 @@ extension JournalEntryModelQueryFilter
     });
   }
 
-  QueryBuilder<JournalEntryModel, JournalEntryModel, QAfterFilterCondition>
-      generalNotesBetween(
+  QueryBuilder<JournalEntryModel, JournalEntryModel, QAfterFilterCondition> generalNotesBetween(
     String? lower,
     String? upper, {
     bool includeLower = true,
@@ -710,8 +682,7 @@ extension JournalEntryModelQueryFilter
     });
   }
 
-  QueryBuilder<JournalEntryModel, JournalEntryModel, QAfterFilterCondition>
-      generalNotesStartsWith(
+  QueryBuilder<JournalEntryModel, JournalEntryModel, QAfterFilterCondition> generalNotesStartsWith(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -724,8 +695,7 @@ extension JournalEntryModelQueryFilter
     });
   }
 
-  QueryBuilder<JournalEntryModel, JournalEntryModel, QAfterFilterCondition>
-      generalNotesEndsWith(
+  QueryBuilder<JournalEntryModel, JournalEntryModel, QAfterFilterCondition> generalNotesEndsWith(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -738,8 +708,9 @@ extension JournalEntryModelQueryFilter
     });
   }
 
-  QueryBuilder<JournalEntryModel, JournalEntryModel, QAfterFilterCondition>
-      generalNotesContains(String value, {bool caseSensitive = true}) {
+  QueryBuilder<JournalEntryModel, JournalEntryModel, QAfterFilterCondition> generalNotesContains(
+      String value,
+      {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.contains(
         property: r'generalNotes',
@@ -749,8 +720,9 @@ extension JournalEntryModelQueryFilter
     });
   }
 
-  QueryBuilder<JournalEntryModel, JournalEntryModel, QAfterFilterCondition>
-      generalNotesMatches(String pattern, {bool caseSensitive = true}) {
+  QueryBuilder<JournalEntryModel, JournalEntryModel, QAfterFilterCondition> generalNotesMatches(
+      String pattern,
+      {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.matches(
         property: r'generalNotes',
@@ -760,8 +732,7 @@ extension JournalEntryModelQueryFilter
     });
   }
 
-  QueryBuilder<JournalEntryModel, JournalEntryModel, QAfterFilterCondition>
-      generalNotesIsEmpty() {
+  QueryBuilder<JournalEntryModel, JournalEntryModel, QAfterFilterCondition> generalNotesIsEmpty() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.equalTo(
         property: r'generalNotes',
@@ -780,8 +751,7 @@ extension JournalEntryModelQueryFilter
     });
   }
 
-  QueryBuilder<JournalEntryModel, JournalEntryModel, QAfterFilterCondition>
-      idEqualTo(Id value) {
+  QueryBuilder<JournalEntryModel, JournalEntryModel, QAfterFilterCondition> idEqualTo(Id value) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.equalTo(
         property: r'id',
@@ -790,8 +760,7 @@ extension JournalEntryModelQueryFilter
     });
   }
 
-  QueryBuilder<JournalEntryModel, JournalEntryModel, QAfterFilterCondition>
-      idGreaterThan(
+  QueryBuilder<JournalEntryModel, JournalEntryModel, QAfterFilterCondition> idGreaterThan(
     Id value, {
     bool include = false,
   }) {
@@ -804,8 +773,7 @@ extension JournalEntryModelQueryFilter
     });
   }
 
-  QueryBuilder<JournalEntryModel, JournalEntryModel, QAfterFilterCondition>
-      idLessThan(
+  QueryBuilder<JournalEntryModel, JournalEntryModel, QAfterFilterCondition> idLessThan(
     Id value, {
     bool include = false,
   }) {
@@ -818,8 +786,7 @@ extension JournalEntryModelQueryFilter
     });
   }
 
-  QueryBuilder<JournalEntryModel, JournalEntryModel, QAfterFilterCondition>
-      idBetween(
+  QueryBuilder<JournalEntryModel, JournalEntryModel, QAfterFilterCondition> idBetween(
     Id lower,
     Id upper, {
     bool includeLower = true,
@@ -854,8 +821,8 @@ extension JournalEntryModelQueryFilter
     });
   }
 
-  QueryBuilder<JournalEntryModel, JournalEntryModel, QAfterFilterCondition>
-      linkedSessionIdEqualTo(int? value) {
+  QueryBuilder<JournalEntryModel, JournalEntryModel, QAfterFilterCondition> linkedSessionIdEqualTo(
+      int? value) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.equalTo(
         property: r'linkedSessionId',
@@ -878,8 +845,7 @@ extension JournalEntryModelQueryFilter
     });
   }
 
-  QueryBuilder<JournalEntryModel, JournalEntryModel, QAfterFilterCondition>
-      linkedSessionIdLessThan(
+  QueryBuilder<JournalEntryModel, JournalEntryModel, QAfterFilterCondition> linkedSessionIdLessThan(
     int? value, {
     bool include = false,
   }) {
@@ -892,8 +858,7 @@ extension JournalEntryModelQueryFilter
     });
   }
 
-  QueryBuilder<JournalEntryModel, JournalEntryModel, QAfterFilterCondition>
-      linkedSessionIdBetween(
+  QueryBuilder<JournalEntryModel, JournalEntryModel, QAfterFilterCondition> linkedSessionIdBetween(
     int? lower,
     int? upper, {
     bool includeLower = true,
@@ -910,8 +875,7 @@ extension JournalEntryModelQueryFilter
     });
   }
 
-  QueryBuilder<JournalEntryModel, JournalEntryModel, QAfterFilterCondition>
-      moodEqualTo(
+  QueryBuilder<JournalEntryModel, JournalEntryModel, QAfterFilterCondition> moodEqualTo(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -924,8 +888,7 @@ extension JournalEntryModelQueryFilter
     });
   }
 
-  QueryBuilder<JournalEntryModel, JournalEntryModel, QAfterFilterCondition>
-      moodGreaterThan(
+  QueryBuilder<JournalEntryModel, JournalEntryModel, QAfterFilterCondition> moodGreaterThan(
     String value, {
     bool include = false,
     bool caseSensitive = true,
@@ -940,8 +903,7 @@ extension JournalEntryModelQueryFilter
     });
   }
 
-  QueryBuilder<JournalEntryModel, JournalEntryModel, QAfterFilterCondition>
-      moodLessThan(
+  QueryBuilder<JournalEntryModel, JournalEntryModel, QAfterFilterCondition> moodLessThan(
     String value, {
     bool include = false,
     bool caseSensitive = true,
@@ -956,8 +918,7 @@ extension JournalEntryModelQueryFilter
     });
   }
 
-  QueryBuilder<JournalEntryModel, JournalEntryModel, QAfterFilterCondition>
-      moodBetween(
+  QueryBuilder<JournalEntryModel, JournalEntryModel, QAfterFilterCondition> moodBetween(
     String lower,
     String upper, {
     bool includeLower = true,
@@ -976,8 +937,7 @@ extension JournalEntryModelQueryFilter
     });
   }
 
-  QueryBuilder<JournalEntryModel, JournalEntryModel, QAfterFilterCondition>
-      moodStartsWith(
+  QueryBuilder<JournalEntryModel, JournalEntryModel, QAfterFilterCondition> moodStartsWith(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -990,8 +950,7 @@ extension JournalEntryModelQueryFilter
     });
   }
 
-  QueryBuilder<JournalEntryModel, JournalEntryModel, QAfterFilterCondition>
-      moodEndsWith(
+  QueryBuilder<JournalEntryModel, JournalEntryModel, QAfterFilterCondition> moodEndsWith(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -1004,8 +963,9 @@ extension JournalEntryModelQueryFilter
     });
   }
 
-  QueryBuilder<JournalEntryModel, JournalEntryModel, QAfterFilterCondition>
-      moodContains(String value, {bool caseSensitive = true}) {
+  QueryBuilder<JournalEntryModel, JournalEntryModel, QAfterFilterCondition> moodContains(
+      String value,
+      {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.contains(
         property: r'mood',
@@ -1015,8 +975,9 @@ extension JournalEntryModelQueryFilter
     });
   }
 
-  QueryBuilder<JournalEntryModel, JournalEntryModel, QAfterFilterCondition>
-      moodMatches(String pattern, {bool caseSensitive = true}) {
+  QueryBuilder<JournalEntryModel, JournalEntryModel, QAfterFilterCondition> moodMatches(
+      String pattern,
+      {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.matches(
         property: r'mood',
@@ -1026,8 +987,7 @@ extension JournalEntryModelQueryFilter
     });
   }
 
-  QueryBuilder<JournalEntryModel, JournalEntryModel, QAfterFilterCondition>
-      moodIsEmpty() {
+  QueryBuilder<JournalEntryModel, JournalEntryModel, QAfterFilterCondition> moodIsEmpty() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.equalTo(
         property: r'mood',
@@ -1036,8 +996,7 @@ extension JournalEntryModelQueryFilter
     });
   }
 
-  QueryBuilder<JournalEntryModel, JournalEntryModel, QAfterFilterCondition>
-      moodIsNotEmpty() {
+  QueryBuilder<JournalEntryModel, JournalEntryModel, QAfterFilterCondition> moodIsNotEmpty() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.greaterThan(
         property: r'mood',
@@ -1046,8 +1005,8 @@ extension JournalEntryModelQueryFilter
     });
   }
 
-  QueryBuilder<JournalEntryModel, JournalEntryModel, QAfterFilterCondition>
-      stressLevelEqualTo(int value) {
+  QueryBuilder<JournalEntryModel, JournalEntryModel, QAfterFilterCondition> stressLevelEqualTo(
+      int value) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.equalTo(
         property: r'stressLevel',
@@ -1056,8 +1015,7 @@ extension JournalEntryModelQueryFilter
     });
   }
 
-  QueryBuilder<JournalEntryModel, JournalEntryModel, QAfterFilterCondition>
-      stressLevelGreaterThan(
+  QueryBuilder<JournalEntryModel, JournalEntryModel, QAfterFilterCondition> stressLevelGreaterThan(
     int value, {
     bool include = false,
   }) {
@@ -1070,8 +1028,7 @@ extension JournalEntryModelQueryFilter
     });
   }
 
-  QueryBuilder<JournalEntryModel, JournalEntryModel, QAfterFilterCondition>
-      stressLevelLessThan(
+  QueryBuilder<JournalEntryModel, JournalEntryModel, QAfterFilterCondition> stressLevelLessThan(
     int value, {
     bool include = false,
   }) {
@@ -1084,8 +1041,7 @@ extension JournalEntryModelQueryFilter
     });
   }
 
-  QueryBuilder<JournalEntryModel, JournalEntryModel, QAfterFilterCondition>
-      stressLevelBetween(
+  QueryBuilder<JournalEntryModel, JournalEntryModel, QAfterFilterCondition> stressLevelBetween(
     int lower,
     int upper, {
     bool includeLower = true,
@@ -1111,99 +1067,85 @@ extension JournalEntryModelQueryLinks
 
 extension JournalEntryModelQuerySortBy
     on QueryBuilder<JournalEntryModel, JournalEntryModel, QSortBy> {
-  QueryBuilder<JournalEntryModel, JournalEntryModel, QAfterSortBy>
-      sortByCreatedAt() {
+  QueryBuilder<JournalEntryModel, JournalEntryModel, QAfterSortBy> sortByCreatedAt() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'createdAt', Sort.asc);
     });
   }
 
-  QueryBuilder<JournalEntryModel, JournalEntryModel, QAfterSortBy>
-      sortByCreatedAtDesc() {
+  QueryBuilder<JournalEntryModel, JournalEntryModel, QAfterSortBy> sortByCreatedAtDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'createdAt', Sort.desc);
     });
   }
 
-  QueryBuilder<JournalEntryModel, JournalEntryModel, QAfterSortBy>
-      sortByDreamNotes() {
+  QueryBuilder<JournalEntryModel, JournalEntryModel, QAfterSortBy> sortByDreamNotes() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'dreamNotes', Sort.asc);
     });
   }
 
-  QueryBuilder<JournalEntryModel, JournalEntryModel, QAfterSortBy>
-      sortByDreamNotesDesc() {
+  QueryBuilder<JournalEntryModel, JournalEntryModel, QAfterSortBy> sortByDreamNotesDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'dreamNotes', Sort.desc);
     });
   }
 
-  QueryBuilder<JournalEntryModel, JournalEntryModel, QAfterSortBy>
-      sortByEnergyLevel() {
+  QueryBuilder<JournalEntryModel, JournalEntryModel, QAfterSortBy> sortByEnergyLevel() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'energyLevel', Sort.asc);
     });
   }
 
-  QueryBuilder<JournalEntryModel, JournalEntryModel, QAfterSortBy>
-      sortByEnergyLevelDesc() {
+  QueryBuilder<JournalEntryModel, JournalEntryModel, QAfterSortBy> sortByEnergyLevelDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'energyLevel', Sort.desc);
     });
   }
 
-  QueryBuilder<JournalEntryModel, JournalEntryModel, QAfterSortBy>
-      sortByGeneralNotes() {
+  QueryBuilder<JournalEntryModel, JournalEntryModel, QAfterSortBy> sortByGeneralNotes() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'generalNotes', Sort.asc);
     });
   }
 
-  QueryBuilder<JournalEntryModel, JournalEntryModel, QAfterSortBy>
-      sortByGeneralNotesDesc() {
+  QueryBuilder<JournalEntryModel, JournalEntryModel, QAfterSortBy> sortByGeneralNotesDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'generalNotes', Sort.desc);
     });
   }
 
-  QueryBuilder<JournalEntryModel, JournalEntryModel, QAfterSortBy>
-      sortByLinkedSessionId() {
+  QueryBuilder<JournalEntryModel, JournalEntryModel, QAfterSortBy> sortByLinkedSessionId() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'linkedSessionId', Sort.asc);
     });
   }
 
-  QueryBuilder<JournalEntryModel, JournalEntryModel, QAfterSortBy>
-      sortByLinkedSessionIdDesc() {
+  QueryBuilder<JournalEntryModel, JournalEntryModel, QAfterSortBy> sortByLinkedSessionIdDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'linkedSessionId', Sort.desc);
     });
   }
 
-  QueryBuilder<JournalEntryModel, JournalEntryModel, QAfterSortBy>
-      sortByMood() {
+  QueryBuilder<JournalEntryModel, JournalEntryModel, QAfterSortBy> sortByMood() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'mood', Sort.asc);
     });
   }
 
-  QueryBuilder<JournalEntryModel, JournalEntryModel, QAfterSortBy>
-      sortByMoodDesc() {
+  QueryBuilder<JournalEntryModel, JournalEntryModel, QAfterSortBy> sortByMoodDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'mood', Sort.desc);
     });
   }
 
-  QueryBuilder<JournalEntryModel, JournalEntryModel, QAfterSortBy>
-      sortByStressLevel() {
+  QueryBuilder<JournalEntryModel, JournalEntryModel, QAfterSortBy> sortByStressLevel() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'stressLevel', Sort.asc);
     });
   }
 
-  QueryBuilder<JournalEntryModel, JournalEntryModel, QAfterSortBy>
-      sortByStressLevelDesc() {
+  QueryBuilder<JournalEntryModel, JournalEntryModel, QAfterSortBy> sortByStressLevelDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'stressLevel', Sort.desc);
     });
@@ -1212,57 +1154,49 @@ extension JournalEntryModelQuerySortBy
 
 extension JournalEntryModelQuerySortThenBy
     on QueryBuilder<JournalEntryModel, JournalEntryModel, QSortThenBy> {
-  QueryBuilder<JournalEntryModel, JournalEntryModel, QAfterSortBy>
-      thenByCreatedAt() {
+  QueryBuilder<JournalEntryModel, JournalEntryModel, QAfterSortBy> thenByCreatedAt() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'createdAt', Sort.asc);
     });
   }
 
-  QueryBuilder<JournalEntryModel, JournalEntryModel, QAfterSortBy>
-      thenByCreatedAtDesc() {
+  QueryBuilder<JournalEntryModel, JournalEntryModel, QAfterSortBy> thenByCreatedAtDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'createdAt', Sort.desc);
     });
   }
 
-  QueryBuilder<JournalEntryModel, JournalEntryModel, QAfterSortBy>
-      thenByDreamNotes() {
+  QueryBuilder<JournalEntryModel, JournalEntryModel, QAfterSortBy> thenByDreamNotes() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'dreamNotes', Sort.asc);
     });
   }
 
-  QueryBuilder<JournalEntryModel, JournalEntryModel, QAfterSortBy>
-      thenByDreamNotesDesc() {
+  QueryBuilder<JournalEntryModel, JournalEntryModel, QAfterSortBy> thenByDreamNotesDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'dreamNotes', Sort.desc);
     });
   }
 
-  QueryBuilder<JournalEntryModel, JournalEntryModel, QAfterSortBy>
-      thenByEnergyLevel() {
+  QueryBuilder<JournalEntryModel, JournalEntryModel, QAfterSortBy> thenByEnergyLevel() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'energyLevel', Sort.asc);
     });
   }
 
-  QueryBuilder<JournalEntryModel, JournalEntryModel, QAfterSortBy>
-      thenByEnergyLevelDesc() {
+  QueryBuilder<JournalEntryModel, JournalEntryModel, QAfterSortBy> thenByEnergyLevelDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'energyLevel', Sort.desc);
     });
   }
 
-  QueryBuilder<JournalEntryModel, JournalEntryModel, QAfterSortBy>
-      thenByGeneralNotes() {
+  QueryBuilder<JournalEntryModel, JournalEntryModel, QAfterSortBy> thenByGeneralNotes() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'generalNotes', Sort.asc);
     });
   }
 
-  QueryBuilder<JournalEntryModel, JournalEntryModel, QAfterSortBy>
-      thenByGeneralNotesDesc() {
+  QueryBuilder<JournalEntryModel, JournalEntryModel, QAfterSortBy> thenByGeneralNotesDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'generalNotes', Sort.desc);
     });
@@ -1274,50 +1208,43 @@ extension JournalEntryModelQuerySortThenBy
     });
   }
 
-  QueryBuilder<JournalEntryModel, JournalEntryModel, QAfterSortBy>
-      thenByIdDesc() {
+  QueryBuilder<JournalEntryModel, JournalEntryModel, QAfterSortBy> thenByIdDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'id', Sort.desc);
     });
   }
 
-  QueryBuilder<JournalEntryModel, JournalEntryModel, QAfterSortBy>
-      thenByLinkedSessionId() {
+  QueryBuilder<JournalEntryModel, JournalEntryModel, QAfterSortBy> thenByLinkedSessionId() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'linkedSessionId', Sort.asc);
     });
   }
 
-  QueryBuilder<JournalEntryModel, JournalEntryModel, QAfterSortBy>
-      thenByLinkedSessionIdDesc() {
+  QueryBuilder<JournalEntryModel, JournalEntryModel, QAfterSortBy> thenByLinkedSessionIdDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'linkedSessionId', Sort.desc);
     });
   }
 
-  QueryBuilder<JournalEntryModel, JournalEntryModel, QAfterSortBy>
-      thenByMood() {
+  QueryBuilder<JournalEntryModel, JournalEntryModel, QAfterSortBy> thenByMood() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'mood', Sort.asc);
     });
   }
 
-  QueryBuilder<JournalEntryModel, JournalEntryModel, QAfterSortBy>
-      thenByMoodDesc() {
+  QueryBuilder<JournalEntryModel, JournalEntryModel, QAfterSortBy> thenByMoodDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'mood', Sort.desc);
     });
   }
 
-  QueryBuilder<JournalEntryModel, JournalEntryModel, QAfterSortBy>
-      thenByStressLevel() {
+  QueryBuilder<JournalEntryModel, JournalEntryModel, QAfterSortBy> thenByStressLevel() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'stressLevel', Sort.asc);
     });
   }
 
-  QueryBuilder<JournalEntryModel, JournalEntryModel, QAfterSortBy>
-      thenByStressLevelDesc() {
+  QueryBuilder<JournalEntryModel, JournalEntryModel, QAfterSortBy> thenByStressLevelDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'stressLevel', Sort.desc);
     });
@@ -1326,36 +1253,33 @@ extension JournalEntryModelQuerySortThenBy
 
 extension JournalEntryModelQueryWhereDistinct
     on QueryBuilder<JournalEntryModel, JournalEntryModel, QDistinct> {
-  QueryBuilder<JournalEntryModel, JournalEntryModel, QDistinct>
-      distinctByCreatedAt() {
+  QueryBuilder<JournalEntryModel, JournalEntryModel, QDistinct> distinctByCreatedAt() {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(r'createdAt');
     });
   }
 
-  QueryBuilder<JournalEntryModel, JournalEntryModel, QDistinct>
-      distinctByDreamNotes({bool caseSensitive = true}) {
+  QueryBuilder<JournalEntryModel, JournalEntryModel, QDistinct> distinctByDreamNotes(
+      {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(r'dreamNotes', caseSensitive: caseSensitive);
     });
   }
 
-  QueryBuilder<JournalEntryModel, JournalEntryModel, QDistinct>
-      distinctByEnergyLevel() {
+  QueryBuilder<JournalEntryModel, JournalEntryModel, QDistinct> distinctByEnergyLevel() {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(r'energyLevel');
     });
   }
 
-  QueryBuilder<JournalEntryModel, JournalEntryModel, QDistinct>
-      distinctByGeneralNotes({bool caseSensitive = true}) {
+  QueryBuilder<JournalEntryModel, JournalEntryModel, QDistinct> distinctByGeneralNotes(
+      {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(r'generalNotes', caseSensitive: caseSensitive);
     });
   }
 
-  QueryBuilder<JournalEntryModel, JournalEntryModel, QDistinct>
-      distinctByLinkedSessionId() {
+  QueryBuilder<JournalEntryModel, JournalEntryModel, QDistinct> distinctByLinkedSessionId() {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(r'linkedSessionId');
     });
@@ -1368,8 +1292,7 @@ extension JournalEntryModelQueryWhereDistinct
     });
   }
 
-  QueryBuilder<JournalEntryModel, JournalEntryModel, QDistinct>
-      distinctByStressLevel() {
+  QueryBuilder<JournalEntryModel, JournalEntryModel, QDistinct> distinctByStressLevel() {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(r'stressLevel');
     });
@@ -1384,15 +1307,13 @@ extension JournalEntryModelQueryProperty
     });
   }
 
-  QueryBuilder<JournalEntryModel, DateTime, QQueryOperations>
-      createdAtProperty() {
+  QueryBuilder<JournalEntryModel, DateTime, QQueryOperations> createdAtProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'createdAt');
     });
   }
 
-  QueryBuilder<JournalEntryModel, String?, QQueryOperations>
-      dreamNotesProperty() {
+  QueryBuilder<JournalEntryModel, String?, QQueryOperations> dreamNotesProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'dreamNotes');
     });
@@ -1404,15 +1325,13 @@ extension JournalEntryModelQueryProperty
     });
   }
 
-  QueryBuilder<JournalEntryModel, String?, QQueryOperations>
-      generalNotesProperty() {
+  QueryBuilder<JournalEntryModel, String?, QQueryOperations> generalNotesProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'generalNotes');
     });
   }
 
-  QueryBuilder<JournalEntryModel, int?, QQueryOperations>
-      linkedSessionIdProperty() {
+  QueryBuilder<JournalEntryModel, int?, QQueryOperations> linkedSessionIdProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'linkedSessionId');
     });

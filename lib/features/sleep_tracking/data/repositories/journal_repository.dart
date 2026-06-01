@@ -27,9 +27,6 @@ class JournalRepository {
 
   Stream<List<JournalEntryModel>> watchEntries() async* {
     final db = await _db;
-    yield* db.journalEntryModels
-        .where()
-        .sortByCreatedAtDesc()
-        .watch(fireImmediately: true);
+    yield* db.journalEntryModels.where().sortByCreatedAtDesc().watch(fireImmediately: true);
   }
 }

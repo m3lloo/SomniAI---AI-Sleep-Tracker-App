@@ -6,14 +6,10 @@ import 'app_fonts.dart';
 class AppColors {
   static bool isDark = true;
 
-  static Color get background =>
-      isDark ? const Color(0xFF0D0D1A) : const Color(0xFFF4F6FB);
-  static Color get surfaceDark =>
-      isDark ? const Color(0xFF1A1A2E) : const Color(0xFFFFFFFF);
-  static Color get surfaceMid =>
-      isDark ? const Color(0xFF23233B) : const Color(0xFFF0F2F8);
-  static Color get surfaceLight =>
-      isDark ? const Color(0xFF2B2B47) : const Color(0xFFE6EAF3);
+  static Color get background => isDark ? const Color(0xFF0D0D1A) : const Color(0xFFF4F6FB);
+  static Color get surfaceDark => isDark ? const Color(0xFF1A1A2E) : const Color(0xFFFFFFFF);
+  static Color get surfaceMid => isDark ? const Color(0xFF23233B) : const Color(0xFFF0F2F8);
+  static Color get surfaceLight => isDark ? const Color(0xFF2B2B47) : const Color(0xFFE6EAF3);
   static Color get cardBg => surfaceDark;
 
   static Color get primary => const Color(0xFF7F77DD);
@@ -33,12 +29,10 @@ class AppColors {
   static Color get error => const Color(0xFFE35D5D);
   static Color get info => const Color(0xFF7F77DD);
 
-  static Color get textPrimary =>
-      isDark ? Colors.white : const Color(0xFF0F172A);
+  static Color get textPrimary => isDark ? Colors.white : const Color(0xFF0F172A);
   static Color get textSecondary =>
       isDark ? Colors.white.withOpacity(0.6) : const Color(0xFF475569);
-  static Color get textMuted =>
-      isDark ? Colors.white.withOpacity(0.6) : const Color(0xFF64748B);
+  static Color get textMuted => isDark ? Colors.white.withOpacity(0.6) : const Color(0xFF64748B);
 
   static LinearGradient get primaryGradient => LinearGradient(
         colors: [primary, primary],
@@ -128,8 +122,7 @@ class AppTheme {
         elevation: 0,
         scrolledUnderElevation: 0,
         centerTitle: false,
-        systemOverlayStyle:
-            isDark ? SystemUiOverlayStyle.light : SystemUiOverlayStyle.dark,
+        systemOverlayStyle: isDark ? SystemUiOverlayStyle.light : SystemUiOverlayStyle.dark,
         titleTextStyle: AppFonts.headlineSmall(
           color: AppColors.textPrimary,
           fontWeight: FontWeight.w600,
@@ -196,7 +189,7 @@ class AppTheme {
         filled: true,
         fillColor: AppColors.surfaceLight,
         border: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(20),
+          borderRadius: BorderRadius.circular(20),
           borderSide: BorderSide.none,
         ),
         enabledBorder: OutlineInputBorder(
@@ -209,8 +202,7 @@ class AppTheme {
         ),
         hintStyle: AppFonts.bodyMedium(color: AppColors.textMuted),
         labelStyle: AppFonts.bodyMedium(color: AppColors.textSecondary),
-        contentPadding:
-            const EdgeInsets.symmetric(horizontal: 18, vertical: 16),
+        contentPadding: const EdgeInsets.symmetric(horizontal: 18, vertical: 16),
       ),
       floatingActionButtonTheme: FloatingActionButtonThemeData(
         backgroundColor: AppColors.primary,
