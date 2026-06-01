@@ -47,6 +47,18 @@ android {
     packagingOptions {
         exclude("META-INF/proguard/androidx-*.pro")
     }
+
+    lint {
+        disable += listOf(
+            "MissingDimensionBaselineCheck",
+            "MissingDimensionBaselineCheckOnly",
+            "DimensionMissingFromColorDrawableItem"
+        )
+    }
+
+    buildFeatures {
+        resValues = true
+    }
 }
 
 flutter {
@@ -55,4 +67,7 @@ flutter {
 
 dependencies {
     coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:2.1.5")
+    implementation("com.google.android.material:material:1.12.0")
+    implementation("androidx.appcompat:appcompat:1.7.0")
+    implementation("androidx.core:core:1.13.1")
 }
