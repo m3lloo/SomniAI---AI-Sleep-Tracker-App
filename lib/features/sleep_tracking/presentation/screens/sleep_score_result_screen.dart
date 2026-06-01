@@ -53,7 +53,8 @@ class SleepScoreResultScreen extends ConsumerWidget {
                       begin: Alignment.topLeft,
                       end: Alignment.bottomRight,
                     ),
-                    borderRadius: BorderRadius.circular(AppBorderRadius.extraLarge),
+                    borderRadius:
+                        BorderRadius.circular(AppBorderRadius.extraLarge),
                     border: Border.all(
                       color: scoreColor.withOpacity(0.3),
                       width: 2,
@@ -77,7 +78,8 @@ class SleepScoreResultScreen extends ConsumerWidget {
                                 value: session.sleepScore / 100,
                                 strokeWidth: 8,
                                 backgroundColor: AppColors.surfaceLight,
-                                valueColor: AlwaysStoppedAnimation<Color>(scoreColor),
+                                valueColor:
+                                    AlwaysStoppedAnimation<Color>(scoreColor),
                               ),
                             ),
                             Column(
@@ -85,14 +87,20 @@ class SleepScoreResultScreen extends ConsumerWidget {
                               children: [
                                 Text(
                                   '${session.sleepScore}',
-                                  style: Theme.of(context).textTheme.displaySmall?.copyWith(
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .displaySmall
+                                      ?.copyWith(
                                         color: scoreColor,
                                         fontWeight: FontWeight.w700,
                                       ),
                                 ),
                                 Text(
                                   '/100',
-                                  style: Theme.of(context).textTheme.labelSmall?.copyWith(
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .labelSmall
+                                      ?.copyWith(
                                         color: AppColors.textSecondary,
                                       ),
                                 ),
@@ -111,7 +119,10 @@ class SleepScoreResultScreen extends ConsumerWidget {
                       ),
                     ],
                   ),
-                ).animate().fadeIn(duration: 500.ms).scale(begin: const Offset(0.95, 0.95)),
+                )
+                    .animate()
+                    .fadeIn(duration: 500.ms)
+                    .scale(begin: const Offset(0.95, 0.95)),
                 const SizedBox(height: 32),
 
                 // Stats Grid
@@ -129,7 +140,8 @@ class SleepScoreResultScreen extends ConsumerWidget {
                     ),
                     _StatCard(
                       label: 'Quality',
-                      value: '${(session.movementScore * 100).toStringAsFixed(0)}%',
+                      value:
+                          '${(session.movementScore * 100).toStringAsFixed(0)}%',
                       icon: Icons.trending_up,
                     ),
                     _StatCard(
@@ -143,7 +155,10 @@ class SleepScoreResultScreen extends ConsumerWidget {
                       icon: Icons.check_circle,
                     ),
                   ],
-                ).animate().fadeIn(delay: 100.ms, duration: 500.ms).slideY(begin: 0.1, end: 0),
+                )
+                    .animate()
+                    .fadeIn(delay: 100.ms, duration: 500.ms)
+                    .slideY(begin: 0.1, end: 0),
                 const SizedBox(height: 24),
 
                 // Sleep Stages
@@ -193,7 +208,10 @@ class SleepScoreResultScreen extends ConsumerWidget {
                       ),
                     ],
                   ),
-                ).animate().fadeIn(delay: 200.ms, duration: 500.ms).slideY(begin: 0.1, end: 0),
+                )
+                    .animate()
+                    .fadeIn(delay: 200.ms, duration: 500.ms)
+                    .slideY(begin: 0.1, end: 0),
                 const SizedBox(height: 24),
 
                 // Time Info
@@ -215,11 +233,16 @@ class SleepScoreResultScreen extends ConsumerWidget {
                       _DetailRow(
                         label: 'Sleep Goal Met',
                         value: session.metSleepGoal ? 'Yes ✓' : 'No',
-                        valueColor: session.metSleepGoal ? AppColors.tertiary : AppColors.error,
+                        valueColor: session.metSleepGoal
+                            ? AppColors.tertiary
+                            : AppColors.error,
                       ),
                     ],
                   ),
-                ).animate().fadeIn(delay: 300.ms, duration: 500.ms).slideY(begin: 0.1, end: 0),
+                )
+                    .animate()
+                    .fadeIn(delay: 300.ms, duration: 500.ms)
+                    .slideY(begin: 0.1, end: 0),
                 const SizedBox(height: 32),
 
                 // Action Buttons
@@ -240,7 +263,8 @@ class SleepScoreResultScreen extends ConsumerWidget {
                       width: double.infinity,
                       height: 52,
                       child: OutlinedButton(
-                        onPressed: (session.notes != null && session.notes!.isNotEmpty)
+                        onPressed: (session.notes != null &&
+                                session.notes!.isNotEmpty)
                             ? () {
                                 _showNotesBottomSheet(context, session.notes!);
                               }

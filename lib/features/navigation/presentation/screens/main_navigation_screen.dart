@@ -26,7 +26,8 @@ class MainNavigationScreen extends ConsumerStatefulWidget {
   const MainNavigationScreen({super.key});
 
   @override
-  ConsumerState<MainNavigationScreen> createState() => _MainNavigationScreenState();
+  ConsumerState<MainNavigationScreen> createState() =>
+      _MainNavigationScreenState();
 }
 
 class _MainNavigationScreenState extends ConsumerState<MainNavigationScreen> {
@@ -109,7 +110,8 @@ class _MainNavigationScreenState extends ConsumerState<MainNavigationScreen> {
                   if (!isOnlineValue) {
                     ScaffoldMessenger.of(context).showSnackBar(
                       SnackBar(
-                        content: const Text('Connect to internet to chat with Somnus 🌐'),
+                        content: const Text(
+                            'Connect to internet to chat with Somnus 🌐'),
                         backgroundColor: AppColors.error,
                         duration: const Duration(seconds: 2),
                         behavior: SnackBarBehavior.floating,
@@ -196,7 +198,10 @@ class _NavItem extends StatelessWidget {
                               label,
                               maxLines: 1,
                               overflow: TextOverflow.ellipsis,
-                              style: Theme.of(context).textTheme.labelSmall?.copyWith(
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .labelSmall
+                                  ?.copyWith(
                                     color: Colors.white,
                                     fontWeight: FontWeight.w600,
                                     fontSize: 9,

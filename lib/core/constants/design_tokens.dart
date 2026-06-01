@@ -76,11 +76,13 @@ class AppBorderRadius {
   static const double circular = 999; // For circular buttons
 
   // Common border radius values
-  static final BorderRadius extraSmallRadius = BorderRadius.circular(extraSmall);
+  static final BorderRadius extraSmallRadius =
+      BorderRadius.circular(extraSmall);
   static final BorderRadius smallRadius = BorderRadius.circular(small);
   static final BorderRadius mediumRadius = BorderRadius.circular(medium);
   static final BorderRadius largeRadius = BorderRadius.circular(large);
-  static final BorderRadius extraLargeRadius = BorderRadius.circular(extraLarge);
+  static final BorderRadius extraLargeRadius =
+      BorderRadius.circular(extraLarge);
   static final BorderRadius cardRadius = BorderRadius.circular(card);
   static final BorderRadius circularRadius = BorderRadius.circular(circular);
 }
@@ -142,16 +144,20 @@ class AppPadding {
   AppPadding._();
 
   // Horizontal padding
-  static const EdgeInsets horizontalSmall = EdgeInsets.symmetric(horizontal: AppConstants.spacing8);
+  static const EdgeInsets horizontalSmall =
+      EdgeInsets.symmetric(horizontal: AppConstants.spacing8);
   static const EdgeInsets horizontalMedium =
       EdgeInsets.symmetric(horizontal: AppConstants.spacing16);
   static const EdgeInsets horizontalLarge =
       EdgeInsets.symmetric(horizontal: AppConstants.spacing24);
 
   // Vertical padding
-  static const EdgeInsets verticalSmall = EdgeInsets.symmetric(vertical: AppConstants.spacing8);
-  static const EdgeInsets verticalMedium = EdgeInsets.symmetric(vertical: AppConstants.spacing12);
-  static const EdgeInsets verticalLarge = EdgeInsets.symmetric(vertical: AppConstants.spacing16);
+  static const EdgeInsets verticalSmall =
+      EdgeInsets.symmetric(vertical: AppConstants.spacing8);
+  static const EdgeInsets verticalMedium =
+      EdgeInsets.symmetric(vertical: AppConstants.spacing12);
+  static const EdgeInsets verticalLarge =
+      EdgeInsets.symmetric(vertical: AppConstants.spacing16);
 
   // All padding
   static const EdgeInsets allSmall = EdgeInsets.all(AppConstants.spacing8);
@@ -159,10 +165,11 @@ class AppPadding {
   static const EdgeInsets allLarge = EdgeInsets.all(AppConstants.spacing24);
 
   // Common combinations
-  static const EdgeInsets screenPadding = EdgeInsets.symmetric(horizontal: AppConstants.spacing20);
+  static const EdgeInsets screenPadding =
+      EdgeInsets.symmetric(horizontal: AppConstants.spacing20);
   static const EdgeInsets cardPadding = EdgeInsets.all(AppConstants.spacing16);
-  static const EdgeInsets buttonPadding =
-      EdgeInsets.symmetric(horizontal: AppConstants.spacing24, vertical: AppConstants.spacing12);
+  static const EdgeInsets buttonPadding = EdgeInsets.symmetric(
+      horizontal: AppConstants.spacing24, vertical: AppConstants.spacing12);
 }
 
 /// Constraints for responsive design
@@ -418,7 +425,8 @@ class TextStyles {
         letterSpacing: letterSpacing,
         height: height,
       );
-  static TextStyle figtreeMedium({Color? color}) => AppFonts.figtreeMedium(color: color);
+  static TextStyle figtreeMedium({Color? color}) =>
+      AppFonts.figtreeMedium(color: color);
   static TextStyle plexSans({
     Color? color,
     double? fontSize,

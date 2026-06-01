@@ -109,7 +109,8 @@ class _AIChatScreenState extends ConsumerState<AIChatScreen> {
     if (text.isEmpty) return;
 
     setState(() {
-      _messages.add(_ChatMessage(text: text, isUser: true, timestamp: DateTime.now()));
+      _messages.add(
+          _ChatMessage(text: text, isUser: true, timestamp: DateTime.now()));
       _messages.add(_ChatMessage.loading());
       _messageController.clear();
       _isLoading = true;
@@ -156,7 +157,8 @@ class _AIChatScreenState extends ConsumerState<AIChatScreen> {
         _messages.removeWhere((message) => message.isLoading);
         _messages.add(
           _ChatMessage(
-            text: 'AI could not start right now. Please check your Gemini API key in Settings.',
+            text:
+                'AI could not start right now. Please check your Gemini API key in Settings.',
             isUser: false,
             timestamp: DateTime.now(),
           ),
@@ -220,7 +222,8 @@ class _AIChatScreenState extends ConsumerState<AIChatScreen> {
                       padding: const EdgeInsets.all(AppConstants.spacing8),
                       decoration: BoxDecoration(
                         gradient: AppColors.primaryGradient,
-                        borderRadius: BorderRadius.circular(AppBorderRadius.medium),
+                        borderRadius:
+                            BorderRadius.circular(AppBorderRadius.medium),
                       ),
                       child: const Icon(
                         Icons.auto_awesome,
@@ -235,7 +238,10 @@ class _AIChatScreenState extends ConsumerState<AIChatScreen> {
                         children: [
                           Text(
                             'Somnus - Your Sleep Coach',
-                            style: Theme.of(context).textTheme.labelLarge?.copyWith(
+                            style: Theme.of(context)
+                                .textTheme
+                                .labelLarge
+                                ?.copyWith(
                                   color: AppColors.textPrimary,
                                   fontWeight: FontWeight.w600,
                                 ),
@@ -243,7 +249,10 @@ class _AIChatScreenState extends ConsumerState<AIChatScreen> {
                           const SizedBox(height: AppConstants.spacing4),
                           Text(
                             'Ask me anything about sleep',
-                            style: Theme.of(context).textTheme.labelSmall?.copyWith(
+                            style: Theme.of(context)
+                                .textTheme
+                                .labelSmall
+                                ?.copyWith(
                                   color: AppColors.textMuted,
                                 ),
                           ),
@@ -268,14 +277,20 @@ class _AIChatScreenState extends ConsumerState<AIChatScreen> {
                           const SizedBox(height: AppConstants.spacing20),
                           Text(
                             'Start a conversation',
-                            style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                            style: Theme.of(context)
+                                .textTheme
+                                .titleLarge
+                                ?.copyWith(
                                   color: AppColors.textPrimary,
                                 ),
                           ),
                           const SizedBox(height: AppConstants.spacing8),
                           Text(
                             'Ask me about sleep habits and bedtime routines',
-                            style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                            style: Theme.of(context)
+                                .textTheme
+                                .bodyMedium
+                                ?.copyWith(
                                   color: AppColors.textMuted,
                                 ),
                             textAlign: TextAlign.center,
@@ -292,7 +307,8 @@ class _AIChatScreenState extends ConsumerState<AIChatScreen> {
                         AppConstants.spacing12,
                       ),
                       itemCount: _messages.length,
-                      itemBuilder: (context, index) => _ChatBubble(message: _messages[index]),
+                      itemBuilder: (context, index) =>
+                          _ChatBubble(message: _messages[index]),
                     ),
             ),
             if (_messages.length <= 1 && !_isLoading)
@@ -310,12 +326,15 @@ class _AIChatScreenState extends ConsumerState<AIChatScreen> {
                     children: _quickPrompts
                         .map(
                           (p) => Padding(
-                            padding: const EdgeInsets.only(right: AppConstants.spacing8),
+                            padding: const EdgeInsets.only(
+                                right: AppConstants.spacing8),
                             child: Material(
                               color: AppColors.primary.withOpacity(0.15),
-                              borderRadius: BorderRadius.circular(AppBorderRadius.circular),
+                              borderRadius: BorderRadius.circular(
+                                  AppBorderRadius.circular),
                               child: InkWell(
-                                borderRadius: BorderRadius.circular(AppBorderRadius.circular),
+                                borderRadius: BorderRadius.circular(
+                                    AppBorderRadius.circular),
                                 onTap: () => _sendMessage(p),
                                 child: Padding(
                                   padding: const EdgeInsets.symmetric(
@@ -324,7 +343,10 @@ class _AIChatScreenState extends ConsumerState<AIChatScreen> {
                                   ),
                                   child: Text(
                                     p,
-                                    style: Theme.of(context).textTheme.labelSmall?.copyWith(
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .labelSmall
+                                        ?.copyWith(
                                           color: AppColors.primary,
                                         ),
                                     maxLines: 1,
@@ -346,7 +368,8 @@ class _AIChatScreenState extends ConsumerState<AIChatScreen> {
                 AppConstants.spacing20,
                 AppConstants.spacing16,
               ),
-              child: _Composer(controller: _messageController, onSend: _sendMessage),
+              child: _Composer(
+                  controller: _messageController, onSend: _sendMessage),
             ),
           ],
         ),
@@ -378,7 +401,8 @@ class _ComposerState extends State<_Composer> {
         color: AppColors.surfaceDark,
         borderRadius: BorderRadius.circular(AppBorderRadius.large),
         border: Border.all(
-          color: _isFocused ? AppColors.primary : Colors.white.withOpacity(0.15),
+          color:
+              _isFocused ? AppColors.primary : Colors.white.withOpacity(0.15),
           width: 1.5,
         ),
       ),

@@ -15,7 +15,8 @@ class SleepTrackingScreen extends ConsumerStatefulWidget {
   const SleepTrackingScreen({super.key});
 
   @override
-  ConsumerState<SleepTrackingScreen> createState() => _SleepTrackingScreenState();
+  ConsumerState<SleepTrackingScreen> createState() =>
+      _SleepTrackingScreenState();
 }
 
 class _SleepTrackingScreenState extends ConsumerState<SleepTrackingScreen>
@@ -74,7 +75,8 @@ class _SleepTrackingScreenState extends ConsumerState<SleepTrackingScreen>
                             .slideY(begin: -0.1, end: 0),
                         const SizedBox(height: 32),
                         if (isTracking) ...[
-                          MovementIndicator(movement: trackingData.currentMovement)
+                          MovementIndicator(
+                                  movement: trackingData.currentMovement)
                               .animate()
                               .fadeIn(delay: 150.ms, duration: 400.ms)
                               .slideY(begin: -0.1, end: 0),
@@ -87,8 +89,9 @@ class _SleepTrackingScreenState extends ConsumerState<SleepTrackingScreen>
                         const SizedBox(height: 40),
                         TrackingControls(
                           state: trackingData.state,
-                          onStart: () =>
-                              ref.read(sleepTrackingServiceProvider.notifier).startTracking(),
+                          onStart: () => ref
+                              .read(sleepTrackingServiceProvider.notifier)
+                              .startTracking(),
                           onStop: () => _confirmStop(context),
                         ).animate().fadeIn(delay: 250.ms, duration: 400.ms),
                         const SizedBox(height: 32),
@@ -207,7 +210,9 @@ class _SleepTrackingScreenState extends ConsumerState<SleepTrackingScreen>
               child: Icon(
                 isTracking ? Icons.nightlight_round : Icons.bedtime_outlined,
                 size: 72,
-                color: isTracking ? Colors.white.withOpacity(0.95) : AppColors.textMuted,
+                color: isTracking
+                    ? Colors.white.withOpacity(0.95)
+                    : AppColors.textMuted,
               ),
             ),
           ),
@@ -236,7 +241,8 @@ class _SleepTrackingScreenState extends ConsumerState<SleepTrackingScreen>
     ).animate().fadeIn(duration: 400.ms);
   }
 
-  Widget _buildStatCard(String label, String value, IconData icon, Color color) {
+  Widget _buildStatCard(
+      String label, String value, IconData icon, Color color) {
     return Expanded(
       child: Container(
         padding: const EdgeInsets.all(16),

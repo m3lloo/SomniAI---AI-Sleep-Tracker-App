@@ -64,8 +64,9 @@ class HomeScreen extends ConsumerWidget {
                 _buildGreetingSection(now),
                 const SizedBox(height: 24),
                 lastSession.when(
-                  data: (session) =>
-                      session != null ? _buildSleepScoreCard(session) : _buildNoDataCard(),
+                  data: (session) => session != null
+                      ? _buildSleepScoreCard(session)
+                      : _buildNoDataCard(),
                   loading: () => _buildScoreCardSkeleton(),
                   error: (_, __) => _buildNoDataCard(),
                 ),
@@ -84,8 +85,9 @@ class HomeScreen extends ConsumerWidget {
                 ),
                 const SizedBox(height: 20),
                 lastSession.when(
-                  data: (session) =>
-                      session != null ? _buildLastNightDetails(session) : const SizedBox.shrink(),
+                  data: (session) => session != null
+                      ? _buildLastNightDetails(session)
+                      : const SizedBox.shrink(),
                   loading: () => const SizedBox.shrink(),
                   error: (_, __) => const SizedBox.shrink(),
                 ),
@@ -117,7 +119,8 @@ class HomeScreen extends ConsumerWidget {
                     gradient: AppColors.primaryGradient,
                     borderRadius: BorderRadius.circular(10),
                   ),
-                  child: const Icon(Icons.nightlight_round, color: Colors.white, size: 16),
+                  child: const Icon(Icons.nightlight_round,
+                      color: Colors.white, size: 16),
                 ),
                 const SizedBox(width: 10),
                 Text(
@@ -135,8 +138,8 @@ class HomeScreen extends ConsumerWidget {
               children: [
                 IconButton(
                   onPressed: () {},
-                  icon:
-                      Icon(Icons.notifications_outlined, color: AppColors.textSecondary, size: 22),
+                  icon: Icon(Icons.notifications_outlined,
+                      color: AppColors.textSecondary, size: 22),
                   padding: EdgeInsets.zero,
                   constraints: const BoxConstraints.tightFor(
                     width: 36,
@@ -318,7 +321,8 @@ class HomeScreen extends ConsumerWidget {
       ),
       child: Column(
         children: [
-          Icon(Icons.bedtime_outlined, size: 48, color: AppColors.indigo.withOpacity(0.6)),
+          Icon(Icons.bedtime_outlined,
+              size: 48, color: AppColors.indigo.withOpacity(0.6)),
           const SizedBox(height: 16),
           Text(
             'No sleep data yet',
@@ -349,7 +353,9 @@ class HomeScreen extends ConsumerWidget {
         color: AppColors.cardBg,
         borderRadius: BorderRadius.circular(24),
       ),
-    ).animate(onPlay: (c) => c.repeat()).shimmer(duration: 1200.ms, color: AppColors.surfaceLight);
+    )
+        .animate(onPlay: (c) => c.repeat())
+        .shimmer(duration: 1200.ms, color: AppColors.surfaceLight);
   }
 
   Widget _buildWeeklyStats(double avgScore, AsyncValue<int> streak) {
@@ -363,7 +369,8 @@ class HomeScreen extends ConsumerWidget {
       child: Row(
         children: [
           Expanded(
-            child: _buildStatItem('Weekly Avg', '${avgScore.round()}', 'score', AppColors.indigo),
+            child: _buildStatItem(
+                'Weekly Avg', '${avgScore.round()}', 'score', AppColors.indigo),
           ),
           Container(width: 1, height: 50, color: AppColors.surfaceLight),
           Expanded(
@@ -372,9 +379,12 @@ class HomeScreen extends ConsumerWidget {
           Container(width: 1, height: 50, color: AppColors.surfaceLight),
           Expanded(
             child: streak.when(
-              data: (streakDays) => _buildStatItem('Streak', '$streakDays', 'days', AppColors.mint),
-              loading: () => _buildStatItem('Streak', '...', 'loading', AppColors.mint),
-              error: (_, __) => _buildStatItem('Streak', '0', 'days', AppColors.mint),
+              data: (streakDays) => _buildStatItem(
+                  'Streak', '$streakDays', 'days', AppColors.mint),
+              loading: () =>
+                  _buildStatItem('Streak', '...', 'loading', AppColors.mint),
+              error: (_, __) =>
+                  _buildStatItem('Streak', '0', 'days', AppColors.mint),
             ),
           ),
         ],
@@ -552,7 +562,8 @@ class HomeScreen extends ConsumerWidget {
               gradient: AppColors.primaryGradient,
               borderRadius: BorderRadius.circular(12),
             ),
-            child: const Icon(Icons.auto_awesome, color: Colors.white, size: 18),
+            child:
+                const Icon(Icons.auto_awesome, color: Colors.white, size: 18),
           ),
           const SizedBox(width: 14),
           Expanded(
@@ -605,10 +616,14 @@ class HomeScreen extends ConsumerWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              _buildStageItem('Light', session.estimatedLightSleep, AppColors.cyanDim),
-              _buildStageItem('Deep', session.estimatedDeepSleep, AppColors.indigo),
-              _buildStageItem('REM', session.estimatedRemSleep, AppColors.purple),
-              _buildStageItem('Awake', session.estimatedAwakeTime, AppColors.amber),
+              _buildStageItem(
+                  'Light', session.estimatedLightSleep, AppColors.cyanDim),
+              _buildStageItem(
+                  'Deep', session.estimatedDeepSleep, AppColors.indigo),
+              _buildStageItem(
+                  'REM', session.estimatedRemSleep, AppColors.purple),
+              _buildStageItem(
+                  'Awake', session.estimatedAwakeTime, AppColors.amber),
             ],
           ),
         ),

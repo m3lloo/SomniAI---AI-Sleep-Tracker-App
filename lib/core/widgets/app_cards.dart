@@ -42,9 +42,12 @@ class AppCard extends StatelessWidget {
 
     Widget card = Container(
       decoration: BoxDecoration(
-        color: gradient == null ? (backgroundColor ?? AppColors.surfaceDark) : null,
+        color: gradient == null
+            ? (backgroundColor ?? AppColors.surfaceDark)
+            : null,
         gradient: gradient,
-        borderRadius: BorderRadius.circular(borderRadius ?? AppBorderRadius.card),
+        borderRadius:
+            BorderRadius.circular(borderRadius ?? AppBorderRadius.card),
         border: border,
         boxShadow: boxShadow,
       ),
@@ -59,7 +62,8 @@ class AppCard extends StatelessWidget {
         color: Colors.transparent,
         child: InkWell(
           onTap: onTap,
-          borderRadius: BorderRadius.circular(borderRadius ?? AppBorderRadius.card),
+          borderRadius:
+              BorderRadius.circular(borderRadius ?? AppBorderRadius.card),
           child: card,
         ),
       );

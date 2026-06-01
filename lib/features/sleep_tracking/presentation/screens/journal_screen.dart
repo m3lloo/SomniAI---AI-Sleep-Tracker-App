@@ -42,7 +42,8 @@ class _JournalScreenState extends ConsumerState<JournalScreen> {
         icon: const Icon(Icons.add, color: Colors.white),
         label: Text(
           'New Entry',
-          style: GoogleFonts.outfit(color: Colors.white, fontWeight: FontWeight.w600),
+          style: GoogleFonts.outfit(
+              color: Colors.white, fontWeight: FontWeight.w600),
         ),
       ),
       body: SafeArea(
@@ -86,7 +87,9 @@ class _JournalScreenState extends ConsumerState<JournalScreen> {
                   child: CircularProgressIndicator(color: AppColors.indigo),
                 ),
                 error: (e, _) => Center(
-                  child: Text('Error', style: GoogleFonts.outfit(color: AppColors.textSecondary)),
+                  child: Text('Error',
+                      style:
+                          GoogleFonts.outfit(color: AppColors.textSecondary)),
                 ),
               ),
             ),
@@ -101,7 +104,8 @@ class _JournalScreenState extends ConsumerState<JournalScreen> {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Icon(Icons.book_outlined, size: 64, color: AppColors.indigo.withOpacity(0.4)),
+          Icon(Icons.book_outlined,
+              size: 64, color: AppColors.indigo.withOpacity(0.4)),
           const SizedBox(height: 16),
           Text(
             'No journal entries yet',
@@ -114,7 +118,8 @@ class _JournalScreenState extends ConsumerState<JournalScreen> {
           const SizedBox(height: 8),
           Text(
             'Start logging your sleep experience',
-            style: GoogleFonts.outfit(color: AppColors.textSecondary, fontSize: 13),
+            style: GoogleFonts.outfit(
+                color: AppColors.textSecondary, fontSize: 13),
           ),
         ],
       ),
@@ -212,7 +217,8 @@ class _JournalScreenState extends ConsumerState<JournalScreen> {
               const Spacer(),
               GestureDetector(
                 onTap: () => JournalRepository().deleteEntry(entry.id),
-                child: Icon(Icons.delete_outline, size: 18, color: AppColors.textMuted),
+                child: Icon(Icons.delete_outline,
+                    size: 18, color: AppColors.textMuted),
               ),
             ],
           ),
@@ -271,7 +277,8 @@ class _AddJournalEntrySheet extends ConsumerStatefulWidget {
   const _AddJournalEntrySheet();
 
   @override
-  ConsumerState<_AddJournalEntrySheet> createState() => _AddJournalEntrySheetState();
+  ConsumerState<_AddJournalEntrySheet> createState() =>
+      _AddJournalEntrySheetState();
 }
 
 class _AddJournalEntrySheetState extends ConsumerState<_AddJournalEntrySheet> {
@@ -296,8 +303,12 @@ class _AddJournalEntrySheetState extends ConsumerState<_AddJournalEntrySheet> {
       ..mood = _selectedMood
       ..stressLevel = _stressLevel
       ..energyLevel = _energyLevel
-      ..generalNotes = _notesController.text.trim().isEmpty ? null : _notesController.text.trim()
-      ..dreamNotes = _dreamController.text.trim().isEmpty ? null : _dreamController.text.trim();
+      ..generalNotes = _notesController.text.trim().isEmpty
+          ? null
+          : _notesController.text.trim()
+      ..dreamNotes = _dreamController.text.trim().isEmpty
+          ? null
+          : _dreamController.text.trim();
 
     await JournalRepository().saveEntry(entry);
     if (mounted) Navigator.pop(context);
@@ -311,7 +322,8 @@ class _AddJournalEntrySheetState extends ConsumerState<_AddJournalEntrySheet> {
         color: AppColors.surfaceDark,
         borderRadius: BorderRadius.circular(28),
       ),
-      padding: EdgeInsets.fromLTRB(24, 24, 24, MediaQuery.of(context).viewInsets.bottom + 24),
+      padding: EdgeInsets.fromLTRB(
+          24, 24, 24, MediaQuery.of(context).viewInsets.bottom + 24),
       child: SingleChildScrollView(
         child: Column(
           mainAxisSize: MainAxisSize.min,
@@ -338,7 +350,8 @@ class _AddJournalEntrySheetState extends ConsumerState<_AddJournalEntrySheet> {
             ),
             const SizedBox(height: 24),
             Text('How are you feeling?',
-                style: GoogleFonts.outfit(color: AppColors.textSecondary, fontSize: 13)),
+                style: GoogleFonts.outfit(
+                    color: AppColors.textSecondary, fontSize: 13)),
             const SizedBox(height: 10),
             Wrap(
               spacing: 8,
@@ -349,18 +362,23 @@ class _AddJournalEntrySheetState extends ConsumerState<_AddJournalEntrySheet> {
                   onTap: () => setState(() => _selectedMood = mood),
                   child: AnimatedContainer(
                     duration: const Duration(milliseconds: 200),
-                    padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
                     decoration: BoxDecoration(
-                      color: selected ? AppColors.indigo : AppColors.surfaceLight,
+                      color:
+                          selected ? AppColors.indigo : AppColors.surfaceLight,
                       borderRadius: BorderRadius.circular(20),
                       border: Border.all(
-                        color: selected ? AppColors.indigoLight : Colors.transparent,
+                        color: selected
+                            ? AppColors.indigoLight
+                            : Colors.transparent,
                       ),
                     ),
                     child: Text(
                       mood,
                       style: GoogleFonts.outfit(
-                        color: selected ? Colors.white : AppColors.textSecondary,
+                        color:
+                            selected ? Colors.white : AppColors.textSecondary,
                         fontSize: 13,
                       ),
                     ),
@@ -369,11 +387,13 @@ class _AddJournalEntrySheetState extends ConsumerState<_AddJournalEntrySheet> {
               }).toList(),
             ),
             const SizedBox(height: 20),
-            _buildSliderRow('Stress Level', _stressLevel, AppColors.rose, (val) {
+            _buildSliderRow('Stress Level', _stressLevel, AppColors.rose,
+                (val) {
               setState(() => _stressLevel = val);
             }),
             const SizedBox(height: 12),
-            _buildSliderRow('Energy Level', _energyLevel, AppColors.amber, (val) {
+            _buildSliderRow('Energy Level', _energyLevel, AppColors.amber,
+                (val) {
               setState(() => _energyLevel = val);
             }),
             const SizedBox(height: 20),
@@ -445,14 +465,17 @@ class _AddJournalEntrySheetState extends ConsumerState<_AddJournalEntrySheet> {
     );
   }
 
-  Widget _buildSliderRow(String label, int value, Color color, Function(int) onChanged) {
+  Widget _buildSliderRow(
+      String label, int value, Color color, Function(int) onChanged) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Text(label, style: GoogleFonts.outfit(color: AppColors.textSecondary, fontSize: 13)),
+            Text(label,
+                style: GoogleFonts.outfit(
+                    color: AppColors.textSecondary, fontSize: 13)),
             Text(
               '$value / 5',
               style: GoogleFonts.outfit(

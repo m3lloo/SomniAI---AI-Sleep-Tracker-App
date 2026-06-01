@@ -120,7 +120,9 @@ class AppSliverAppBar extends StatelessWidget {
               mainAxisSize: MainAxisSize.min,
               children: [
                 IconButton(
-                  tooltip: isDarkMode ? 'Switch to light theme' : 'Switch to dark theme',
+                  tooltip: isDarkMode
+                      ? 'Switch to light theme'
+                      : 'Switch to dark theme',
                   onPressed: () => onThemeToggle(isDarkMode),
                   icon: Icon(
                     isDarkMode ? Icons.light_mode : Icons.dark_mode,

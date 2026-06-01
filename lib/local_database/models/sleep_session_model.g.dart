@@ -266,11 +266,13 @@ Id _sleepSessionModelGetId(SleepSessionModel object) {
   return object.id;
 }
 
-List<IsarLinkBase<dynamic>> _sleepSessionModelGetLinks(SleepSessionModel object) {
+List<IsarLinkBase<dynamic>> _sleepSessionModelGetLinks(
+    SleepSessionModel object) {
   return [];
 }
 
-void _sleepSessionModelAttach(IsarCollection<dynamic> col, Id id, SleepSessionModel object) {
+void _sleepSessionModelAttach(
+    IsarCollection<dynamic> col, Id id, SleepSessionModel object) {
   object.id = id;
 }
 
@@ -282,7 +284,8 @@ extension SleepSessionModelQueryWhereSort
     });
   }
 
-  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterWhere> anySleepTime() {
+  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterWhere>
+      anySleepTime() {
     return QueryBuilder.apply(this, (query) {
       return query.addWhereClause(
         const IndexWhereClause.any(indexName: r'sleepTime'),
@@ -293,7 +296,8 @@ extension SleepSessionModelQueryWhereSort
 
 extension SleepSessionModelQueryWhere
     on QueryBuilder<SleepSessionModel, SleepSessionModel, QWhereClause> {
-  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterWhereClause> idEqualTo(Id id) {
+  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterWhereClause>
+      idEqualTo(Id id) {
     return QueryBuilder.apply(this, (query) {
       return query.addWhereClause(IdWhereClause.between(
         lower: id,
@@ -302,7 +306,8 @@ extension SleepSessionModelQueryWhere
     });
   }
 
-  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterWhereClause> idNotEqualTo(Id id) {
+  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterWhereClause>
+      idNotEqualTo(Id id) {
     return QueryBuilder.apply(this, (query) {
       if (query.whereSort == Sort.asc) {
         return query
@@ -324,8 +329,8 @@ extension SleepSessionModelQueryWhere
     });
   }
 
-  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterWhereClause> idGreaterThan(Id id,
-      {bool include = false}) {
+  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterWhereClause>
+      idGreaterThan(Id id, {bool include = false}) {
     return QueryBuilder.apply(this, (query) {
       return query.addWhereClause(
         IdWhereClause.greaterThan(lower: id, includeLower: include),
@@ -333,8 +338,8 @@ extension SleepSessionModelQueryWhere
     });
   }
 
-  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterWhereClause> idLessThan(Id id,
-      {bool include = false}) {
+  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterWhereClause>
+      idLessThan(Id id, {bool include = false}) {
     return QueryBuilder.apply(this, (query) {
       return query.addWhereClause(
         IdWhereClause.lessThan(upper: id, includeUpper: include),
@@ -342,7 +347,8 @@ extension SleepSessionModelQueryWhere
     });
   }
 
-  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterWhereClause> idBetween(
+  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterWhereClause>
+      idBetween(
     Id lowerId,
     Id upperId, {
     bool includeLower = true,
@@ -358,8 +364,8 @@ extension SleepSessionModelQueryWhere
     });
   }
 
-  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterWhereClause> sleepTimeEqualTo(
-      DateTime sleepTime) {
+  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterWhereClause>
+      sleepTimeEqualTo(DateTime sleepTime) {
     return QueryBuilder.apply(this, (query) {
       return query.addWhereClause(IndexWhereClause.equalTo(
         indexName: r'sleepTime',
@@ -368,8 +374,8 @@ extension SleepSessionModelQueryWhere
     });
   }
 
-  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterWhereClause> sleepTimeNotEqualTo(
-      DateTime sleepTime) {
+  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterWhereClause>
+      sleepTimeNotEqualTo(DateTime sleepTime) {
     return QueryBuilder.apply(this, (query) {
       if (query.whereSort == Sort.asc) {
         return query
@@ -403,7 +409,8 @@ extension SleepSessionModelQueryWhere
     });
   }
 
-  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterWhereClause> sleepTimeGreaterThan(
+  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterWhereClause>
+      sleepTimeGreaterThan(
     DateTime sleepTime, {
     bool include = false,
   }) {
@@ -417,7 +424,8 @@ extension SleepSessionModelQueryWhere
     });
   }
 
-  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterWhereClause> sleepTimeLessThan(
+  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterWhereClause>
+      sleepTimeLessThan(
     DateTime sleepTime, {
     bool include = false,
   }) {
@@ -431,7 +439,8 @@ extension SleepSessionModelQueryWhere
     });
   }
 
-  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterWhereClause> sleepTimeBetween(
+  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterWhereClause>
+      sleepTimeBetween(
     DateTime lowerSleepTime,
     DateTime upperSleepTime, {
     bool includeLower = true,
@@ -451,7 +460,8 @@ extension SleepSessionModelQueryWhere
 
 extension SleepSessionModelQueryFilter
     on QueryBuilder<SleepSessionModel, SleepSessionModel, QFilterCondition> {
-  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterFilterCondition> avgNoiseLevelEqualTo(
+  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterFilterCondition>
+      avgNoiseLevelEqualTo(
     double value, {
     double epsilon = Query.epsilon,
   }) {
@@ -480,7 +490,8 @@ extension SleepSessionModelQueryFilter
     });
   }
 
-  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterFilterCondition> avgNoiseLevelLessThan(
+  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterFilterCondition>
+      avgNoiseLevelLessThan(
     double value, {
     bool include = false,
     double epsilon = Query.epsilon,
@@ -495,7 +506,8 @@ extension SleepSessionModelQueryFilter
     });
   }
 
-  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterFilterCondition> avgNoiseLevelBetween(
+  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterFilterCondition>
+      avgNoiseLevelBetween(
     double lower,
     double upper, {
     bool includeLower = true,
@@ -514,8 +526,8 @@ extension SleepSessionModelQueryFilter
     });
   }
 
-  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterFilterCondition> consistencyScoreEqualTo(
-      int value) {
+  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterFilterCondition>
+      consistencyScoreEqualTo(int value) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.equalTo(
         property: r'consistencyScore',
@@ -552,7 +564,8 @@ extension SleepSessionModelQueryFilter
     });
   }
 
-  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterFilterCondition> consistencyScoreBetween(
+  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterFilterCondition>
+      consistencyScoreBetween(
     int lower,
     int upper, {
     bool includeLower = true,
@@ -569,8 +582,8 @@ extension SleepSessionModelQueryFilter
     });
   }
 
-  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterFilterCondition> dateEqualTo(
-      DateTime value) {
+  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterFilterCondition>
+      dateEqualTo(DateTime value) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.equalTo(
         property: r'date',
@@ -579,7 +592,8 @@ extension SleepSessionModelQueryFilter
     });
   }
 
-  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterFilterCondition> dateGreaterThan(
+  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterFilterCondition>
+      dateGreaterThan(
     DateTime value, {
     bool include = false,
   }) {
@@ -592,7 +606,8 @@ extension SleepSessionModelQueryFilter
     });
   }
 
-  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterFilterCondition> dateLessThan(
+  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterFilterCondition>
+      dateLessThan(
     DateTime value, {
     bool include = false,
   }) {
@@ -605,7 +620,8 @@ extension SleepSessionModelQueryFilter
     });
   }
 
-  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterFilterCondition> dateBetween(
+  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterFilterCondition>
+      dateBetween(
     DateTime lower,
     DateTime upper, {
     bool includeLower = true,
@@ -758,7 +774,8 @@ extension SleepSessionModelQueryFilter
     });
   }
 
-  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterFilterCondition> durationHoursEqualTo(
+  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterFilterCondition>
+      durationHoursEqualTo(
     double value, {
     double epsilon = Query.epsilon,
   }) {
@@ -787,7 +804,8 @@ extension SleepSessionModelQueryFilter
     });
   }
 
-  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterFilterCondition> durationHoursLessThan(
+  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterFilterCondition>
+      durationHoursLessThan(
     double value, {
     bool include = false,
     double epsilon = Query.epsilon,
@@ -802,7 +820,8 @@ extension SleepSessionModelQueryFilter
     });
   }
 
-  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterFilterCondition> durationHoursBetween(
+  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterFilterCondition>
+      durationHoursBetween(
     double lower,
     double upper, {
     bool includeLower = true,
@@ -1045,7 +1064,8 @@ extension SleepSessionModelQueryFilter
     });
   }
 
-  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterFilterCondition> idEqualTo(Id value) {
+  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterFilterCondition>
+      idEqualTo(Id value) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.equalTo(
         property: r'id',
@@ -1054,7 +1074,8 @@ extension SleepSessionModelQueryFilter
     });
   }
 
-  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterFilterCondition> idGreaterThan(
+  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterFilterCondition>
+      idGreaterThan(
     Id value, {
     bool include = false,
   }) {
@@ -1067,7 +1088,8 @@ extension SleepSessionModelQueryFilter
     });
   }
 
-  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterFilterCondition> idLessThan(
+  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterFilterCondition>
+      idLessThan(
     Id value, {
     bool include = false,
   }) {
@@ -1080,7 +1102,8 @@ extension SleepSessionModelQueryFilter
     });
   }
 
-  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterFilterCondition> idBetween(
+  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterFilterCondition>
+      idBetween(
     Id lower,
     Id upper, {
     bool includeLower = true,
@@ -1097,8 +1120,8 @@ extension SleepSessionModelQueryFilter
     });
   }
 
-  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterFilterCondition> interruptionsEqualTo(
-      int value) {
+  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterFilterCondition>
+      interruptionsEqualTo(int value) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.equalTo(
         property: r'interruptions',
@@ -1121,7 +1144,8 @@ extension SleepSessionModelQueryFilter
     });
   }
 
-  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterFilterCondition> interruptionsLessThan(
+  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterFilterCondition>
+      interruptionsLessThan(
     int value, {
     bool include = false,
   }) {
@@ -1134,7 +1158,8 @@ extension SleepSessionModelQueryFilter
     });
   }
 
-  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterFilterCondition> interruptionsBetween(
+  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterFilterCondition>
+      interruptionsBetween(
     int lower,
     int upper, {
     bool includeLower = true,
@@ -1151,8 +1176,8 @@ extension SleepSessionModelQueryFilter
     });
   }
 
-  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterFilterCondition> metSleepGoalEqualTo(
-      bool value) {
+  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterFilterCondition>
+      metSleepGoalEqualTo(bool value) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.equalTo(
         property: r'metSleepGoal',
@@ -1161,7 +1186,8 @@ extension SleepSessionModelQueryFilter
     });
   }
 
-  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterFilterCondition> movementScoreEqualTo(
+  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterFilterCondition>
+      movementScoreEqualTo(
     double value, {
     double epsilon = Query.epsilon,
   }) {
@@ -1190,7 +1216,8 @@ extension SleepSessionModelQueryFilter
     });
   }
 
-  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterFilterCondition> movementScoreLessThan(
+  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterFilterCondition>
+      movementScoreLessThan(
     double value, {
     bool include = false,
     double epsilon = Query.epsilon,
@@ -1205,7 +1232,8 @@ extension SleepSessionModelQueryFilter
     });
   }
 
-  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterFilterCondition> movementScoreBetween(
+  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterFilterCondition>
+      movementScoreBetween(
     double lower,
     double upper, {
     bool includeLower = true,
@@ -1224,7 +1252,8 @@ extension SleepSessionModelQueryFilter
     });
   }
 
-  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterFilterCondition> notesIsNull() {
+  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterFilterCondition>
+      notesIsNull() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(const FilterCondition.isNull(
         property: r'notes',
@@ -1232,7 +1261,8 @@ extension SleepSessionModelQueryFilter
     });
   }
 
-  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterFilterCondition> notesIsNotNull() {
+  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterFilterCondition>
+      notesIsNotNull() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(const FilterCondition.isNotNull(
         property: r'notes',
@@ -1240,7 +1270,8 @@ extension SleepSessionModelQueryFilter
     });
   }
 
-  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterFilterCondition> notesEqualTo(
+  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterFilterCondition>
+      notesEqualTo(
     String? value, {
     bool caseSensitive = true,
   }) {
@@ -1253,7 +1284,8 @@ extension SleepSessionModelQueryFilter
     });
   }
 
-  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterFilterCondition> notesGreaterThan(
+  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterFilterCondition>
+      notesGreaterThan(
     String? value, {
     bool include = false,
     bool caseSensitive = true,
@@ -1268,7 +1300,8 @@ extension SleepSessionModelQueryFilter
     });
   }
 
-  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterFilterCondition> notesLessThan(
+  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterFilterCondition>
+      notesLessThan(
     String? value, {
     bool include = false,
     bool caseSensitive = true,
@@ -1283,7 +1316,8 @@ extension SleepSessionModelQueryFilter
     });
   }
 
-  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterFilterCondition> notesBetween(
+  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterFilterCondition>
+      notesBetween(
     String? lower,
     String? upper, {
     bool includeLower = true,
@@ -1302,7 +1336,8 @@ extension SleepSessionModelQueryFilter
     });
   }
 
-  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterFilterCondition> notesStartsWith(
+  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterFilterCondition>
+      notesStartsWith(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -1315,7 +1350,8 @@ extension SleepSessionModelQueryFilter
     });
   }
 
-  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterFilterCondition> notesEndsWith(
+  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterFilterCondition>
+      notesEndsWith(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -1328,9 +1364,8 @@ extension SleepSessionModelQueryFilter
     });
   }
 
-  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterFilterCondition> notesContains(
-      String value,
-      {bool caseSensitive = true}) {
+  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterFilterCondition>
+      notesContains(String value, {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.contains(
         property: r'notes',
@@ -1340,9 +1375,8 @@ extension SleepSessionModelQueryFilter
     });
   }
 
-  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterFilterCondition> notesMatches(
-      String pattern,
-      {bool caseSensitive = true}) {
+  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterFilterCondition>
+      notesMatches(String pattern, {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.matches(
         property: r'notes',
@@ -1352,7 +1386,8 @@ extension SleepSessionModelQueryFilter
     });
   }
 
-  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterFilterCondition> notesIsEmpty() {
+  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterFilterCondition>
+      notesIsEmpty() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.equalTo(
         property: r'notes',
@@ -1361,7 +1396,8 @@ extension SleepSessionModelQueryFilter
     });
   }
 
-  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterFilterCondition> notesIsNotEmpty() {
+  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterFilterCondition>
+      notesIsNotEmpty() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.greaterThan(
         property: r'notes',
@@ -1370,7 +1406,8 @@ extension SleepSessionModelQueryFilter
     });
   }
 
-  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterFilterCondition> scoreLabelEqualTo(
+  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterFilterCondition>
+      scoreLabelEqualTo(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -1383,7 +1420,8 @@ extension SleepSessionModelQueryFilter
     });
   }
 
-  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterFilterCondition> scoreLabelGreaterThan(
+  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterFilterCondition>
+      scoreLabelGreaterThan(
     String value, {
     bool include = false,
     bool caseSensitive = true,
@@ -1398,7 +1436,8 @@ extension SleepSessionModelQueryFilter
     });
   }
 
-  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterFilterCondition> scoreLabelLessThan(
+  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterFilterCondition>
+      scoreLabelLessThan(
     String value, {
     bool include = false,
     bool caseSensitive = true,
@@ -1413,7 +1452,8 @@ extension SleepSessionModelQueryFilter
     });
   }
 
-  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterFilterCondition> scoreLabelBetween(
+  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterFilterCondition>
+      scoreLabelBetween(
     String lower,
     String upper, {
     bool includeLower = true,
@@ -1432,7 +1472,8 @@ extension SleepSessionModelQueryFilter
     });
   }
 
-  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterFilterCondition> scoreLabelStartsWith(
+  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterFilterCondition>
+      scoreLabelStartsWith(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -1445,7 +1486,8 @@ extension SleepSessionModelQueryFilter
     });
   }
 
-  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterFilterCondition> scoreLabelEndsWith(
+  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterFilterCondition>
+      scoreLabelEndsWith(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -1458,9 +1500,8 @@ extension SleepSessionModelQueryFilter
     });
   }
 
-  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterFilterCondition> scoreLabelContains(
-      String value,
-      {bool caseSensitive = true}) {
+  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterFilterCondition>
+      scoreLabelContains(String value, {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.contains(
         property: r'scoreLabel',
@@ -1470,9 +1511,8 @@ extension SleepSessionModelQueryFilter
     });
   }
 
-  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterFilterCondition> scoreLabelMatches(
-      String pattern,
-      {bool caseSensitive = true}) {
+  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterFilterCondition>
+      scoreLabelMatches(String pattern, {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.matches(
         property: r'scoreLabel',
@@ -1482,7 +1522,8 @@ extension SleepSessionModelQueryFilter
     });
   }
 
-  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterFilterCondition> scoreLabelIsEmpty() {
+  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterFilterCondition>
+      scoreLabelIsEmpty() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.equalTo(
         property: r'scoreLabel',
@@ -1491,7 +1532,8 @@ extension SleepSessionModelQueryFilter
     });
   }
 
-  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterFilterCondition> scoreLabelIsNotEmpty() {
+  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterFilterCondition>
+      scoreLabelIsNotEmpty() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.greaterThan(
         property: r'scoreLabel',
@@ -1500,8 +1542,8 @@ extension SleepSessionModelQueryFilter
     });
   }
 
-  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterFilterCondition> sleepScoreEqualTo(
-      int value) {
+  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterFilterCondition>
+      sleepScoreEqualTo(int value) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.equalTo(
         property: r'sleepScore',
@@ -1510,7 +1552,8 @@ extension SleepSessionModelQueryFilter
     });
   }
 
-  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterFilterCondition> sleepScoreGreaterThan(
+  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterFilterCondition>
+      sleepScoreGreaterThan(
     int value, {
     bool include = false,
   }) {
@@ -1523,7 +1566,8 @@ extension SleepSessionModelQueryFilter
     });
   }
 
-  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterFilterCondition> sleepScoreLessThan(
+  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterFilterCondition>
+      sleepScoreLessThan(
     int value, {
     bool include = false,
   }) {
@@ -1536,7 +1580,8 @@ extension SleepSessionModelQueryFilter
     });
   }
 
-  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterFilterCondition> sleepScoreBetween(
+  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterFilterCondition>
+      sleepScoreBetween(
     int lower,
     int upper, {
     bool includeLower = true,
@@ -1553,8 +1598,8 @@ extension SleepSessionModelQueryFilter
     });
   }
 
-  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterFilterCondition> sleepTimeEqualTo(
-      DateTime value) {
+  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterFilterCondition>
+      sleepTimeEqualTo(DateTime value) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.equalTo(
         property: r'sleepTime',
@@ -1563,7 +1608,8 @@ extension SleepSessionModelQueryFilter
     });
   }
 
-  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterFilterCondition> sleepTimeGreaterThan(
+  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterFilterCondition>
+      sleepTimeGreaterThan(
     DateTime value, {
     bool include = false,
   }) {
@@ -1576,7 +1622,8 @@ extension SleepSessionModelQueryFilter
     });
   }
 
-  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterFilterCondition> sleepTimeLessThan(
+  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterFilterCondition>
+      sleepTimeLessThan(
     DateTime value, {
     bool include = false,
   }) {
@@ -1589,7 +1636,8 @@ extension SleepSessionModelQueryFilter
     });
   }
 
-  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterFilterCondition> sleepTimeBetween(
+  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterFilterCondition>
+      sleepTimeBetween(
     DateTime lower,
     DateTime upper, {
     bool includeLower = true,
@@ -1606,8 +1654,8 @@ extension SleepSessionModelQueryFilter
     });
   }
 
-  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterFilterCondition> snoreDetectedEqualTo(
-      bool value) {
+  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterFilterCondition>
+      snoreDetectedEqualTo(bool value) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.equalTo(
         property: r'snoreDetected',
@@ -1616,8 +1664,8 @@ extension SleepSessionModelQueryFilter
     });
   }
 
-  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterFilterCondition> snoreEventCountEqualTo(
-      int value) {
+  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterFilterCondition>
+      snoreEventCountEqualTo(int value) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.equalTo(
         property: r'snoreEventCount',
@@ -1640,7 +1688,8 @@ extension SleepSessionModelQueryFilter
     });
   }
 
-  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterFilterCondition> snoreEventCountLessThan(
+  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterFilterCondition>
+      snoreEventCountLessThan(
     int value, {
     bool include = false,
   }) {
@@ -1653,7 +1702,8 @@ extension SleepSessionModelQueryFilter
     });
   }
 
-  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterFilterCondition> snoreEventCountBetween(
+  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterFilterCondition>
+      snoreEventCountBetween(
     int lower,
     int upper, {
     bool includeLower = true,
@@ -1670,8 +1720,8 @@ extension SleepSessionModelQueryFilter
     });
   }
 
-  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterFilterCondition> wakeTimeEqualTo(
-      DateTime value) {
+  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterFilterCondition>
+      wakeTimeEqualTo(DateTime value) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.equalTo(
         property: r'wakeTime',
@@ -1680,7 +1730,8 @@ extension SleepSessionModelQueryFilter
     });
   }
 
-  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterFilterCondition> wakeTimeGreaterThan(
+  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterFilterCondition>
+      wakeTimeGreaterThan(
     DateTime value, {
     bool include = false,
   }) {
@@ -1693,7 +1744,8 @@ extension SleepSessionModelQueryFilter
     });
   }
 
-  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterFilterCondition> wakeTimeLessThan(
+  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterFilterCondition>
+      wakeTimeLessThan(
     DateTime value, {
     bool include = false,
   }) {
@@ -1706,7 +1758,8 @@ extension SleepSessionModelQueryFilter
     });
   }
 
-  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterFilterCondition> wakeTimeBetween(
+  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterFilterCondition>
+      wakeTimeBetween(
     DateTime lower,
     DateTime upper, {
     bool includeLower = true,
@@ -1732,229 +1785,267 @@ extension SleepSessionModelQueryLinks
 
 extension SleepSessionModelQuerySortBy
     on QueryBuilder<SleepSessionModel, SleepSessionModel, QSortBy> {
-  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterSortBy> sortByAvgNoiseLevel() {
+  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterSortBy>
+      sortByAvgNoiseLevel() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'avgNoiseLevel', Sort.asc);
     });
   }
 
-  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterSortBy> sortByAvgNoiseLevelDesc() {
+  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterSortBy>
+      sortByAvgNoiseLevelDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'avgNoiseLevel', Sort.desc);
     });
   }
 
-  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterSortBy> sortByConsistencyScore() {
+  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterSortBy>
+      sortByConsistencyScore() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'consistencyScore', Sort.asc);
     });
   }
 
-  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterSortBy> sortByConsistencyScoreDesc() {
+  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterSortBy>
+      sortByConsistencyScoreDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'consistencyScore', Sort.desc);
     });
   }
 
-  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterSortBy> sortByDate() {
+  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterSortBy>
+      sortByDate() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'date', Sort.asc);
     });
   }
 
-  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterSortBy> sortByDateDesc() {
+  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterSortBy>
+      sortByDateDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'date', Sort.desc);
     });
   }
 
-  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterSortBy> sortByDurationFormatted() {
+  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterSortBy>
+      sortByDurationFormatted() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'durationFormatted', Sort.asc);
     });
   }
 
-  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterSortBy> sortByDurationFormattedDesc() {
+  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterSortBy>
+      sortByDurationFormattedDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'durationFormatted', Sort.desc);
     });
   }
 
-  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterSortBy> sortByDurationHours() {
+  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterSortBy>
+      sortByDurationHours() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'durationHours', Sort.asc);
     });
   }
 
-  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterSortBy> sortByDurationHoursDesc() {
+  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterSortBy>
+      sortByDurationHoursDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'durationHours', Sort.desc);
     });
   }
 
-  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterSortBy> sortByEstimatedAwakeTime() {
+  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterSortBy>
+      sortByEstimatedAwakeTime() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'estimatedAwakeTime', Sort.asc);
     });
   }
 
-  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterSortBy> sortByEstimatedAwakeTimeDesc() {
+  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterSortBy>
+      sortByEstimatedAwakeTimeDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'estimatedAwakeTime', Sort.desc);
     });
   }
 
-  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterSortBy> sortByEstimatedDeepSleep() {
+  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterSortBy>
+      sortByEstimatedDeepSleep() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'estimatedDeepSleep', Sort.asc);
     });
   }
 
-  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterSortBy> sortByEstimatedDeepSleepDesc() {
+  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterSortBy>
+      sortByEstimatedDeepSleepDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'estimatedDeepSleep', Sort.desc);
     });
   }
 
-  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterSortBy> sortByEstimatedLightSleep() {
+  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterSortBy>
+      sortByEstimatedLightSleep() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'estimatedLightSleep', Sort.asc);
     });
   }
 
-  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterSortBy> sortByEstimatedLightSleepDesc() {
+  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterSortBy>
+      sortByEstimatedLightSleepDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'estimatedLightSleep', Sort.desc);
     });
   }
 
-  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterSortBy> sortByEstimatedRemSleep() {
+  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterSortBy>
+      sortByEstimatedRemSleep() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'estimatedRemSleep', Sort.asc);
     });
   }
 
-  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterSortBy> sortByEstimatedRemSleepDesc() {
+  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterSortBy>
+      sortByEstimatedRemSleepDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'estimatedRemSleep', Sort.desc);
     });
   }
 
-  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterSortBy> sortByInterruptions() {
+  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterSortBy>
+      sortByInterruptions() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'interruptions', Sort.asc);
     });
   }
 
-  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterSortBy> sortByInterruptionsDesc() {
+  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterSortBy>
+      sortByInterruptionsDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'interruptions', Sort.desc);
     });
   }
 
-  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterSortBy> sortByMetSleepGoal() {
+  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterSortBy>
+      sortByMetSleepGoal() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'metSleepGoal', Sort.asc);
     });
   }
 
-  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterSortBy> sortByMetSleepGoalDesc() {
+  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterSortBy>
+      sortByMetSleepGoalDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'metSleepGoal', Sort.desc);
     });
   }
 
-  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterSortBy> sortByMovementScore() {
+  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterSortBy>
+      sortByMovementScore() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'movementScore', Sort.asc);
     });
   }
 
-  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterSortBy> sortByMovementScoreDesc() {
+  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterSortBy>
+      sortByMovementScoreDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'movementScore', Sort.desc);
     });
   }
 
-  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterSortBy> sortByNotes() {
+  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterSortBy>
+      sortByNotes() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'notes', Sort.asc);
     });
   }
 
-  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterSortBy> sortByNotesDesc() {
+  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterSortBy>
+      sortByNotesDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'notes', Sort.desc);
     });
   }
 
-  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterSortBy> sortByScoreLabel() {
+  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterSortBy>
+      sortByScoreLabel() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'scoreLabel', Sort.asc);
     });
   }
 
-  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterSortBy> sortByScoreLabelDesc() {
+  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterSortBy>
+      sortByScoreLabelDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'scoreLabel', Sort.desc);
     });
   }
 
-  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterSortBy> sortBySleepScore() {
+  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterSortBy>
+      sortBySleepScore() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'sleepScore', Sort.asc);
     });
   }
 
-  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterSortBy> sortBySleepScoreDesc() {
+  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterSortBy>
+      sortBySleepScoreDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'sleepScore', Sort.desc);
     });
   }
 
-  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterSortBy> sortBySleepTime() {
+  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterSortBy>
+      sortBySleepTime() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'sleepTime', Sort.asc);
     });
   }
 
-  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterSortBy> sortBySleepTimeDesc() {
+  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterSortBy>
+      sortBySleepTimeDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'sleepTime', Sort.desc);
     });
   }
 
-  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterSortBy> sortBySnoreDetected() {
+  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterSortBy>
+      sortBySnoreDetected() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'snoreDetected', Sort.asc);
     });
   }
 
-  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterSortBy> sortBySnoreDetectedDesc() {
+  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterSortBy>
+      sortBySnoreDetectedDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'snoreDetected', Sort.desc);
     });
   }
 
-  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterSortBy> sortBySnoreEventCount() {
+  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterSortBy>
+      sortBySnoreEventCount() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'snoreEventCount', Sort.asc);
     });
   }
 
-  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterSortBy> sortBySnoreEventCountDesc() {
+  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterSortBy>
+      sortBySnoreEventCountDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'snoreEventCount', Sort.desc);
     });
   }
 
-  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterSortBy> sortByWakeTime() {
+  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterSortBy>
+      sortByWakeTime() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'wakeTime', Sort.asc);
     });
   }
 
-  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterSortBy> sortByWakeTimeDesc() {
+  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterSortBy>
+      sortByWakeTimeDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'wakeTime', Sort.desc);
     });
@@ -1963,109 +2054,127 @@ extension SleepSessionModelQuerySortBy
 
 extension SleepSessionModelQuerySortThenBy
     on QueryBuilder<SleepSessionModel, SleepSessionModel, QSortThenBy> {
-  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterSortBy> thenByAvgNoiseLevel() {
+  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterSortBy>
+      thenByAvgNoiseLevel() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'avgNoiseLevel', Sort.asc);
     });
   }
 
-  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterSortBy> thenByAvgNoiseLevelDesc() {
+  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterSortBy>
+      thenByAvgNoiseLevelDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'avgNoiseLevel', Sort.desc);
     });
   }
 
-  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterSortBy> thenByConsistencyScore() {
+  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterSortBy>
+      thenByConsistencyScore() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'consistencyScore', Sort.asc);
     });
   }
 
-  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterSortBy> thenByConsistencyScoreDesc() {
+  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterSortBy>
+      thenByConsistencyScoreDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'consistencyScore', Sort.desc);
     });
   }
 
-  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterSortBy> thenByDate() {
+  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterSortBy>
+      thenByDate() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'date', Sort.asc);
     });
   }
 
-  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterSortBy> thenByDateDesc() {
+  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterSortBy>
+      thenByDateDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'date', Sort.desc);
     });
   }
 
-  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterSortBy> thenByDurationFormatted() {
+  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterSortBy>
+      thenByDurationFormatted() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'durationFormatted', Sort.asc);
     });
   }
 
-  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterSortBy> thenByDurationFormattedDesc() {
+  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterSortBy>
+      thenByDurationFormattedDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'durationFormatted', Sort.desc);
     });
   }
 
-  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterSortBy> thenByDurationHours() {
+  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterSortBy>
+      thenByDurationHours() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'durationHours', Sort.asc);
     });
   }
 
-  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterSortBy> thenByDurationHoursDesc() {
+  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterSortBy>
+      thenByDurationHoursDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'durationHours', Sort.desc);
     });
   }
 
-  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterSortBy> thenByEstimatedAwakeTime() {
+  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterSortBy>
+      thenByEstimatedAwakeTime() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'estimatedAwakeTime', Sort.asc);
     });
   }
 
-  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterSortBy> thenByEstimatedAwakeTimeDesc() {
+  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterSortBy>
+      thenByEstimatedAwakeTimeDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'estimatedAwakeTime', Sort.desc);
     });
   }
 
-  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterSortBy> thenByEstimatedDeepSleep() {
+  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterSortBy>
+      thenByEstimatedDeepSleep() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'estimatedDeepSleep', Sort.asc);
     });
   }
 
-  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterSortBy> thenByEstimatedDeepSleepDesc() {
+  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterSortBy>
+      thenByEstimatedDeepSleepDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'estimatedDeepSleep', Sort.desc);
     });
   }
 
-  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterSortBy> thenByEstimatedLightSleep() {
+  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterSortBy>
+      thenByEstimatedLightSleep() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'estimatedLightSleep', Sort.asc);
     });
   }
 
-  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterSortBy> thenByEstimatedLightSleepDesc() {
+  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterSortBy>
+      thenByEstimatedLightSleepDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'estimatedLightSleep', Sort.desc);
     });
   }
 
-  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterSortBy> thenByEstimatedRemSleep() {
+  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterSortBy>
+      thenByEstimatedRemSleep() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'estimatedRemSleep', Sort.asc);
     });
   }
 
-  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterSortBy> thenByEstimatedRemSleepDesc() {
+  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterSortBy>
+      thenByEstimatedRemSleepDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'estimatedRemSleep', Sort.desc);
     });
@@ -2077,127 +2186,148 @@ extension SleepSessionModelQuerySortThenBy
     });
   }
 
-  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterSortBy> thenByIdDesc() {
+  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterSortBy>
+      thenByIdDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'id', Sort.desc);
     });
   }
 
-  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterSortBy> thenByInterruptions() {
+  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterSortBy>
+      thenByInterruptions() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'interruptions', Sort.asc);
     });
   }
 
-  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterSortBy> thenByInterruptionsDesc() {
+  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterSortBy>
+      thenByInterruptionsDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'interruptions', Sort.desc);
     });
   }
 
-  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterSortBy> thenByMetSleepGoal() {
+  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterSortBy>
+      thenByMetSleepGoal() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'metSleepGoal', Sort.asc);
     });
   }
 
-  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterSortBy> thenByMetSleepGoalDesc() {
+  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterSortBy>
+      thenByMetSleepGoalDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'metSleepGoal', Sort.desc);
     });
   }
 
-  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterSortBy> thenByMovementScore() {
+  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterSortBy>
+      thenByMovementScore() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'movementScore', Sort.asc);
     });
   }
 
-  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterSortBy> thenByMovementScoreDesc() {
+  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterSortBy>
+      thenByMovementScoreDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'movementScore', Sort.desc);
     });
   }
 
-  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterSortBy> thenByNotes() {
+  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterSortBy>
+      thenByNotes() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'notes', Sort.asc);
     });
   }
 
-  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterSortBy> thenByNotesDesc() {
+  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterSortBy>
+      thenByNotesDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'notes', Sort.desc);
     });
   }
 
-  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterSortBy> thenByScoreLabel() {
+  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterSortBy>
+      thenByScoreLabel() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'scoreLabel', Sort.asc);
     });
   }
 
-  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterSortBy> thenByScoreLabelDesc() {
+  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterSortBy>
+      thenByScoreLabelDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'scoreLabel', Sort.desc);
     });
   }
 
-  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterSortBy> thenBySleepScore() {
+  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterSortBy>
+      thenBySleepScore() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'sleepScore', Sort.asc);
     });
   }
 
-  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterSortBy> thenBySleepScoreDesc() {
+  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterSortBy>
+      thenBySleepScoreDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'sleepScore', Sort.desc);
     });
   }
 
-  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterSortBy> thenBySleepTime() {
+  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterSortBy>
+      thenBySleepTime() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'sleepTime', Sort.asc);
     });
   }
 
-  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterSortBy> thenBySleepTimeDesc() {
+  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterSortBy>
+      thenBySleepTimeDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'sleepTime', Sort.desc);
     });
   }
 
-  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterSortBy> thenBySnoreDetected() {
+  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterSortBy>
+      thenBySnoreDetected() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'snoreDetected', Sort.asc);
     });
   }
 
-  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterSortBy> thenBySnoreDetectedDesc() {
+  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterSortBy>
+      thenBySnoreDetectedDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'snoreDetected', Sort.desc);
     });
   }
 
-  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterSortBy> thenBySnoreEventCount() {
+  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterSortBy>
+      thenBySnoreEventCount() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'snoreEventCount', Sort.asc);
     });
   }
 
-  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterSortBy> thenBySnoreEventCountDesc() {
+  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterSortBy>
+      thenBySnoreEventCountDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'snoreEventCount', Sort.desc);
     });
   }
 
-  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterSortBy> thenByWakeTime() {
+  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterSortBy>
+      thenByWakeTime() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'wakeTime', Sort.asc);
     });
   }
 
-  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterSortBy> thenByWakeTimeDesc() {
+  QueryBuilder<SleepSessionModel, SleepSessionModel, QAfterSortBy>
+      thenByWakeTimeDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'wakeTime', Sort.desc);
     });
@@ -2206,74 +2336,86 @@ extension SleepSessionModelQuerySortThenBy
 
 extension SleepSessionModelQueryWhereDistinct
     on QueryBuilder<SleepSessionModel, SleepSessionModel, QDistinct> {
-  QueryBuilder<SleepSessionModel, SleepSessionModel, QDistinct> distinctByAvgNoiseLevel() {
+  QueryBuilder<SleepSessionModel, SleepSessionModel, QDistinct>
+      distinctByAvgNoiseLevel() {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(r'avgNoiseLevel');
     });
   }
 
-  QueryBuilder<SleepSessionModel, SleepSessionModel, QDistinct> distinctByConsistencyScore() {
+  QueryBuilder<SleepSessionModel, SleepSessionModel, QDistinct>
+      distinctByConsistencyScore() {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(r'consistencyScore');
     });
   }
 
-  QueryBuilder<SleepSessionModel, SleepSessionModel, QDistinct> distinctByDate() {
+  QueryBuilder<SleepSessionModel, SleepSessionModel, QDistinct>
+      distinctByDate() {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(r'date');
     });
   }
 
-  QueryBuilder<SleepSessionModel, SleepSessionModel, QDistinct> distinctByDurationFormatted(
-      {bool caseSensitive = true}) {
+  QueryBuilder<SleepSessionModel, SleepSessionModel, QDistinct>
+      distinctByDurationFormatted({bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
-      return query.addDistinctBy(r'durationFormatted', caseSensitive: caseSensitive);
+      return query.addDistinctBy(r'durationFormatted',
+          caseSensitive: caseSensitive);
     });
   }
 
-  QueryBuilder<SleepSessionModel, SleepSessionModel, QDistinct> distinctByDurationHours() {
+  QueryBuilder<SleepSessionModel, SleepSessionModel, QDistinct>
+      distinctByDurationHours() {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(r'durationHours');
     });
   }
 
-  QueryBuilder<SleepSessionModel, SleepSessionModel, QDistinct> distinctByEstimatedAwakeTime() {
+  QueryBuilder<SleepSessionModel, SleepSessionModel, QDistinct>
+      distinctByEstimatedAwakeTime() {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(r'estimatedAwakeTime');
     });
   }
 
-  QueryBuilder<SleepSessionModel, SleepSessionModel, QDistinct> distinctByEstimatedDeepSleep() {
+  QueryBuilder<SleepSessionModel, SleepSessionModel, QDistinct>
+      distinctByEstimatedDeepSleep() {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(r'estimatedDeepSleep');
     });
   }
 
-  QueryBuilder<SleepSessionModel, SleepSessionModel, QDistinct> distinctByEstimatedLightSleep() {
+  QueryBuilder<SleepSessionModel, SleepSessionModel, QDistinct>
+      distinctByEstimatedLightSleep() {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(r'estimatedLightSleep');
     });
   }
 
-  QueryBuilder<SleepSessionModel, SleepSessionModel, QDistinct> distinctByEstimatedRemSleep() {
+  QueryBuilder<SleepSessionModel, SleepSessionModel, QDistinct>
+      distinctByEstimatedRemSleep() {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(r'estimatedRemSleep');
     });
   }
 
-  QueryBuilder<SleepSessionModel, SleepSessionModel, QDistinct> distinctByInterruptions() {
+  QueryBuilder<SleepSessionModel, SleepSessionModel, QDistinct>
+      distinctByInterruptions() {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(r'interruptions');
     });
   }
 
-  QueryBuilder<SleepSessionModel, SleepSessionModel, QDistinct> distinctByMetSleepGoal() {
+  QueryBuilder<SleepSessionModel, SleepSessionModel, QDistinct>
+      distinctByMetSleepGoal() {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(r'metSleepGoal');
     });
   }
 
-  QueryBuilder<SleepSessionModel, SleepSessionModel, QDistinct> distinctByMovementScore() {
+  QueryBuilder<SleepSessionModel, SleepSessionModel, QDistinct>
+      distinctByMovementScore() {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(r'movementScore');
     });
@@ -2286,38 +2428,43 @@ extension SleepSessionModelQueryWhereDistinct
     });
   }
 
-  QueryBuilder<SleepSessionModel, SleepSessionModel, QDistinct> distinctByScoreLabel(
-      {bool caseSensitive = true}) {
+  QueryBuilder<SleepSessionModel, SleepSessionModel, QDistinct>
+      distinctByScoreLabel({bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(r'scoreLabel', caseSensitive: caseSensitive);
     });
   }
 
-  QueryBuilder<SleepSessionModel, SleepSessionModel, QDistinct> distinctBySleepScore() {
+  QueryBuilder<SleepSessionModel, SleepSessionModel, QDistinct>
+      distinctBySleepScore() {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(r'sleepScore');
     });
   }
 
-  QueryBuilder<SleepSessionModel, SleepSessionModel, QDistinct> distinctBySleepTime() {
+  QueryBuilder<SleepSessionModel, SleepSessionModel, QDistinct>
+      distinctBySleepTime() {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(r'sleepTime');
     });
   }
 
-  QueryBuilder<SleepSessionModel, SleepSessionModel, QDistinct> distinctBySnoreDetected() {
+  QueryBuilder<SleepSessionModel, SleepSessionModel, QDistinct>
+      distinctBySnoreDetected() {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(r'snoreDetected');
     });
   }
 
-  QueryBuilder<SleepSessionModel, SleepSessionModel, QDistinct> distinctBySnoreEventCount() {
+  QueryBuilder<SleepSessionModel, SleepSessionModel, QDistinct>
+      distinctBySnoreEventCount() {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(r'snoreEventCount');
     });
   }
 
-  QueryBuilder<SleepSessionModel, SleepSessionModel, QDistinct> distinctByWakeTime() {
+  QueryBuilder<SleepSessionModel, SleepSessionModel, QDistinct>
+      distinctByWakeTime() {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(r'wakeTime');
     });
@@ -2332,13 +2479,15 @@ extension SleepSessionModelQueryProperty
     });
   }
 
-  QueryBuilder<SleepSessionModel, double, QQueryOperations> avgNoiseLevelProperty() {
+  QueryBuilder<SleepSessionModel, double, QQueryOperations>
+      avgNoiseLevelProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'avgNoiseLevel');
     });
   }
 
-  QueryBuilder<SleepSessionModel, int, QQueryOperations> consistencyScoreProperty() {
+  QueryBuilder<SleepSessionModel, int, QQueryOperations>
+      consistencyScoreProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'consistencyScore');
     });
@@ -2350,55 +2499,64 @@ extension SleepSessionModelQueryProperty
     });
   }
 
-  QueryBuilder<SleepSessionModel, String, QQueryOperations> durationFormattedProperty() {
+  QueryBuilder<SleepSessionModel, String, QQueryOperations>
+      durationFormattedProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'durationFormatted');
     });
   }
 
-  QueryBuilder<SleepSessionModel, double, QQueryOperations> durationHoursProperty() {
+  QueryBuilder<SleepSessionModel, double, QQueryOperations>
+      durationHoursProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'durationHours');
     });
   }
 
-  QueryBuilder<SleepSessionModel, int, QQueryOperations> estimatedAwakeTimeProperty() {
+  QueryBuilder<SleepSessionModel, int, QQueryOperations>
+      estimatedAwakeTimeProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'estimatedAwakeTime');
     });
   }
 
-  QueryBuilder<SleepSessionModel, int, QQueryOperations> estimatedDeepSleepProperty() {
+  QueryBuilder<SleepSessionModel, int, QQueryOperations>
+      estimatedDeepSleepProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'estimatedDeepSleep');
     });
   }
 
-  QueryBuilder<SleepSessionModel, int, QQueryOperations> estimatedLightSleepProperty() {
+  QueryBuilder<SleepSessionModel, int, QQueryOperations>
+      estimatedLightSleepProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'estimatedLightSleep');
     });
   }
 
-  QueryBuilder<SleepSessionModel, int, QQueryOperations> estimatedRemSleepProperty() {
+  QueryBuilder<SleepSessionModel, int, QQueryOperations>
+      estimatedRemSleepProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'estimatedRemSleep');
     });
   }
 
-  QueryBuilder<SleepSessionModel, int, QQueryOperations> interruptionsProperty() {
+  QueryBuilder<SleepSessionModel, int, QQueryOperations>
+      interruptionsProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'interruptions');
     });
   }
 
-  QueryBuilder<SleepSessionModel, bool, QQueryOperations> metSleepGoalProperty() {
+  QueryBuilder<SleepSessionModel, bool, QQueryOperations>
+      metSleepGoalProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'metSleepGoal');
     });
   }
 
-  QueryBuilder<SleepSessionModel, double, QQueryOperations> movementScoreProperty() {
+  QueryBuilder<SleepSessionModel, double, QQueryOperations>
+      movementScoreProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'movementScore');
     });
@@ -2410,7 +2568,8 @@ extension SleepSessionModelQueryProperty
     });
   }
 
-  QueryBuilder<SleepSessionModel, String, QQueryOperations> scoreLabelProperty() {
+  QueryBuilder<SleepSessionModel, String, QQueryOperations>
+      scoreLabelProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'scoreLabel');
     });
@@ -2422,25 +2581,29 @@ extension SleepSessionModelQueryProperty
     });
   }
 
-  QueryBuilder<SleepSessionModel, DateTime, QQueryOperations> sleepTimeProperty() {
+  QueryBuilder<SleepSessionModel, DateTime, QQueryOperations>
+      sleepTimeProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'sleepTime');
     });
   }
 
-  QueryBuilder<SleepSessionModel, bool, QQueryOperations> snoreDetectedProperty() {
+  QueryBuilder<SleepSessionModel, bool, QQueryOperations>
+      snoreDetectedProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'snoreDetected');
     });
   }
 
-  QueryBuilder<SleepSessionModel, int, QQueryOperations> snoreEventCountProperty() {
+  QueryBuilder<SleepSessionModel, int, QQueryOperations>
+      snoreEventCountProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'snoreEventCount');
     });
   }
 
-  QueryBuilder<SleepSessionModel, DateTime, QQueryOperations> wakeTimeProperty() {
+  QueryBuilder<SleepSessionModel, DateTime, QQueryOperations>
+      wakeTimeProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'wakeTime');
     });
