@@ -345,10 +345,8 @@ class _AnalyticsScreenState extends ConsumerState<AnalyticsScreen>
                 reservedSize: 30,
               ),
             ),
-            topTitles:
-                const AxisTitles(),
-            rightTitles:
-                const AxisTitles(),
+            topTitles: const AxisTitles(),
+            rightTitles: const AxisTitles(),
           ),
           gridData: FlGridData(
             horizontalInterval: 3,
@@ -454,10 +452,8 @@ class _AnalyticsScreenState extends ConsumerState<AnalyticsScreen>
                 reservedSize: 28,
               ),
             ),
-            topTitles:
-                const AxisTitles(),
-            rightTitles:
-                const AxisTitles(),
+            topTitles: const AxisTitles(),
+            rightTitles: const AxisTitles(),
           ),
           gridData: FlGridData(
             horizontalInterval: 25,
@@ -515,8 +511,7 @@ class _AnalyticsScreenState extends ConsumerState<AnalyticsScreen>
             ),
           ],
           titlesData: FlTitlesData(
-            bottomTitles:
-                const AxisTitles(),
+            bottomTitles: const AxisTitles(),
             leftTitles: AxisTitles(
               sideTitles: SideTitles(
                 showTitles: true,
@@ -531,10 +526,8 @@ class _AnalyticsScreenState extends ConsumerState<AnalyticsScreen>
                 reservedSize: 28,
               ),
             ),
-            topTitles:
-                const AxisTitles(),
-            rightTitles:
-                const AxisTitles(),
+            topTitles: const AxisTitles(),
+            rightTitles: const AxisTitles(),
           ),
           gridData: FlGridData(
             horizontalInterval: 25,
