@@ -160,30 +160,34 @@ class _AiInsightsScreenState extends ConsumerState<AiInsightsScreen> {
     return SingleChildScrollView(
       padding: const EdgeInsets.symmetric(horizontal: 20),
       physics: const BouncingScrollPhysics(),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          const SizedBox(height: 4),
-          _buildAiBanner(),
-          const SizedBox(height: 20),
-          Text(
-            'Personalized Insights',
-            style: GoogleFonts.outfit(
-              color: AppColors.textSecondary,
-              fontSize: 13,
-              fontWeight: FontWeight.w600,
-            ),
-          ),
-          const SizedBox(height: 12),
-          ...insights.asMap().entries.map(
-                (e) => _buildInsightCard(e.value, e.key),
+      child: Align(
+        alignment: Alignment.topCenter,
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const SizedBox(height: 4),
+            _buildAiBanner(),
+            const SizedBox(height: 20),
+            Text(
+              'Personalized Insights',
+              style: GoogleFonts.outfit(
+                color: AppColors.textSecondary,
+                fontSize: 13,
+                fontWeight: FontWeight.w600,
               ),
-          const SizedBox(height: 20),
-          _buildSleepHygieneSection(),
-          const SizedBox(height: 20),
-          if (_isOnline) _buildOnlineChatPromo(),
-          const SizedBox(height: 32),
-        ],
+            ),
+            const SizedBox(height: 12),
+            ...insights.asMap().entries.map(
+                  (e) => _buildInsightCard(e.value, e.key),
+                ),
+            const SizedBox(height: 20),
+            _buildSleepHygieneSection(),
+            const SizedBox(height: 20),
+            if (_isOnline) _buildOnlineChatPromo(),
+            const SizedBox(height: 32),
+          ],
+        ),
       ),
     );
   }
@@ -425,86 +429,91 @@ class _AiInsightsScreenState extends ConsumerState<AiInsightsScreen> {
 
     return SingleChildScrollView(
       padding: const EdgeInsets.all(20),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Container(
-            padding: const EdgeInsets.all(20),
-            decoration: BoxDecoration(
-              gradient: AppColors.primaryGradient,
-              borderRadius: BorderRadius.circular(20),
+      child: Align(
+        alignment: Alignment.topCenter,
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Container(
+              padding: const EdgeInsets.all(20),
+              decoration: BoxDecoration(
+                gradient: AppColors.primaryGradient,
+                borderRadius: BorderRadius.circular(20),
+              ),
+              child: Row(
+                children: [
+                  const Icon(Icons.auto_awesome, color: Colors.white, size: 28),
+                  const SizedBox(width: 14),
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          'Hi! I\'m your SomniAI coach',
+                          style: GoogleFonts.outfit(
+                            color: Colors.white,
+                            fontSize: 16,
+                            fontWeight: FontWeight.w700,
+                          ),
+                        ),
+                        Text(
+                          'Ask me anything about your sleep, habits, or wellness.',
+                          style: GoogleFonts.outfit(
+                            color: Colors.white.withOpacity(0.85),
+                            fontSize: 13,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
             ),
-            child: Row(
-              children: [
-                const Icon(Icons.auto_awesome, color: Colors.white, size: 28),
-                const SizedBox(width: 14),
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
+            const SizedBox(height: 24),
+            Text(
+              'Try asking...',
+              style: GoogleFonts.outfit(
+                color: AppColors.textSecondary,
+                fontSize: 13,
+                fontWeight: FontWeight.w600,
+              ),
+            ),
+            const SizedBox(height: 12),
+            ...starters.map(
+              (s) => GestureDetector(
+                onTap: () {
+                  _chatController.text = s;
+                },
+                child: Container(
+                  margin: const EdgeInsets.only(bottom: 10),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+                  decoration: BoxDecoration(
+                    color: AppColors.cardBg,
+                    borderRadius: BorderRadius.circular(14),
+                    border:
+                        Border.all(color: AppColors.indigo.withOpacity(0.2)),
+                  ),
+                  child: Row(
                     children: [
                       Text(
-                        'Hi! I\'m your SomniAI coach',
+                        s,
                         style: GoogleFonts.outfit(
-                          color: Colors.white,
-                          fontSize: 16,
-                          fontWeight: FontWeight.w700,
-                        ),
-                      ),
-                      Text(
-                        'Ask me anything about your sleep, habits, or wellness.',
-                        style: GoogleFonts.outfit(
-                          color: Colors.white.withOpacity(0.85),
+                          color: AppColors.textPrimary,
                           fontSize: 13,
                         ),
                       ),
+                      const Spacer(),
+                      Icon(Icons.arrow_forward_ios,
+                          size: 12, color: AppColors.textMuted),
                     ],
                   ),
                 ),
-              ],
-            ),
-          ),
-          const SizedBox(height: 24),
-          Text(
-            'Try asking...',
-            style: GoogleFonts.outfit(
-              color: AppColors.textSecondary,
-              fontSize: 13,
-              fontWeight: FontWeight.w600,
-            ),
-          ),
-          const SizedBox(height: 12),
-          ...starters.map(
-            (s) => GestureDetector(
-              onTap: () {
-                _chatController.text = s;
-              },
-              child: Container(
-                margin: const EdgeInsets.only(bottom: 10),
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-                decoration: BoxDecoration(
-                  color: AppColors.cardBg,
-                  borderRadius: BorderRadius.circular(14),
-                  border: Border.all(color: AppColors.indigo.withOpacity(0.2)),
-                ),
-                child: Row(
-                  children: [
-                    Text(
-                      s,
-                      style: GoogleFonts.outfit(
-                        color: AppColors.textPrimary,
-                        fontSize: 13,
-                      ),
-                    ),
-                    const Spacer(),
-                    Icon(Icons.arrow_forward_ios,
-                        size: 12, color: AppColors.textMuted),
-                  ],
-                ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

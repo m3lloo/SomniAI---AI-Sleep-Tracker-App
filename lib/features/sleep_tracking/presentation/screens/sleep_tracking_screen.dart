@@ -64,43 +64,47 @@ class _SleepTrackingScreenState extends ConsumerState<SleepTrackingScreen>
                 Expanded(
                   child: SingleChildScrollView(
                     padding: const EdgeInsets.symmetric(horizontal: 24),
-                    child: Column(
-                      children: [
-                        const SizedBox(height: 32),
-                        _buildMoonOrb(isTracking, trackingData),
-                        const SizedBox(height: 40),
-                        SleepTimerDisplay(elapsed: trackingData.elapsed)
-                            .animate()
-                            .fadeIn(delay: 100.ms, duration: 400.ms)
-                            .slideY(begin: -0.1, end: 0),
-                        const SizedBox(height: 32),
-                        if (isTracking) ...[
-                          MovementIndicator(
-                                  movement: trackingData.currentMovement)
+                    child: Align(
+                      alignment: Alignment.topCenter,
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          const SizedBox(height: 32),
+                          _buildMoonOrb(isTracking, trackingData),
+                          const SizedBox(height: 40),
+                          SleepTimerDisplay(elapsed: trackingData.elapsed)
                               .animate()
-                              .fadeIn(delay: 150.ms, duration: 400.ms)
+                              .fadeIn(delay: 100.ms, duration: 400.ms)
                               .slideY(begin: -0.1, end: 0),
-                          const SizedBox(height: 24),
-                          _buildStatsRow(trackingData)
-                              .animate()
-                              .fadeIn(delay: 200.ms, duration: 400.ms)
-                              .slideY(begin: -0.1, end: 0),
+                          const SizedBox(height: 32),
+                          if (isTracking) ...[
+                            MovementIndicator(
+                                    movement: trackingData.currentMovement)
+                                .animate()
+                                .fadeIn(delay: 150.ms, duration: 400.ms)
+                                .slideY(begin: -0.1, end: 0),
+                            const SizedBox(height: 24),
+                            _buildStatsRow(trackingData)
+                                .animate()
+                                .fadeIn(delay: 200.ms, duration: 400.ms)
+                                .slideY(begin: -0.1, end: 0),
+                          ],
+                          const SizedBox(height: 40),
+                          TrackingControls(
+                            state: trackingData.state,
+                            onStart: () => ref
+                                .read(sleepTrackingServiceProvider.notifier)
+                                .startTracking(),
+                            onStop: () => _confirmStop(context),
+                          ).animate().fadeIn(delay: 250.ms, duration: 400.ms),
+                          const SizedBox(height: 32),
+                          if (isTracking)
+                            _buildSleepTips()
+                                .animate()
+                                .fadeIn(delay: 300.ms, duration: 400.ms)
+                                .slideY(begin: 0.1, end: 0),
                         ],
-                        const SizedBox(height: 40),
-                        TrackingControls(
-                          state: trackingData.state,
-                          onStart: () => ref
-                              .read(sleepTrackingServiceProvider.notifier)
-                              .startTracking(),
-                          onStop: () => _confirmStop(context),
-                        ).animate().fadeIn(delay: 250.ms, duration: 400.ms),
-                        const SizedBox(height: 32),
-                        if (isTracking)
-                          _buildSleepTips()
-                              .animate()
-                              .fadeIn(delay: 300.ms, duration: 400.ms)
-                              .slideY(begin: 0.1, end: 0),
-                      ],
+                      ),
                     ),
                   ),
                 ),

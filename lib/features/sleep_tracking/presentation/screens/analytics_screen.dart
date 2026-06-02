@@ -237,14 +237,19 @@ class _AnalyticsScreenState extends ConsumerState<AnalyticsScreen>
     return SingleChildScrollView(
       padding: const EdgeInsets.all(20),
       physics: const BouncingScrollPhysics(),
-      child: Column(
-        children: [
-          _buildSleepDurationChart(weekSessions, durationBarGroups),
-          const SizedBox(height: 20),
-          _buildSleepScoreChart(weekSessions),
-          const SizedBox(height: 20),
-          _buildSummaryCards(sessions),
-        ],
+      child: Align(
+        alignment: Alignment.topCenter,
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            _buildSleepDurationChart(weekSessions, durationBarGroups),
+            const SizedBox(height: 20),
+            _buildSleepScoreChart(weekSessions),
+            const SizedBox(height: 20),
+            _buildSummaryCards(sessions),
+          ],
+        ),
       ),
     );
   }
@@ -253,12 +258,17 @@ class _AnalyticsScreenState extends ConsumerState<AnalyticsScreen>
     return SingleChildScrollView(
       padding: const EdgeInsets.all(20),
       physics: const BouncingScrollPhysics(),
-      child: Column(
-        children: [
-          _buildSleepScoreChart(sessions),
-          const SizedBox(height: 20),
-          _buildStageBreakdown(sessions),
-        ],
+      child: Align(
+        alignment: Alignment.topCenter,
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            _buildSleepScoreChart(sessions),
+            const SizedBox(height: 20),
+            _buildStageBreakdown(sessions),
+          ],
+        ),
       ),
     );
   }
@@ -267,12 +277,17 @@ class _AnalyticsScreenState extends ConsumerState<AnalyticsScreen>
     return SingleChildScrollView(
       padding: const EdgeInsets.all(20),
       physics: const BouncingScrollPhysics(),
-      child: Column(
-        children: [
-          _buildConsistencyChart(sessions),
-          const SizedBox(height: 20),
-          _buildBedtimeTrend(sessions),
-        ],
+      child: Align(
+        alignment: Alignment.topCenter,
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            _buildConsistencyChart(sessions),
+            const SizedBox(height: 20),
+            _buildBedtimeTrend(sessions),
+          ],
+        ),
       ),
     );
   }
