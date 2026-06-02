@@ -36,9 +36,15 @@ class _EditSessionScreenState extends ConsumerState<EditSessionScreen> {
 
   Future<void> _save() async {
     if (!_formKey.currentState!.validate()) return;
+    if (_sleepTime == null || _wakeTime == null) {
+      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+        content: Text('Please select both sleep and wake times'),
+      ));
+      return;
+    }
     // Save minimal edits: sleep/wake times
     final repo = SleepSessionRepository();
-    await repo.updateSessionTimes(widget.sessionId, _sleepTime, _wakeTime);
+    await repo.updateSessionTimes(widget.sessionId, _sleepTime!, _wakeTime!);
     if (!mounted) return;
     Navigator.of(context).pop(true);
   }

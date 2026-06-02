@@ -37,8 +37,6 @@ class _AnalyticsScreenState extends ConsumerState<AnalyticsScreen>
   Widget build(BuildContext context) {
     final sessionsAsync = ref.watch(analyticsSessionsProvider);
     final durationBarGroups = ref.watch(durationBarGroupsProvider);
-    final sleepScoreSpots = ref.watch(sleepScoreSpotsProvider);
-    final consistencySpots = ref.watch(consistencySpotsProvider);
 
     return Scaffold(
       backgroundColor: AppColors.background,

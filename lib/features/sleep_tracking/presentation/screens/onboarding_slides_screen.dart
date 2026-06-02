@@ -149,18 +149,26 @@ class _OnboardingSlidesScreenState extends State<OnboardingSlidesScreen> {
                   ),
                   const Spacer(),
                   ElevatedButton(
-                    onPressed: () async {
-                      if (_index == _slides.length - 1) {
-                        // Request permissions inline and navigate onward
-                        await _requestPermissions();
-                      } else {
-                        _controller.nextPage(
-                            duration: const Duration(milliseconds: 300),
-                            curve: Curves.easeInOut);
-                      }
-                    },
-                    child: Text(
-                        _index == _slides.length - 1 ? 'Get Started' : 'Next'),
+                    onPressed: _requesting
+                        ? null
+                        : () async {
+                            if (_index == _slides.length - 1) {
+                              // Request permissions inline and navigate onward
+                              await _requestPermissions();
+                            } else {
+                              _controller.nextPage(
+                                  duration: const Duration(milliseconds: 300),
+                                  curve: Curves.easeInOut);
+                            }
+                          },
+                    child: _requesting
+                        ? const SizedBox(
+                            width: 16,
+                            height: 16,
+                            child: CircularProgressIndicator(strokeWidth: 2),
+                          )
+                        : Text(
+                            _index == _slides.length - 1 ? 'Get Started' : 'Next'),
                   ),
                 ],
               ),

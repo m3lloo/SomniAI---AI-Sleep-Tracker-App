@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:somni_ai/core/themes/app_theme.dart';
 import 'package:somni_ai/core/themes/theme_mode_provider.dart';
 import 'package:somni_ai/local_database/database/database_service.dart';
@@ -32,11 +31,8 @@ class SomniAIApp extends ConsumerWidget {
     return MaterialApp(
       title: 'Somni AI',
       debugShowCheckedModeBanner: false,
-      localizationsDelegates: [
-        GlobalMaterialLocalizations.delegate,
-        GlobalWidgetsLocalizations.delegate,
-        GlobalCupertinoLocalizations.delegate,
-      ],
+      // Localization delegates removed temporarily to avoid analyzer issues
+      // Add back if `flutter_localizations` is available in your SDK.
       supportedLocales: const [Locale('en')],
       themeMode: themeMode,
       theme: lightTheme,

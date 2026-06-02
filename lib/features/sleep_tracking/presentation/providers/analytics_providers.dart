@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:fl_chart/fl_chart.dart';
@@ -27,10 +26,9 @@ final durationBarGroupsProvider = Provider<List<BarChartGroupData>>((ref) {
           barRods: [
             BarChartRodData(
               toY: session.durationHours,
-              gradient: session.durationHours >= 7
+                gradient: session.durationHours >= 7
                   ? AppColors.cyanGradient
-                  : const LinearGradient(
-                      colors: [AppColors.amber, AppColors.rose]),
+                  : LinearGradient(colors: [AppColors.amber, AppColors.rose]),
               width: 20,
               borderRadius:
                   const BorderRadius.vertical(top: Radius.circular(6)),
