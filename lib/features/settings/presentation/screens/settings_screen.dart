@@ -300,23 +300,25 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
               textAlign: TextAlign.center,
             ),
             const SizedBox(height: 16),
-                SizedBox(
-                  width: double.infinity,
-                  child: FilledButton(
-                    onPressed: () async {
-                      HapticFeedback.selectionClick();
-                      Navigator.pop(context);
-                      final messenger = ScaffoldMessenger.of(context);
-                      try {
-                        await ExportUtil.exportAndShare();
-                        messenger.showSnackBar(const SnackBar(content: Text('Data exported')));
-                      } catch (e) {
-                        messenger.showSnackBar(const SnackBar(content: Text('Export failed')));
-                      }
-                    },
-                    child: const Text('Export'),
-                  ),
-                ),
+            SizedBox(
+              width: double.infinity,
+              child: FilledButton(
+                onPressed: () async {
+                  HapticFeedback.selectionClick();
+                  Navigator.pop(context);
+                  final messenger = ScaffoldMessenger.of(context);
+                  try {
+                    await ExportUtil.exportAndShare();
+                    messenger.showSnackBar(
+                        const SnackBar(content: Text('Data exported')));
+                  } catch (e) {
+                    messenger.showSnackBar(
+                        const SnackBar(content: Text('Export failed')));
+                  }
+                },
+                child: const Text('Export'),
+              ),
+            ),
           ],
         ),
       ),

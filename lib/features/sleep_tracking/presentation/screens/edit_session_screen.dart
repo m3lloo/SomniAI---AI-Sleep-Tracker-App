@@ -55,7 +55,8 @@ class _EditSessionScreenState extends ConsumerState<EditSessionScreen> {
             children: [
               ListTile(
                 title: Text('Sleep Time', style: GoogleFonts.outfit()),
-                subtitle: Text(_sleepTime != null ? _sleepTime.toString() : 'Loading'),
+                subtitle: Text(
+                    _sleepTime != null ? _sleepTime.toString() : 'Loading'),
                 onTap: () async {
                   final dt = await showDatePicker(
                     context: context,
@@ -64,14 +65,20 @@ class _EditSessionScreenState extends ConsumerState<EditSessionScreen> {
                     lastDate: DateTime(2100),
                   );
                   if (dt != null) {
-                    final t = await showTimePicker(context: context, initialTime: TimeOfDay.fromDateTime(_sleepTime ?? DateTime.now()));
-                    if (t != null) setState(() => _sleepTime = DateTime(dt.year, dt.month, dt.day, t.hour, t.minute));
+                    final t = await showTimePicker(
+                        context: context,
+                        initialTime: TimeOfDay.fromDateTime(
+                            _sleepTime ?? DateTime.now()));
+                    if (t != null)
+                      setState(() => _sleepTime = DateTime(
+                          dt.year, dt.month, dt.day, t.hour, t.minute));
                   }
                 },
               ),
               ListTile(
                 title: Text('Wake Time', style: GoogleFonts.outfit()),
-                subtitle: Text(_wakeTime != null ? _wakeTime.toString() : 'Loading'),
+                subtitle:
+                    Text(_wakeTime != null ? _wakeTime.toString() : 'Loading'),
                 onTap: () async {
                   final dt = await showDatePicker(
                     context: context,
@@ -80,8 +87,13 @@ class _EditSessionScreenState extends ConsumerState<EditSessionScreen> {
                     lastDate: DateTime(2100),
                   );
                   if (dt != null) {
-                    final t = await showTimePicker(context: context, initialTime: TimeOfDay.fromDateTime(_wakeTime ?? DateTime.now()));
-                    if (t != null) setState(() => _wakeTime = DateTime(dt.year, dt.month, dt.day, t.hour, t.minute));
+                    final t = await showTimePicker(
+                        context: context,
+                        initialTime: TimeOfDay.fromDateTime(
+                            _wakeTime ?? DateTime.now()));
+                    if (t != null)
+                      setState(() => _wakeTime = DateTime(
+                          dt.year, dt.month, dt.day, t.hour, t.minute));
                   }
                 },
               ),

@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import '../../../../core/themes/app_theme.dart';
-import '../../navigation/presentation/screens/main_navigation_screen.dart';
+import 'package:somni_ai/core/themes/app_theme.dart';
+import 'package:somni_ai/features/navigation/presentation/screens/main_navigation_screen.dart';
+import 'package:somni_ai/features/sleep_tracking/presentation/screens/onboarding_screen.dart';
 
 class OnboardingSlidesScreen extends StatefulWidget {
   const OnboardingSlidesScreen({super.key});
@@ -105,9 +106,12 @@ class _OnboardingSlidesScreenState extends State<OnboardingSlidesScreen> {
                   ),
                   const Spacer(),
                   ElevatedButton(
-                    onPressed: () {
+                    onPressed: () async {
                       if (_index == _slides.length - 1) {
-                        _completeOnboarding();
+                        // Open permission flow; after it returns, complete onboarding
+                        await Navigator.of(context).push(MaterialPageRoute(
+                            builder: (_) => const OnboardingScreen()));
+                        await _completeOnboarding();
                       } else {
                         _controller.nextPage(
                             duration: const Duration(milliseconds: 300),

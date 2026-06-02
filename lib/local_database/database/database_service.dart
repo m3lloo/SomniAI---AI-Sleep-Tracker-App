@@ -73,7 +73,8 @@ class SleepSessionDao {
   }
 
   /// Update sleep and wake times for a session and recalculate duration
-  Future<void> updateSessionTimes(int id, DateTime sleepTime, DateTime wakeTime) async {
+  Future<void> updateSessionTimes(
+      int id, DateTime sleepTime, DateTime wakeTime) async {
     final durationHours = wakeTime.difference(sleepTime).inMinutes / 60.0;
     await (_db.update(_db.sleepSessions)..where((t) => t.id.equals(id))).write(
       SleepSessionsCompanion(

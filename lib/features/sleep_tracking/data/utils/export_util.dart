@@ -41,7 +41,8 @@ class ExportUtil {
 
     final csv = const ListToCsvConverter().convert(rows);
     final dir = await getTemporaryDirectory();
-    final file = File('${dir.path}/somni_sleep_export_${DateTime.now().toIso8601String()}.csv');
+    final file = File(
+        '${dir.path}/somni_sleep_export_${DateTime.now().toIso8601String()}.csv');
     await file.writeAsString(csv);
     return file.path;
   }

@@ -142,21 +142,28 @@ class HomeScreen extends ConsumerWidget {
                   icon: Icon(Icons.more_vert, color: AppColors.textSecondary),
                   onSelected: (value) async {
                     if (value == 'edit') {
-                      final session = await SleepSessionRepository().getLastSession();
+                      final session =
+                          await SleepSessionRepository().getLastSession();
                       if (session != null) {
                         Navigator.of(context).push(MaterialPageRoute(
-                          builder: (_) => EditSessionScreen(sessionId: session.id),
+                          builder: (_) =>
+                              EditSessionScreen(sessionId: session.id),
                         ));
                       } else {
-                        ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('No session to edit')));
+                        ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(
+                                content: Text('No session to edit')));
                       }
                     } else if (value == 'onboard') {
-                      Navigator.of(context).push(MaterialPageRoute(builder: (_) => const OnboardingScreen()));
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: (_) => const OnboardingScreen()));
                     }
                   },
                   itemBuilder: (context) => [
-                    const PopupMenuItem(value: 'edit', child: Text('Edit Last Session')),
-                    const PopupMenuItem(value: 'onboard', child: Text('Onboarding')),
+                    const PopupMenuItem(
+                        value: 'edit', child: Text('Edit Last Session')),
+                    const PopupMenuItem(
+                        value: 'onboard', child: Text('Onboarding')),
                   ],
                 ),
               ],
