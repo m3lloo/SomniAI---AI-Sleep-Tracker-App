@@ -40,6 +40,10 @@ class SleepSessionRepository {
     await _dao.deleteSession(id);
   }
 
+  Future<void> updateSessionTimes(int id, DateTime sleepTime, DateTime wakeTime) async {
+    await _dao.updateSessionTimes(id, sleepTime, wakeTime);
+  }
+
   /// Returns sessions for the last N days
   Future<List<SleepSessionModel>> getRecentSessions(int days) async {
     try {

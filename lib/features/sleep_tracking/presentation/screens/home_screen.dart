@@ -8,6 +8,8 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 import '../../../../core/themes/app_theme.dart';
 import '../../../sleep_tracking/data/repositories/sleep_session_repository.dart';
+import 'edit_session_screen.dart';
+import 'onboarding_screen.dart';
 import '../../../sleep_tracking/data/services/sleep_tracking_service.dart';
 
 final lastSessionProvider = FutureProvider<SleepSessionModel?>((ref) async {
@@ -135,15 +137,27 @@ class HomeScreen extends ConsumerWidget {
             Row(
               mainAxisSize: MainAxisSize.min,
               children: [
-                IconButton(
-                  onPressed: () {},
-                  icon: Icon(Icons.notifications_outlined,
-                      color: AppColors.textSecondary, size: 22),
-                  padding: EdgeInsets.zero,
-                  constraints: const BoxConstraints.tightFor(
-                    width: 36,
-                    height: 36,
-                  ),
+                PopupMenuButton<String>(
+                  color: AppColors.surfaceDark,
+                  icon: Icon(Icons.more_vert, color: AppColors.textSecondary),
+                  onSelected: (value) async {
+                    if (value == 'edit') {
+                      final session = await SleepSessionRepository().getLastSession();
+                      if (session != null) {
+                        Navigator.of(context).push(MaterialPageRoute(
+                          builder: (_) => EditSessionScreen(sessionId: session.id),
+                        ));
+                      } else {
+                        ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('No session to edit')));
+                      }
+                    } else if (value == 'onboard') {
+                      Navigator.of(context).push(MaterialPageRoute(builder: (_) => const OnboardingScreen()));
+                    }
+                  },
+                  itemBuilder: (context) => [
+                    const PopupMenuItem(value: 'edit', child: Text('Edit Last Session')),
+                    const PopupMenuItem(value: 'onboard', child: Text('Onboarding')),
+                  ],
                 ),
               ],
             ),

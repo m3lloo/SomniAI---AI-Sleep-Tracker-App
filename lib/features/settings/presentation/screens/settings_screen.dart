@@ -6,6 +6,7 @@ import 'package:somni_ai/core/themes/theme_mode_provider.dart';
 import 'package:somni_ai/core/services/secure_storage_service.dart';
 import 'package:somni_ai/core/constants/design_tokens.dart';
 import 'package:somni_ai/core/widgets/index.dart';
+import '../../../sleep_tracking/data/utils/export_util.dart';
 
 class SettingsScreen extends ConsumerStatefulWidget {
   const SettingsScreen({super.key});
@@ -299,19 +300,23 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
               textAlign: TextAlign.center,
             ),
             const SizedBox(height: 16),
-            SizedBox(
-              width: double.infinity,
-              child: FilledButton(
-                onPressed: () {
-                  HapticFeedback.selectionClick();
-                  Navigator.pop(context);
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(content: Text('Data exported')),
-                  );
-                },
-                child: const Text('Export'),
-              ),
-            ),
+                SizedBox(
+                  width: double.infinity,
+                  child: FilledButton(
+                    onPressed: () async {
+                      HapticFeedback.selectionClick();
+                      Navigator.pop(context);
+                      final messenger = ScaffoldMessenger.of(context);
+                      try {
+                        await ExportUtil.exportAndShare();
+                        messenger.showSnackBar(const SnackBar(content: Text('Data exported')));
+                      } catch (e) {
+                        messenger.showSnackBar(const SnackBar(content: Text('Export failed')));
+                      }
+                    },
+                    child: const Text('Export'),
+                  ),
+                ),
           ],
         ),
       ),

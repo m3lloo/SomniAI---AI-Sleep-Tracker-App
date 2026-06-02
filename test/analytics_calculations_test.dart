@@ -45,8 +45,10 @@ void main() {
         ),
       ];
 
-      final avgScore = sessions.fold(0, (s, e) => s + e.sleepScore) / sessions.length;
-      final avgDuration = sessions.fold(0.0, (s, e) => s + e.durationHours) / sessions.length;
+      final avgScore =
+          sessions.fold(0, (s, e) => s + e.sleepScore) / sessions.length;
+      final avgDuration =
+          sessions.fold(0.0, (s, e) => s + e.durationHours) / sessions.length;
 
       expect(avgScore, equals((80 + 70) / 2));
       expect(avgDuration, equals((8.5 + 7.25) / 2));

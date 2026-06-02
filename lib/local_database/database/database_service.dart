@@ -72,6 +72,18 @@ class SleepSessionDao {
     await (_db.delete(_db.sleepSessions)..where((t) => t.id.equals(id))).go();
   }
 
+  /// Update sleep and wake times for a session and recalculate duration
+  Future<void> updateSessionTimes(int id, DateTime sleepTime, DateTime wakeTime) async {
+    final durationHours = wakeTime.difference(sleepTime).inMinutes / 60.0;
+    await (_db.update(_db.sleepSessions)..where((t) => t.id.equals(id))).write(
+      SleepSessionsCompanion(
+        sleepTime: Value(sleepTime),
+        wakeTime: Value(wakeTime),
+        durationHours: Value(durationHours),
+      ),
+    );
+  }
+
   /// Get sessions for the last N days
   Future<List<SleepSession>> getRecentSessions(int days) async {
     final now = DateTime.now();
