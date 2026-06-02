@@ -33,13 +33,25 @@ jobs:
         run: flutter pub run build_runner build --delete-conflicting-outputs
       
       - name: Format generated code
-        run: dart format lib test
+        run: |
+          dart format lib test
+          if [ -n "$(git status --porcelain)" ]; then
+            echo "Formatting changes were applied. Commit and push them.";
+            git --no-pager diff --name-only;
+            exit 1;
+          fi
       
       - name: Analyze code
         run: flutter analyze
       
       - name: Format check
-        run: dart format --set-exit-if-changed lib test
+        run: |
+          dart format lib test
+          if [ -n "$(git status --porcelain)" ]; then
+            echo "Code style errors: run 'dart format lib test' and commit the changes.";
+            git --no-pager diff --name-only;
+            exit 1;
+          fi
       
       - name: Run tests
         run: flutter test
@@ -72,7 +84,13 @@ jobs:
         run: flutter pub run build_runner build --delete-conflicting-outputs
       
       - name: Format generated code
-        run: dart format lib test
+        run: |
+          dart format lib test
+          if [ -n "$(git status --porcelain)" ]; then
+            echo "Formatting changes were applied. Commit and push them.";
+            git --no-pager diff --name-only;
+            exit 1;
+          fi
       
       - name: Build APK
         run: flutter build apk --release

@@ -19,7 +19,13 @@ jobs:
       - name: Install dependencies
         run: flutter pub get
       - name: Format check
-        run: dart format --output=none --set-exit-if-changed lib test
+        run: |
+          dart format lib test
+          if [ -n "$(git status --porcelain)" ]; then
+            echo "Code style errors: run 'dart format lib test' and commit the changes.";
+            git --no-pager diff --name-only;
+            exit 1;
+          fi
       - name: Static analysis
         run: flutter analyze
       - name: Run tests
