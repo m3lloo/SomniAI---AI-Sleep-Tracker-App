@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:somni_ai/core/themes/app_theme.dart';
+import 'package:flutter/services.dart';
 import 'package:somni_ai/core/themes/theme_mode_provider.dart';
 import 'package:somni_ai/local_database/database/database_service.dart';
 import 'package:somni_ai/core/screens/splash_launcher.dart';
@@ -10,6 +11,16 @@ void main() async {
 
   // Initialize Drift database
   await DatabaseService().init();
+
+  // Enable edge-to-edge (full screen) and match system bars to app background
+  await SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge);
+  SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+    statusBarColor: Colors.transparent,
+    statusBarIconBrightness: Brightness.light,
+    systemNavigationBarColor: AppColors.background,
+    systemNavigationBarDividerColor: Colors.transparent,
+    systemNavigationBarIconBrightness: Brightness.light,
+  ));
 
   runApp(
     const ProviderScope(
