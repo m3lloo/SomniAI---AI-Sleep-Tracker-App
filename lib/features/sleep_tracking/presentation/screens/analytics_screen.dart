@@ -312,7 +312,6 @@ class _AnalyticsScreenState extends ConsumerState<AnalyticsScreen>
                   );
                 }),
           barTouchData: BarTouchData(
-            enabled: true,
             touchTooltipData: BarTouchTooltipData(
               getTooltipItem: (group, groupIndex, rod, rodIndex) {
                 final hour = rod.toY;
@@ -391,7 +390,6 @@ class _AnalyticsScreenState extends ConsumerState<AnalyticsScreen>
           minY: 0,
           maxY: 100,
           lineTouchData: LineTouchData(
-            enabled: true,
             touchTooltipData: LineTouchTooltipData(
               getTooltipItems: (touchedSpots) => touchedSpots.map((t) {
                 return LineTooltipItem(
