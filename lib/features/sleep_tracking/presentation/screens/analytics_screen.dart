@@ -317,7 +317,6 @@ class _AnalyticsScreenState extends ConsumerState<AnalyticsScreen>
           barTouchData: BarTouchData(
             enabled: true,
             touchTooltipData: BarTouchTooltipData(
-              tooltipBgColor: AppColors.cardBg,
               getTooltipItem: (group, groupIndex, rod, rodIndex) {
                 final hour = rod.toY;
                 return BarTooltipItem(
@@ -397,7 +396,6 @@ class _AnalyticsScreenState extends ConsumerState<AnalyticsScreen>
           lineTouchData: LineTouchData(
             enabled: true,
             touchTooltipData: LineTouchTooltipData(
-              tooltipBgColor: AppColors.cardBg,
               getTooltipItems: (touchedSpots) => touchedSpots.map((t) {
                 return LineTooltipItem(
                   '${t.y.toStringAsFixed(0)}',
@@ -516,7 +514,6 @@ class _AnalyticsScreenState extends ConsumerState<AnalyticsScreen>
           lineTouchData: LineTouchData(
             enabled: true,
             touchTooltipData: LineTouchTooltipData(
-              tooltipBgColor: AppColors.cardBg,
               getTooltipItems: (touchedSpots) => touchedSpots.map((t) {
                 return LineTooltipItem(
                   '${t.y.toStringAsFixed(0)}',

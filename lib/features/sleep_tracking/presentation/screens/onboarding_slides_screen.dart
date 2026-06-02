@@ -151,10 +151,8 @@ class _OnboardingSlidesScreenState extends State<OnboardingSlidesScreen> {
                   ElevatedButton(
                     onPressed: () async {
                       if (_index == _slides.length - 1) {
-                        // Open permission flow; after it returns, complete onboarding
-                        await Navigator.of(context).push(MaterialPageRoute(
-                            builder: (_) => const OnboardingScreen()));
-                        await _completeOnboarding();
+                        // Request permissions inline and navigate onward
+                        await _requestPermissions();
                       } else {
                         _controller.nextPage(
                             duration: const Duration(milliseconds: 300),

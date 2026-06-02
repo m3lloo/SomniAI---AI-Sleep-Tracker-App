@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
-import '../../../../core/themes/app_theme.dart';
+// removed unused import
 import '../../../sleep_tracking/data/repositories/sleep_session_repository.dart';
 
 class EditSessionScreen extends ConsumerStatefulWidget {
@@ -15,8 +15,8 @@ class EditSessionScreen extends ConsumerStatefulWidget {
 
 class _EditSessionScreenState extends ConsumerState<EditSessionScreen> {
   final _formKey = GlobalKey<FormState>();
-  late DateTime _sleepTime;
-  late DateTime _wakeTime;
+  DateTime? _sleepTime;
+  DateTime? _wakeTime;
 
   @override
   void initState() {
