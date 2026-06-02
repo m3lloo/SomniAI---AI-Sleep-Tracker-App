@@ -304,7 +304,6 @@ class _AnalyticsScreenState extends ConsumerState<AnalyticsScreen>
                         borderRadius: const BorderRadius.vertical(
                             top: Radius.circular(6)),
                         backDrawRodData: BackgroundBarChartRodData(
-                          show: true,
                           toY: 12,
                           color: AppColors.surfaceLight,
                         ),
@@ -413,7 +412,6 @@ class _AnalyticsScreenState extends ConsumerState<AnalyticsScreen>
               barWidth: 3,
               isStrokeCapRound: true,
               belowBarData: BarAreaData(
-                show: true,
                 gradient: LinearGradient(
                   colors: [
                     AppColors.indigo.withOpacity(0.25),
@@ -510,7 +508,6 @@ class _AnalyticsScreenState extends ConsumerState<AnalyticsScreen>
           minY: 0,
           maxY: 100,
           lineTouchData: LineTouchData(
-            enabled: true,
             touchTooltipData: LineTouchTooltipData(
               getTooltipItems: (touchedSpots) => touchedSpots.map((t) {
                 return LineTooltipItem(
