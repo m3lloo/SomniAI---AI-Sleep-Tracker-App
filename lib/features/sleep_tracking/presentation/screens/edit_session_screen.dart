@@ -75,9 +75,13 @@ class _EditSessionScreenState extends ConsumerState<EditSessionScreen> {
                         context: context,
                         initialTime: TimeOfDay.fromDateTime(
                             _sleepTime ?? DateTime.now()));
-                    if (t != null)
-                      setState(() => _sleepTime = DateTime(
-                          dt.year, dt.month, dt.day, t.hour, t.minute));
+                    if (t != null) {
+                      if (!mounted) return;
+                      setState(() {
+                        _sleepTime = DateTime(
+                            dt.year, dt.month, dt.day, t.hour, t.minute);
+                      });
+                    }
                   }
                 },
               ),
@@ -97,9 +101,13 @@ class _EditSessionScreenState extends ConsumerState<EditSessionScreen> {
                         context: context,
                         initialTime: TimeOfDay.fromDateTime(
                             _wakeTime ?? DateTime.now()));
-                    if (t != null)
-                      setState(() => _wakeTime = DateTime(
-                          dt.year, dt.month, dt.day, t.hour, t.minute));
+                    if (t != null) {
+                      if (!mounted) return;
+                      setState(() {
+                        _wakeTime = DateTime(
+                            dt.year, dt.month, dt.day, t.hour, t.minute);
+                      });
+                    }
                   }
                 },
               ),

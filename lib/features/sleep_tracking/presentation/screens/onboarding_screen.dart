@@ -65,7 +65,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
               onPressed: _requesting ? null : _requestPermissions,
               child: _requesting
                   ? const CircularProgressIndicator()
-                  : Text('Enable Permissions'),
+                  : const Text('Enable Permissions'),
             ),
           ],
         ),

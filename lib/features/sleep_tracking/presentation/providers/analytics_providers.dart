@@ -26,7 +26,7 @@ final durationBarGroupsProvider = Provider<List<BarChartGroupData>>((ref) {
           barRods: [
             BarChartRodData(
               toY: session.durationHours,
-                gradient: session.durationHours >= 7
+              gradient: session.durationHours >= 7
                   ? AppColors.cyanGradient
                   : LinearGradient(colors: [AppColors.amber, AppColors.rose]),
               width: 20,

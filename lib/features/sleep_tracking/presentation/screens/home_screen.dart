@@ -144,6 +144,7 @@ class HomeScreen extends ConsumerWidget {
                     if (value == 'edit') {
                       final session =
                           await SleepSessionRepository().getLastSession();
+                      if (!mounted) return;
                       if (session != null) {
                         Navigator.of(context).push(MaterialPageRoute(
                           builder: (_) =>
@@ -155,6 +156,7 @@ class HomeScreen extends ConsumerWidget {
                                 content: Text('No session to edit')));
                       }
                     } else if (value == 'onboard') {
+                      if (!mounted) return;
                       Navigator.of(context).push(MaterialPageRoute(
                           builder: (_) => const OnboardingScreen()));
                     }

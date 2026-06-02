@@ -167,8 +167,9 @@ class _OnboardingSlidesScreenState extends State<OnboardingSlidesScreen> {
                             height: 16,
                             child: CircularProgressIndicator(strokeWidth: 2),
                           )
-                        : Text(
-                            _index == _slides.length - 1 ? 'Get Started' : 'Next'),
+                        : Text(_index == _slides.length - 1
+                            ? 'Get Started'
+                            : 'Next'),
                   ),
                 ],
               ),

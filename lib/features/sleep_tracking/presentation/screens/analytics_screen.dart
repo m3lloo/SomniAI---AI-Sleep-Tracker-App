@@ -396,7 +396,7 @@ class _AnalyticsScreenState extends ConsumerState<AnalyticsScreen>
             touchTooltipData: LineTouchTooltipData(
               getTooltipItems: (touchedSpots) => touchedSpots.map((t) {
                 return LineTooltipItem(
-                  '${t.y.toStringAsFixed(0)}',
+                  t.y.toStringAsFixed(0),
                   GoogleFonts.outfit(
                     color: AppColors.textPrimary,
                     fontWeight: FontWeight.w600,
@@ -472,7 +472,7 @@ class _AnalyticsScreenState extends ConsumerState<AnalyticsScreen>
                 showTitles: true,
                 interval: 25,
                 getTitlesWidget: (val, meta) => Text(
-                  '${val.toInt()}',
+                  val.toInt().toString(),
                   style: GoogleFonts.outfit(
                     color: AppColors.textMuted,
                     fontSize: 10,
@@ -514,7 +514,7 @@ class _AnalyticsScreenState extends ConsumerState<AnalyticsScreen>
             touchTooltipData: LineTouchTooltipData(
               getTooltipItems: (touchedSpots) => touchedSpots.map((t) {
                 return LineTooltipItem(
-                  '${t.y.toStringAsFixed(0)}',
+                  t.y.toStringAsFixed(0),
                   GoogleFonts.outfit(
                     color: AppColors.textPrimary,
                     fontWeight: FontWeight.w600,
