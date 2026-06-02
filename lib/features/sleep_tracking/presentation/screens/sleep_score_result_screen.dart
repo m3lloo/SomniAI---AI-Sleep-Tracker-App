@@ -361,7 +361,6 @@ class _StatCard extends StatelessWidget {
         borderRadius: BorderRadius.circular(AppBorderRadius.large),
         border: Border.all(
           color: AppColors.surfaceLight,
-          width: 1,
         ),
       ),
       child: Column(

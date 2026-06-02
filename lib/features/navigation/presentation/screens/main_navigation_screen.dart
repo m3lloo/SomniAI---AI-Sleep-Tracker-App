@@ -83,7 +83,6 @@ class _MainNavigationScreenState extends ConsumerState<MainNavigationScreen> {
                 selectedIcon: Icons.home,
                 selected: _selectedIndex == 0,
                 onTap: () => _onItemTapped(0),
-                enabled: true,
               ),
               _NavItem(
                 label: 'Log',
@@ -91,7 +90,6 @@ class _MainNavigationScreenState extends ConsumerState<MainNavigationScreen> {
                 selectedIcon: Icons.add_circle,
                 selected: _selectedIndex == 1,
                 onTap: () => _onItemTapped(1),
-                enabled: true,
               ),
               _NavItem(
                 label: 'Analytics',
@@ -99,7 +97,6 @@ class _MainNavigationScreenState extends ConsumerState<MainNavigationScreen> {
                 selectedIcon: Icons.analytics,
                 selected: _selectedIndex == 2,
                 onTap: () => _onItemTapped(2),
-                enabled: true,
               ),
               _NavItem(
                 label: 'AI',
@@ -130,7 +127,6 @@ class _MainNavigationScreenState extends ConsumerState<MainNavigationScreen> {
                 selectedIcon: Icons.settings,
                 selected: _selectedIndex == 4,
                 onTap: () => _onItemTapped(4),
-                enabled: true,
               ),
             ],
           ),

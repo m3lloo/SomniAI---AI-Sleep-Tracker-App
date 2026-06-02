@@ -27,7 +27,7 @@ android {
 
     defaultConfig {
         applicationId = "com.example.flutterdev"
-        minSdk = 31
+        minSdk = flutter.minSdkVersion
         targetSdk = 36
         versionCode = flutter.versionCode
         versionName = flutter.versionName
@@ -36,8 +36,10 @@ android {
 
     buildTypes {
         release {
-            signingConfig = signingConfigs.getByName("debug")
-            isMinifyEnabled = false
+            // Use explicit release signing if configured; fall back to debug for local builds
+            signingConfig = signingConfigs.findByName("release") ?: signingConfigs.getByName("debug")
+            // Consider enabling minification and resource shrinking for production builds
+            isMinifyEnabled = false // set true and configure ProGuard/R8 when ready
             isShrinkResources = false
         }
     }

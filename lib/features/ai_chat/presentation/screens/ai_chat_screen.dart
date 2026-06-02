@@ -213,7 +213,6 @@ class _AIChatScreenState extends ConsumerState<AIChatScreen> {
                   borderRadius: BorderRadius.circular(AppBorderRadius.large),
                   border: Border.all(
                     color: AppColors.primary.withOpacity(0.25),
-                    width: 1,
                   ),
                 ),
                 child: Row(

@@ -60,20 +60,20 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
           AppConstants.spacing20,
         ),
         children: [
-          _HeaderCard(
+          const _HeaderCard(
             title: 'Personalize your sleep setup',
             subtitle:
                 'Tune reminders, preferences, and AI features from one place.',
             icon: Icons.settings_rounded,
           ),
           const SizedBox(height: AppConstants.spacing20),
-          _SectionHeader(title: 'Profile'),
+          const _SectionHeader(title: 'Profile'),
           const SizedBox(height: AppConstants.spacing12),
           _SurfaceCard(
             child: Column(
               children: [
-                TextField(
-                  decoration: const InputDecoration(
+                const TextField(
+                  decoration: InputDecoration(
                     labelText: 'Age',
                     prefixIcon: Icon(Icons.person_outline_rounded),
                   ),
@@ -119,7 +119,7 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
             ),
           ),
           const SizedBox(height: AppConstants.spacing20),
-          _SectionHeader(title: 'Sleep Schedule'),
+          const _SectionHeader(title: 'Sleep Schedule'),
           const SizedBox(height: AppConstants.spacing12),
           _SurfaceCard(
             child: Column(
@@ -142,7 +142,7 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
             ),
           ),
           const SizedBox(height: AppConstants.spacing20),
-          _SectionHeader(title: 'Notifications'),
+          const _SectionHeader(title: 'Notifications'),
           const SizedBox(height: AppConstants.spacing12),
           _SurfaceCard(
             child: SwitchListTile.adaptive(
@@ -157,7 +157,7 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
             ),
           ),
           const SizedBox(height: AppConstants.spacing20),
-          _SectionHeader(title: 'AI Settings'),
+          const _SectionHeader(title: 'AI Settings'),
           const SizedBox(height: AppConstants.spacing12),
           _SurfaceCard(
             child: Column(
@@ -169,7 +169,7 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
                 TextField(
                   obscureText: true,
                   controller: _geminiApiKeyController,
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                     hintText: 'Paste your Gemini API key',
                     prefixIcon: Icon(Icons.key_rounded),
                   ),
@@ -205,7 +205,7 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
             ),
           ),
           const SizedBox(height: AppConstants.spacing20),
-          _SectionHeader(title: 'Display'),
+          const _SectionHeader(title: 'Display'),
           const SizedBox(height: AppConstants.spacing12),
           _SurfaceCard(
             child: SwitchListTile.adaptive(
@@ -215,14 +215,14 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
               value: isDark,
               onChanged: (value) {
                 HapticFeedback.selectionClick();
-                ref.read(themeModeProvider.notifier).state =
-                    value ? ThemeMode.dark : ThemeMode.light;
-                setState(() {});
+                ref
+                    .read(themeModeProvider.notifier)
+                    .setMode(value ? ThemeMode.dark : ThemeMode.light);
               },
             ),
           ),
           const SizedBox(height: AppConstants.spacing20),
-          _SectionHeader(title: 'Data'),
+          const _SectionHeader(title: 'Data'),
           const SizedBox(height: AppConstants.spacing12),
           _SurfaceCard(
             child: Column(
@@ -243,12 +243,12 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
             ),
           ),
           const SizedBox(height: AppConstants.spacing20),
-          _SectionHeader(title: 'About'),
+          const _SectionHeader(title: 'About'),
           const SizedBox(height: AppConstants.spacing12),
           _SurfaceCard(
             child: Column(
               children: [
-                _SettingsRow(label: 'Version', value: '1.0.0'),
+                const _SettingsRow(label: 'Version', value: '1.0.0'),
                 const SizedBox(height: AppConstants.spacing12),
                 _SettingsTile(
                   icon: Icons.privacy_tip_outlined,
@@ -424,7 +424,6 @@ class _HeaderCard extends StatelessWidget {
         borderRadius: BorderRadius.circular(AppBorderRadius.large),
         border: Border.all(
           color: AppColors.secondary.withOpacity(0.25),
-          width: 1,
         ),
       ),
       child: Row(

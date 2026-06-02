@@ -46,10 +46,8 @@ class SleepTrackingData {
   }
 }
 
-class SleepTrackingService extends StateNotifier<SleepTrackingData> {
-  SleepTrackingService(this._repository) : super(const SleepTrackingData());
-
-  final SleepSessionRepository _repository;
+class SleepTrackingService extends Notifier<SleepTrackingData> {
+  late final SleepSessionRepository _repository;
   StreamSubscription<AccelerometerEvent>? _accelSub;
   Timer? _elapsedTimer;
   Timer? _movementResetTimer;
@@ -77,9 +75,7 @@ class SleepTrackingService extends StateNotifier<SleepTrackingData> {
   }
 
   void stopTracking() {
-    _accelSub?.cancel();
-    _elapsedTimer?.cancel();
-    _movementResetTimer?.cancel();
+    _cleanup();
     state = state.copyWith(state: TrackingState.stopped);
   }
 
@@ -187,9 +183,9 @@ class SleepTrackingService extends StateNotifier<SleepTrackingData> {
       estimatedDeepSleep: Value(stages['deep']!),
       estimatedRemSleep: Value(stages['rem']!),
       estimatedAwakeTime: Value(stages['awake']!),
-      snoreDetected: Value(false),
-      snoreEventCount: Value(0),
-      avgNoiseLevel: Value(0.0),
+      snoreDetected: const Value(false),
+      snoreEventCount: const Value(0),
+      avgNoiseLevel: const Value(0.0),
       metSleepGoal: Value(durationHours >= 7.0),
       consistencyScore: Value(_calculateConsistencyScore(startTime, endTime)),
     );
@@ -262,13 +258,23 @@ class SleepTrackingService extends StateNotifier<SleepTrackingData> {
   }
 
   @override
-  void dispose() {
-    stopTracking();
-    super.dispose();
+  SleepTrackingData build() {
+    _repository = SleepSessionRepository();
+    // Ensure timers and subscriptions are cleaned up when provider is disposed
+    ref.onDispose(() {
+      _cleanup();
+    });
+    return const SleepTrackingData();
+  }
+
+  void _cleanup() {
+    _accelSub?.cancel();
+    _elapsedTimer?.cancel();
+    _movementResetTimer?.cancel();
   }
 }
 
 final sleepTrackingServiceProvider =
-    StateNotifierProvider<SleepTrackingService, SleepTrackingData>((ref) {
-  return SleepTrackingService(SleepSessionRepository());
-});
+    NotifierProvider<SleepTrackingService, SleepTrackingData>(
+  SleepTrackingService.new,
+);

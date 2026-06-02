@@ -240,7 +240,6 @@ class _LogSleepScreenState extends ConsumerState<LogSleepScreen> {
               borderRadius: BorderRadius.circular(AppBorderRadius.large),
               border: Border.all(
                 color: AppColors.tertiary.withOpacity(0.25),
-                width: 1,
               ),
             ),
             child: Row(
@@ -475,7 +474,6 @@ class _TimePickerCard extends StatelessWidget {
       backgroundColor: AppColors.surfaceDark,
       borderColor: Colors.white.withOpacity(0.15),
       onTap: onTap,
-      padding: const EdgeInsets.all(AppConstants.spacing12),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [

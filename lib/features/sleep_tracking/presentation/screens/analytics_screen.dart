@@ -67,7 +67,6 @@ class _AnalyticsScreenState extends ConsumerState<AnalyticsScreen>
                   borderRadius: BorderRadius.circular(12),
                   border: Border.all(
                     color: AppColors.primary.withOpacity(0.25),
-                    width: 1,
                   ),
                 ),
                 child: Row(
@@ -347,12 +346,11 @@ class _AnalyticsScreenState extends ConsumerState<AnalyticsScreen>
               ),
             ),
             topTitles:
-                const AxisTitles(sideTitles: SideTitles(showTitles: false)),
+                const AxisTitles(),
             rightTitles:
-                const AxisTitles(sideTitles: SideTitles(showTitles: false)),
+                const AxisTitles(),
           ),
           gridData: FlGridData(
-            show: true,
             horizontalInterval: 3,
             drawVerticalLine: false,
             getDrawingHorizontalLine: (val) => FlLine(
@@ -363,7 +361,6 @@ class _AnalyticsScreenState extends ConsumerState<AnalyticsScreen>
           borderData: FlBorderData(show: false),
         ),
       ),
-      height: 200,
     );
   }
 
@@ -400,7 +397,6 @@ class _AnalyticsScreenState extends ConsumerState<AnalyticsScreen>
                 ),
               ),
               dotData: FlDotData(
-                show: true,
                 getDotPainter: (spot, _, __, ___) => FlDotCirclePainter(
                   radius: 4,
                   color: AppColors.indigo,
@@ -415,7 +411,6 @@ class _AnalyticsScreenState extends ConsumerState<AnalyticsScreen>
                 const FlSpot(0, 70),
                 FlSpot((sessions.length - 1).toDouble(), 70),
               ],
-              isCurved: false,
               color: AppColors.mint.withOpacity(0.4),
               barWidth: 1.5,
               dashArray: [6, 4],
@@ -460,12 +455,11 @@ class _AnalyticsScreenState extends ConsumerState<AnalyticsScreen>
               ),
             ),
             topTitles:
-                const AxisTitles(sideTitles: SideTitles(showTitles: false)),
+                const AxisTitles(),
             rightTitles:
-                const AxisTitles(sideTitles: SideTitles(showTitles: false)),
+                const AxisTitles(),
           ),
           gridData: FlGridData(
-            show: true,
             horizontalInterval: 25,
             drawVerticalLine: false,
             getDrawingHorizontalLine: (val) => FlLine(
@@ -476,7 +470,6 @@ class _AnalyticsScreenState extends ConsumerState<AnalyticsScreen>
           borderData: FlBorderData(show: false),
         ),
       ),
-      height: 200,
     );
   }
 
@@ -512,7 +505,6 @@ class _AnalyticsScreenState extends ConsumerState<AnalyticsScreen>
                 ),
               ),
               dotData: FlDotData(
-                show: true,
                 getDotPainter: (spot, _, __, ___) => FlDotCirclePainter(
                   radius: 4,
                   color: AppColors.purple,
@@ -524,7 +516,7 @@ class _AnalyticsScreenState extends ConsumerState<AnalyticsScreen>
           ],
           titlesData: FlTitlesData(
             bottomTitles:
-                const AxisTitles(sideTitles: SideTitles(showTitles: false)),
+                const AxisTitles(),
             leftTitles: AxisTitles(
               sideTitles: SideTitles(
                 showTitles: true,
@@ -540,12 +532,11 @@ class _AnalyticsScreenState extends ConsumerState<AnalyticsScreen>
               ),
             ),
             topTitles:
-                const AxisTitles(sideTitles: SideTitles(showTitles: false)),
+                const AxisTitles(),
             rightTitles:
-                const AxisTitles(sideTitles: SideTitles(showTitles: false)),
+                const AxisTitles(),
           ),
           gridData: FlGridData(
-            show: true,
             horizontalInterval: 25,
             drawVerticalLine: false,
             getDrawingHorizontalLine: (val) => FlLine(

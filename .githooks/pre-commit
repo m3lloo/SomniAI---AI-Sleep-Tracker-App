@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+set -e
+
+echo "Running pre-commit checks: format, analyze, test"
+
+# Format check
+dart format --output=none --set-exit-if-changed .
+
+# Static analysis
+flutter analyze
+
+# Run tests (fast)
+flutter test --no-pub --coverage || {
+  echo "Tests failed. Commit aborted." >&2
+  exit 1
+}
+
+echo "Pre-commit checks passed."

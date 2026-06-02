@@ -78,7 +78,6 @@ class NotificationService {
       channelDescription: 'Smart alarm notifications',
       importance: Importance.high,
       priority: Priority.high,
-      playSound: true,
     );
     const iosDetails = DarwinNotificationDetails();
     const notificationDetails = NotificationDetails(
