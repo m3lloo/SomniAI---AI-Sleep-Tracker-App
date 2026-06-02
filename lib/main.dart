@@ -40,7 +40,7 @@ class SomniAIApp extends ConsumerWidget {
       themeMode: themeMode,
       theme: lightTheme,
       darkTheme: darkTheme,
-      home: const MainNavigationScreen(),
+      home: const SplashLauncher(),
     );
   }
 }
