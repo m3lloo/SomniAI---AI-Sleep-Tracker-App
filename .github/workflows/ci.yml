@@ -35,9 +35,9 @@ jobs:
       - name: Format generated code
         run: |
           dart format lib test
-          if [ -n "$(git status --porcelain)" ]; then
-            echo "Formatting changes were applied. Commit and push them.";
-            git --no-pager diff --name-only;
+          if [ -n "$(git status --porcelain -- lib test)" ]; then
+            echo "Formatting changes were applied in lib/test. Commit and push them.";
+            git --no-pager diff --name-only -- lib test;
             exit 1;
           fi
       
@@ -47,9 +47,9 @@ jobs:
       - name: Format check
         run: |
           dart format lib test
-          if [ -n "$(git status --porcelain)" ]; then
+          if [ -n "$(git status --porcelain -- lib test)" ]; then
             echo "Code style errors: run 'dart format lib test' and commit the changes.";
-            git --no-pager diff --name-only;
+            git --no-pager diff --name-only -- lib test;
             exit 1;
           fi
       
@@ -86,9 +86,9 @@ jobs:
       - name: Format generated code
         run: |
           dart format lib test
-          if [ -n "$(git status --porcelain)" ]; then
-            echo "Formatting changes were applied. Commit and push them.";
-            git --no-pager diff --name-only;
+          if [ -n "$(git status --porcelain -- lib test)" ]; then
+            echo "Formatting changes were applied in lib/test. Commit and push them.";
+            git --no-pager diff --name-only -- lib test;
             exit 1;
           fi
       

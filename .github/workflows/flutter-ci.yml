@@ -21,9 +21,9 @@ jobs:
       - name: Format check
         run: |
           dart format lib test
-          if [ -n "$(git status --porcelain)" ]; then
+          if [ -n "$(git status --porcelain -- lib test)" ]; then
             echo "Code style errors: run 'dart format lib test' and commit the changes.";
-            git --no-pager diff --name-only;
+            git --no-pager diff --name-only -- lib test;
             exit 1;
           fi
       - name: Static analysis
