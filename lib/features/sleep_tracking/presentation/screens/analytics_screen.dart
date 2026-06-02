@@ -8,11 +8,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 import '../../../../core/themes/app_theme.dart';
 import '../../../sleep_tracking/data/repositories/sleep_session_repository.dart';
-
-final analyticsSessionsProvider =
-    FutureProvider<List<SleepSessionModel>>((ref) async {
-  return SleepSessionRepository().getRecentSessions(14);
-});
+import '../providers/analytics_providers.dart';
 
 class AnalyticsScreen extends ConsumerStatefulWidget {
   const AnalyticsScreen({super.key});
@@ -40,6 +36,9 @@ class _AnalyticsScreenState extends ConsumerState<AnalyticsScreen>
   @override
   Widget build(BuildContext context) {
     final sessionsAsync = ref.watch(analyticsSessionsProvider);
+    final durationBarGroups = ref.watch(durationBarGroupsProvider);
+    final sleepScoreSpots = ref.watch(sleepScoreSpotsProvider);
+    final consistencySpots = ref.watch(consistencySpotsProvider);
 
     return Scaffold(
       backgroundColor: AppColors.background,
@@ -180,7 +179,7 @@ class _AnalyticsScreenState extends ConsumerState<AnalyticsScreen>
                   return TabBarView(
                     controller: _tabController,
                     children: [
-                      _buildWeekView(sessions),
+                      _buildWeekView(sessions, durationBarGroups),
                       _buildMonthView(sessions),
                       _buildTrendsView(sessions),
                     ],
@@ -233,7 +232,8 @@ class _AnalyticsScreenState extends ConsumerState<AnalyticsScreen>
     );
   }
 
-  Widget _buildWeekView(List<SleepSessionModel> sessions) {
+  Widget _buildWeekView(List<SleepSessionModel> sessions,
+      List<BarChartGroupData> durationBarGroups) {
     final weekSessions = sessions.take(7).toList().reversed.toList();
 
     return SingleChildScrollView(
@@ -241,7 +241,7 @@ class _AnalyticsScreenState extends ConsumerState<AnalyticsScreen>
       physics: const BouncingScrollPhysics(),
       child: Column(
         children: [
-          _buildSleepDurationChart(weekSessions),
+          _buildSleepDurationChart(weekSessions, durationBarGroups),
           const SizedBox(height: 20),
           _buildSleepScoreChart(weekSessions),
           const SizedBox(height: 20),
@@ -279,7 +279,8 @@ class _AnalyticsScreenState extends ConsumerState<AnalyticsScreen>
     );
   }
 
-  Widget _buildSleepDurationChart(List<SleepSessionModel> sessions) {
+  Widget _buildSleepDurationChart(List<SleepSessionModel> sessions,
+      List<BarChartGroupData> durationBarGroups) {
     return _buildChartCard(
       'Sleep Duration',
       'Hours per night',
@@ -288,29 +289,48 @@ class _AnalyticsScreenState extends ConsumerState<AnalyticsScreen>
           alignment: BarChartAlignment.spaceAround,
           maxY: 12,
           minY: 0,
-          barGroups: List.generate(sessions.length, (i) {
-            final session = sessions[i];
-            return BarChartGroupData(
-              x: i,
-              barRods: [
-                BarChartRodData(
-                  toY: session.durationHours,
-                  gradient: session.durationHours >= 7
-                      ? AppColors.cyanGradient
-                      : LinearGradient(
-                          colors: [AppColors.amber, AppColors.rose]),
-                  width: 20,
-                  borderRadius:
-                      const BorderRadius.vertical(top: Radius.circular(6)),
-                  backDrawRodData: BackgroundBarChartRodData(
-                    show: true,
-                    toY: 12,
-                    color: AppColors.surfaceLight,
+          barGroups: durationBarGroups.isNotEmpty
+              ? durationBarGroups
+              : List.generate(sessions.length, (i) {
+                  final session = sessions[i];
+                  return BarChartGroupData(
+                    x: i,
+                    barRods: [
+                      BarChartRodData(
+                        toY: session.durationHours,
+                        gradient: session.durationHours >= 7
+                            ? AppColors.cyanGradient
+                            : LinearGradient(
+                                colors: [AppColors.amber, AppColors.rose]),
+                        width: 20,
+                        borderRadius: const BorderRadius.vertical(
+                            top: Radius.circular(6)),
+                        backDrawRodData: BackgroundBarChartRodData(
+                          show: true,
+                          toY: 12,
+                          color: AppColors.surfaceLight,
+                        ),
+                      ),
+                    ],
+                  );
+                }),
+          barTouchData: BarTouchData(
+            enabled: true,
+            touchTooltipData: BarTouchTooltipData(
+              tooltipBgColor: AppColors.cardBg,
+              getTooltipItem: (group, groupIndex, rod, rodIndex) {
+                final hour = rod.toY;
+                return BarTooltipItem(
+                  '${hour.toStringAsFixed(1)} h',
+                  GoogleFonts.outfit(
+                    color: AppColors.textPrimary,
+                    fontSize: 12,
+                    fontWeight: FontWeight.w600,
                   ),
-                ),
-              ],
-            );
-          }),
+                );
+              },
+            ),
+          ),
           titlesData: FlTitlesData(
             bottomTitles: AxisTitles(
               sideTitles: SideTitles(
