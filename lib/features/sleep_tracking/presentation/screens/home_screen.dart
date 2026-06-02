@@ -1,4 +1,6 @@
 // lib/features/home/presentation/screens/home_screen.dart
+// ignore_for_file: use_build_context_synchronously
+
 import 'dart:async';
 
 import 'package:flutter/material.dart';
