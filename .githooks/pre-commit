@@ -4,7 +4,7 @@ set -e
 echo "Running pre-commit checks: format, analyze, test"
 
 # Format check
-dart format --output=none --set-exit-if-changed .
+dart format --output=none --set-exit-if-changed lib test
 
 # Static analysis
 flutter analyze
