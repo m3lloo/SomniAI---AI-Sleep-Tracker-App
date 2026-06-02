@@ -66,7 +66,6 @@ class _EditSessionScreenState extends ConsumerState<EditSessionScreen> {
                 subtitle: Text(
                     _sleepTime != null ? _sleepTime.toString() : 'Loading'),
                 onTap: () async {
-                  // ignore: use_build_context_synchronously
                   final dt = await showDatePicker(
                     context: context,
                     initialDate: _sleepTime ?? DateTime.now(),
@@ -74,7 +73,6 @@ class _EditSessionScreenState extends ConsumerState<EditSessionScreen> {
                     lastDate: DateTime(2100),
                   );
                   if (dt != null) {
-                    // ignore: use_build_context_synchronously
                     final t = await showTimePicker(
                         context: context,
                         initialTime: TimeOfDay.fromDateTime(
@@ -94,7 +92,6 @@ class _EditSessionScreenState extends ConsumerState<EditSessionScreen> {
                 subtitle:
                     Text(_wakeTime != null ? _wakeTime.toString() : 'Loading'),
                 onTap: () async {
-                  // ignore: use_build_context_synchronously
                   final dt = await showDatePicker(
                     context: context,
                     initialDate: _wakeTime ?? DateTime.now(),
@@ -102,7 +99,6 @@ class _EditSessionScreenState extends ConsumerState<EditSessionScreen> {
                     lastDate: DateTime(2100),
                   );
                   if (dt != null) {
-                    // ignore: use_build_context_synchronously
                     final t = await showTimePicker(
                         context: context,
                         initialTime: TimeOfDay.fromDateTime(

@@ -146,20 +146,17 @@ class HomeScreen extends ConsumerWidget {
                     if (value == 'edit') {
                       final session =
                           await SleepSessionRepository().getLastSession();
-                      // ignore: use_build_context_synchronously
                       if (session != null) {
                         Navigator.of(context).push(MaterialPageRoute(
                           builder: (_) =>
                               EditSessionScreen(sessionId: session.id),
                         ));
                       } else {
-                        // ignore: use_build_context_synchronously
                         ScaffoldMessenger.of(context).showSnackBar(
                             const SnackBar(
                                 content: Text('No session to edit')));
                       }
                     } else if (value == 'onboard') {
-                      // ignore: use_build_context_synchronously
                       Navigator.of(context).push(MaterialPageRoute(
                           builder: (_) => const OnboardingScreen()));
                     }
