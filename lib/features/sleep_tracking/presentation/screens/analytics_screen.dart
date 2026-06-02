@@ -385,9 +385,7 @@ class _AnalyticsScreenState extends ConsumerState<AnalyticsScreen>
   Widget _buildSleepScoreChart(List<SleepSessionModel> sessions) {
     if (sessions.isEmpty) return const SizedBox.shrink();
 
-    final spots = sessions.asMap().entries.map((e) {
-      return FlSpot(e.key.toDouble(), e.value.sleepScore.toDouble());
-    }).toList();
+    final spots = ref.watch(sleepScoreSpotsProvider);
 
     return _buildChartCard(
       'Sleep Score',
@@ -396,6 +394,21 @@ class _AnalyticsScreenState extends ConsumerState<AnalyticsScreen>
         LineChartData(
           minY: 0,
           maxY: 100,
+          lineTouchData: LineTouchData(
+            enabled: true,
+            touchTooltipData: LineTouchTooltipData(
+              tooltipBgColor: AppColors.cardBg,
+              getTooltipItems: (touchedSpots) => touchedSpots.map((t) {
+                return LineTooltipItem(
+                  '${t.y.toStringAsFixed(0)}',
+                  GoogleFonts.outfit(
+                    color: AppColors.textPrimary,
+                    fontWeight: FontWeight.w600,
+                  ),
+                );
+              }).toList(),
+            ),
+          ),
           lineBarsData: [
             LineChartBarData(
               spots: spots,
@@ -491,10 +504,7 @@ class _AnalyticsScreenState extends ConsumerState<AnalyticsScreen>
 
   Widget _buildConsistencyChart(List<SleepSessionModel> sessions) {
     if (sessions.isEmpty) return const SizedBox.shrink();
-
-    final spots = sessions.asMap().entries.map((e) {
-      return FlSpot(e.key.toDouble(), e.value.consistencyScore.toDouble());
-    }).toList();
+    final spots = ref.watch(consistencySpotsProvider);
 
     return _buildChartCard(
       'Bedtime Consistency',
@@ -503,6 +513,21 @@ class _AnalyticsScreenState extends ConsumerState<AnalyticsScreen>
         LineChartData(
           minY: 0,
           maxY: 100,
+          lineTouchData: LineTouchData(
+            enabled: true,
+            touchTooltipData: LineTouchTooltipData(
+              tooltipBgColor: AppColors.cardBg,
+              getTooltipItems: (touchedSpots) => touchedSpots.map((t) {
+                return LineTooltipItem(
+                  '${t.y.toStringAsFixed(0)}',
+                  GoogleFonts.outfit(
+                    color: AppColors.textPrimary,
+                    fontWeight: FontWeight.w600,
+                  ),
+                );
+              }).toList(),
+            ),
+          ),
           lineBarsData: [
             LineChartBarData(
               spots: spots,
