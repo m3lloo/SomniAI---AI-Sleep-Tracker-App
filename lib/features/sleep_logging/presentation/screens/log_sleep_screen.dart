@@ -1,3 +1,4 @@
+import 'package:drift/drift.dart' show Value;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_animate/flutter_animate.dart';
@@ -5,7 +6,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:somni_ai/core/themes/app_theme.dart';
 import 'package:somni_ai/core/constants/design_tokens.dart';
 import 'package:somni_ai/core/widgets/index.dart';
-import 'package:somni_ai/local_database/models/sleep_session_model.dart';
 import 'package:somni_ai/features/sleep_tracking/data/repositories/sleep_session_repository.dart';
 import 'package:somni_ai/features/sleep_tracking/presentation/screens/sleep_score_result_screen.dart';
 
@@ -77,29 +77,53 @@ class _LogSleepScreenState extends ConsumerState<LogSleepScreen> {
     // Estimate sleep stages
     final stages = _estimateSleepStages(durationHours, movementScore);
 
-    // Create sleep session
-    final session = SleepSessionModel()
-      ..sleepTime = sleepTime
-      ..wakeTime = wakeTime
-      ..sleepScore = score
-      ..interruptions = _estimateInterruptionsFromQuality(_qualityRating)
-      ..movementScore = movementScore
-      ..durationHours = durationHours
-      ..estimatedLightSleep = stages['light']!
-      ..estimatedDeepSleep = stages['deep']!
-      ..estimatedRemSleep = stages['rem']!
-      ..estimatedAwakeTime = stages['awake']!
-      ..snoreDetected = false
-      ..snoreEventCount = 0
-      ..avgNoiseLevel = 0.0
-      ..metSleepGoal = durationHours >= 7.0
-      ..consistencyScore = _calculateConsistencyScore(sleepTime, wakeTime)
-      ..notes = _dreamNotesController.text.isNotEmpty
-          ? _dreamNotesController.text
-          : null;
+    // Create sleep session companion for insertion
+    final notesValue = _dreamNotesController.text.isNotEmpty
+        ? _dreamNotesController.text
+        : null;
+    final sessionCompanion = SleepSessionsCompanion.insert(
+      sleepTime: sleepTime,
+      wakeTime: wakeTime,
+      sleepScore: score,
+      interruptions: _estimateInterruptionsFromQuality(_qualityRating),
+      movementScore: movementScore,
+      durationHours: durationHours,
+      estimatedLightSleep: stages['light']!,
+      estimatedDeepSleep: stages['deep']!,
+      estimatedRemSleep: stages['rem']!,
+      estimatedAwakeTime: stages['awake']!,
+      snoreDetected: false,
+      snoreEventCount: 0,
+      avgNoiseLevel: 0.0,
+      metSleepGoal: durationHours >= 7.0,
+      consistencyScore: _calculateConsistencyScore(sleepTime, wakeTime),
+      notes: Value(notesValue),
+    );
 
-    // Save to database
-    await SleepSessionRepository().saveSession(session);
+    // Save to database and get the ID
+    final sessionId =
+        await SleepSessionRepository().saveSession(sessionCompanion);
+
+    // Create the session object for navigation
+    final session = SleepSession(
+      id: sessionId,
+      sleepTime: sleepTime,
+      wakeTime: wakeTime,
+      sleepScore: score,
+      interruptions: _estimateInterruptionsFromQuality(_qualityRating),
+      movementScore: movementScore,
+      durationHours: durationHours,
+      estimatedLightSleep: stages['light']!,
+      estimatedDeepSleep: stages['deep']!,
+      estimatedRemSleep: stages['rem']!,
+      estimatedAwakeTime: stages['awake']!,
+      snoreDetected: false,
+      snoreEventCount: 0,
+      avgNoiseLevel: 0.0,
+      metSleepGoal: durationHours >= 7.0,
+      consistencyScore: _calculateConsistencyScore(sleepTime, wakeTime),
+      notes: notesValue,
+    );
 
     if (!mounted) return;
 

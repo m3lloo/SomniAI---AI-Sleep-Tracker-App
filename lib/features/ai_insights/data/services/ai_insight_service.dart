@@ -7,7 +7,7 @@ import 'package:http/http.dart' as http;
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../../../../core/constants/app_constants.dart';
-import '../../../../local_database/models/sleep_session_model.dart';
+import '../../../../local_database/models/models.dart';
 
 class AiInsightService {
   // Offline rule-based recommendations
@@ -19,7 +19,7 @@ class AiInsightService {
     final insights = <String>[];
     final latest = sessions.first;
     final avgScore =
-        sessions.fold(0, (s, e) => s + e.sleepScore) / sessions.length;
+        sessions.fold(0.0, (s, e) => s + e.sleepScore) / sessions.length;
     final avgDuration =
         sessions.fold(0.0, (s, e) => s + e.durationHours) / sessions.length;
 
@@ -65,7 +65,7 @@ class AiInsightService {
     // Consistency
     if (sessions.length >= 3) {
       final consistency =
-          sessions.map((s) => s.consistencyScore).fold(0, (a, b) => a + b) /
+          sessions.map((s) => s.consistencyScore).fold(0.0, (a, b) => a + b) /
               sessions.length;
       if (consistency < 50) {
         insights.add(
@@ -155,7 +155,7 @@ Guidelines:
     final sb = StringBuffer();
     sb.writeln('Recent ${sessions.length} sessions:');
     sb.writeln(
-        '- Average score: ${(sessions.fold(0, (s, e) => s + e.sleepScore) / sessions.length).round()}/100');
+        '- Average score: ${(sessions.fold(0.0, (s, e) => s + e.sleepScore) / sessions.length).round()}/100');
     sb.writeln(
         '- Average duration: ${(sessions.fold(0.0, (s, e) => s + e.durationHours) / sessions.length).toStringAsFixed(1)}h');
     sb.writeln(

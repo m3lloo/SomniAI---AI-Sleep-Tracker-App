@@ -1,35 +1,31 @@
 // lib/features/journal/data/repositories/journal_repository.dart
-import 'package:isar/isar.dart';
-import '../../../../local_database/isar_service.dart';
-import '../../../../local_database/models/journal_entry_model.dart';
+import 'package:somni_ai/local_database/database/database_service.dart';
+import 'package:somni_ai/local_database/models/models.dart';
+
+// Re-export for convenience
+export 'package:somni_ai/local_database/models/models.dart';
 
 class JournalRepository {
-  Future<Isar> get _db => IsarService.instance;
+  late final JournalEntryDao _dao;
 
-  Future<int> saveEntry(JournalEntryModel entry) async {
-    final db = await _db;
-    return await db.writeTxn(() async {
-      return await db.journalEntryModels.put(entry);
-    });
+  JournalRepository() {
+    _dao = JournalEntryDao(DatabaseService().database);
+  }
+
+  Future<int> saveEntry(JournalEntriesCompanion entry) async {
+    return await _dao.saveEntry(entry);
   }
 
   Future<List<JournalEntryModel>> getAllEntries() async {
-    final db = await _db;
-    return await db.journalEntryModels.where().sortByCreatedAtDesc().findAll();
+    final entries = await _dao.getAllEntries();
+    return entries;
   }
 
   Future<void> deleteEntry(int id) async {
-    final db = await _db;
-    await db.writeTxn(() async {
-      await db.journalEntryModels.delete(id);
-    });
+    await _dao.deleteEntry(id);
   }
 
-  Stream<List<JournalEntryModel>> watchEntries() async* {
-    final db = await _db;
-    yield* db.journalEntryModels
-        .where()
-        .sortByCreatedAtDesc()
-        .watch(fireImmediately: true);
+  Stream<List<JournalEntryModel>> watchEntries() {
+    return _dao.watchEntries();
   }
 }

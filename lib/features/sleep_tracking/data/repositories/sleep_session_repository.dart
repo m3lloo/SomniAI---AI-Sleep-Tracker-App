@@ -1,61 +1,49 @@
 // lib/features/sleep_tracking/data/repositories/sleep_session_repository.dart
-import 'package:isar/isar.dart';
-import '../../../../local_database/isar_service.dart';
-import '../../../../local_database/models/sleep_session_model.dart';
+import 'package:somni_ai/local_database/database/database_service.dart';
+import 'package:somni_ai/local_database/models/models.dart';
+
+// Re-export for convenience
+export 'package:somni_ai/local_database/models/models.dart';
 
 class SleepSessionRepository {
-  Future<Isar> get _db => IsarService.instance;
+  late final SleepSessionDao _dao;
 
-  Future<int> saveSession(SleepSessionModel session) async {
-    final db = await _db;
-    return await db.writeTxn(() async {
-      return await db.sleepSessionModels.put(session);
-    });
+  SleepSessionRepository() {
+    _dao = SleepSessionDao(DatabaseService().database);
+  }
+
+  Future<int> saveSession(SleepSessionsCompanion session) async {
+    return await _dao.saveSession(session);
   }
 
   Future<List<SleepSessionModel>> getAllSessions() async {
-    final db = await _db;
-    return await db.sleepSessionModels.where().sortBySleepTimeDesc().findAll();
+    final sessions = await _dao.getAllSessions();
+    return sessions;
   }
 
   Future<List<SleepSessionModel>> getSessionsForRange(
     DateTime start,
     DateTime end,
   ) async {
-    final db = await _db;
-    return await db.sleepSessionModels
-        .filter()
-        .sleepTimeBetween(start, end)
-        .sortBySleepTimeDesc()
-        .findAll();
+    return await _dao.getSessionsForRange(start, end);
   }
 
   Future<SleepSessionModel?> getLastSession() async {
-    final db = await _db;
-    return await db.sleepSessionModels
-        .where()
-        .sortBySleepTimeDesc()
-        .findFirst();
+    return await _dao.getLastSession();
   }
 
   Future<SleepSessionModel?> getSessionById(int id) async {
-    final db = await _db;
-    return await db.sleepSessionModels.get(id);
+    return await _dao.getSessionById(id);
   }
 
   Future<void> deleteSession(int id) async {
-    final db = await _db;
-    await db.writeTxn(() async {
-      await db.sleepSessionModels.delete(id);
-    });
+    await _dao.deleteSession(id);
   }
 
   /// Returns sessions for the last N days
   Future<List<SleepSessionModel>> getRecentSessions(int days) async {
     try {
-      final start = DateTime.now().subtract(Duration(days: days));
-      final end = DateTime.now().add(const Duration(days: 1));
-      return await getSessionsForRange(start, end);
+      return await _dao.getRecentSessions(days);
     } catch (e) {
       rethrow;
     }
@@ -63,71 +51,20 @@ class SleepSessionRepository {
 
   /// Compute weekly average sleep score
   Future<double> getWeeklyAverageScore() async {
-    final sessions = await getRecentSessions(7);
-    if (sessions.isEmpty) return 0;
-    final total = sessions.fold(0, (sum, s) => sum + s.sleepScore);
-    return total / sessions.length;
+    return await _dao.getWeeklyAverageScore();
   }
 
   /// Compute average sleep duration (hours) for last N days
   Future<double> getAverageDuration(int days) async {
-    final sessions = await getRecentSessions(days);
-    if (sessions.isEmpty) return 0;
-    final total = sessions.fold(0.0, (sum, s) => sum + s.durationHours);
-    return total / sessions.length;
+    return await _dao.getAverageDuration(days);
   }
 
-  Stream<List<SleepSessionModel>> watchAllSessions() async* {
-    final db = await _db;
-    yield* db.sleepSessionModels
-        .where()
-        .sortBySleepTimeDesc()
-        .watch(fireImmediately: true);
+  Stream<List<SleepSessionModel>> watchAllSessions() {
+    return _dao.watchAllSessions();
   }
 
   /// Calculate consecutive days streak of sleep logging
   Future<int> calculateStreak() async {
-    try {
-      final sessions = await getRecentSessions(365); // Check last year
-      if (sessions.isEmpty) return 0;
-
-      // Get unique dates with logs
-      final datesWithLogs = <DateTime>{};
-      for (var session in sessions) {
-        datesWithLogs.add(DateTime(
-          session.sleepTime.year,
-          session.sleepTime.month,
-          session.sleepTime.day,
-        ));
-      }
-
-      if (datesWithLogs.isEmpty) return 0;
-
-      // Sort dates in descending order (most recent first)
-      final sortedDates = datesWithLogs.toList()
-        ..sort((a, b) => b.compareTo(a));
-
-      // Calculate streak from today backwards
-      int streak = 0;
-      DateTime currentCheck = DateTime.now();
-      currentCheck =
-          DateTime(currentCheck.year, currentCheck.month, currentCheck.day);
-
-      for (final date in sortedDates) {
-        if (date == currentCheck) {
-          streak++;
-          currentCheck = currentCheck.subtract(const Duration(days: 1));
-        } else if (date == currentCheck.subtract(const Duration(days: 1))) {
-          streak++;
-          currentCheck = currentCheck.subtract(const Duration(days: 1));
-        } else {
-          break; // Streak broken
-        }
-      }
-
-      return streak;
-    } catch (e) {
-      return 0;
-    }
+    return await _dao.calculateStreak();
   }
 }

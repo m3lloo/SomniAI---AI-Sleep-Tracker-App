@@ -3,9 +3,9 @@
 
 import 'dart:async';
 import 'dart:math';
+import 'package:drift/drift.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:sensors_plus/sensors_plus.dart';
-import '../../../../local_database/models/sleep_session_model.dart';
 import '../repositories/sleep_session_repository.dart';
 
 enum TrackingState { idle, tracking, paused, stopped }
@@ -87,11 +87,28 @@ class SleepTrackingService extends StateNotifier<SleepTrackingData> {
     if (state.startTime == null) return null;
 
     final endTime = DateTime.now();
-    final session = _buildSession(endTime);
-    await _repository.saveSession(session);
+    final companion = _buildSessionCompanion(endTime);
+    final id = await _repository.saveSession(companion);
 
     state = const SleepTrackingData();
-    return session;
+    return SleepSessionModel(
+      id: id,
+      sleepTime: companion.sleepTime as DateTime,
+      wakeTime: companion.wakeTime as DateTime,
+      sleepScore: companion.sleepScore as int,
+      interruptions: companion.interruptions as int,
+      movementScore: companion.movementScore as double,
+      durationHours: companion.durationHours as double,
+      estimatedLightSleep: companion.estimatedLightSleep as int,
+      estimatedDeepSleep: companion.estimatedDeepSleep as int,
+      estimatedRemSleep: companion.estimatedRemSleep as int,
+      estimatedAwakeTime: companion.estimatedAwakeTime as int,
+      snoreDetected: companion.snoreDetected as bool,
+      snoreEventCount: companion.snoreEventCount as int,
+      avgNoiseLevel: companion.avgNoiseLevel as double,
+      metSleepGoal: companion.metSleepGoal as bool,
+      consistencyScore: companion.consistencyScore as int,
+    );
   }
 
   void reset() {
@@ -151,7 +168,7 @@ class SleepTrackingService extends StateNotifier<SleepTrackingData> {
     });
   }
 
-  SleepSessionModel _buildSession(DateTime endTime) {
+  SleepSessionsCompanion _buildSessionCompanion(DateTime endTime) {
     final startTime = state.startTime!;
     final durationHours = endTime.difference(startTime).inMinutes / 60.0;
     final movementScore = _calculateMovementScore();
@@ -159,22 +176,23 @@ class SleepTrackingService extends StateNotifier<SleepTrackingData> {
         _calculateSleepScore(durationHours, movementScore, state.interruptions);
     final stages = _estimateSleepStages(durationHours, movementScore);
 
-    return SleepSessionModel()
-      ..sleepTime = startTime
-      ..wakeTime = endTime
-      ..sleepScore = score
-      ..interruptions = state.interruptions
-      ..movementScore = movementScore
-      ..durationHours = durationHours
-      ..estimatedLightSleep = stages['light']!
-      ..estimatedDeepSleep = stages['deep']!
-      ..estimatedRemSleep = stages['rem']!
-      ..estimatedAwakeTime = stages['awake']!
-      ..snoreDetected = false
-      ..snoreEventCount = 0
-      ..avgNoiseLevel = 0.0
-      ..metSleepGoal = durationHours >= 7.0
-      ..consistencyScore = _calculateConsistencyScore(startTime, endTime);
+    return SleepSessionsCompanion(
+      sleepTime: Value(startTime),
+      wakeTime: Value(endTime),
+      sleepScore: Value(score),
+      interruptions: Value(state.interruptions),
+      movementScore: Value(movementScore),
+      durationHours: Value(durationHours),
+      estimatedLightSleep: Value(stages['light']!),
+      estimatedDeepSleep: Value(stages['deep']!),
+      estimatedRemSleep: Value(stages['rem']!),
+      estimatedAwakeTime: Value(stages['awake']!),
+      snoreDetected: Value(false),
+      snoreEventCount: Value(0),
+      avgNoiseLevel: Value(0.0),
+      metSleepGoal: Value(durationHours >= 7.0),
+      consistencyScore: Value(_calculateConsistencyScore(startTime, endTime)),
+    );
   }
 
   double _calculateMovementScore() {

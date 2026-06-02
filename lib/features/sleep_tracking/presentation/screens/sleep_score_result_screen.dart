@@ -4,7 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:somni_ai/core/themes/app_theme.dart';
 import 'package:somni_ai/core/constants/design_tokens.dart';
 import 'package:somni_ai/core/widgets/index.dart';
-import 'package:somni_ai/local_database/models/sleep_session_model.dart';
+import 'package:somni_ai/local_database/models/models.dart';
 
 class SleepScoreResultScreen extends ConsumerWidget {
   final SleepSessionModel session;

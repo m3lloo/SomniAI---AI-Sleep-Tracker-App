@@ -7,7 +7,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 import '../../../../core/themes/app_theme.dart';
-import '../../../../local_database/models/sleep_session_model.dart';
 import '../../../sleep_tracking/data/repositories/sleep_session_repository.dart';
 import '../../../sleep_tracking/data/services/sleep_tracking_service.dart';
 

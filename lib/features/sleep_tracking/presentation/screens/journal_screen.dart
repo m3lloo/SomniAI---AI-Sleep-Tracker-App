@@ -1,4 +1,5 @@
 // lib/features/journal/presentation/screens/journal_screen.dart
+import 'package:drift/drift.dart' hide Column;
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -6,7 +7,6 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 import '../../../../core/constants/app_constants.dart';
 import '../../../../core/themes/app_theme.dart';
-import '../../../../local_database/models/journal_entry_model.dart';
 import '../../data/repositories/journal_repository.dart';
 
 final journalEntriesProvider = StreamProvider<List<JournalEntryModel>>((ref) {
@@ -298,19 +298,19 @@ class _AddJournalEntrySheetState extends ConsumerState<_AddJournalEntrySheet> {
 
   Future<void> _save() async {
     setState(() => _saving = true);
-    final entry = JournalEntryModel()
-      ..createdAt = DateTime.now()
-      ..mood = _selectedMood
-      ..stressLevel = _stressLevel
-      ..energyLevel = _energyLevel
-      ..generalNotes = _notesController.text.trim().isEmpty
-          ? null
-          : _notesController.text.trim()
-      ..dreamNotes = _dreamController.text.trim().isEmpty
-          ? null
-          : _dreamController.text.trim();
+    final companion = JournalEntriesCompanion(
+      mood: Value(_selectedMood),
+      stressLevel: Value(_stressLevel),
+      energyLevel: Value(_energyLevel),
+      generalNotes: _notesController.text.trim().isEmpty
+          ? const Value.absent()
+          : Value(_notesController.text.trim()),
+      dreamNotes: _dreamController.text.trim().isEmpty
+          ? const Value.absent()
+          : Value(_dreamController.text.trim()),
+    );
 
-    await JournalRepository().saveEntry(entry);
+    await JournalRepository().saveEntry(companion);
     if (mounted) Navigator.pop(context);
   }
 

@@ -4,7 +4,6 @@ import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../../../core/themes/app_theme.dart';
-import '../../../../local_database/models/sleep_session_model.dart';
 import '../../../sleep_tracking/data/repositories/sleep_session_repository.dart';
 import '../../data/services/ai_insight_service.dart';
 
