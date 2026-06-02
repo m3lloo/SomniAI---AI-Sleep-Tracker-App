@@ -41,9 +41,16 @@ class SomniAIApp extends ConsumerWidget {
     return MaterialApp(
       title: 'Somni AI',
       debugShowCheckedModeBanner: false,
-      // Wrap app with a top SafeArea to avoid device camera cutouts / punch-holes
-      builder: (context, child) =>
-          SafeArea(top: true, bottom: false, child: child ?? const SizedBox()),
+      // Wrap app with a top SafeArea and default content padding so screens
+      // are not flush against edges or the device cutouts.
+      builder: (context, child) => SafeArea(
+        top: true,
+        bottom: false,
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 12.0),
+          child: child ?? const SizedBox(),
+        ),
+      ),
       // Localization delegates removed temporarily to avoid analyzer issues
       // Add back if `flutter_localizations` is available in your SDK.
       supportedLocales: const [Locale('en')],
