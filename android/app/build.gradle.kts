@@ -7,7 +7,9 @@ plugins {
 android {
     namespace = "com.example.flutterdev"
     compileSdk = 36
-    ndkVersion = "27.0.12077973"
+    ndkVersion = "28.2.13676358"
+    // NOTE: kept for dependency compatibility
+
 
     compileOptions {
         isCoreLibraryDesugaringEnabled = true
